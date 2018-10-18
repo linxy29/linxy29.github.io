@@ -13,3 +13,10 @@ I like [to look for code on the internet](https://www.geogle.com)
 I can link directly to my[about page](about.html)
 
 <img src="./images/test.png" style="width:75%">
+
+### I can add code
+
+```{r}
+library(tidyverse)
+```
+
