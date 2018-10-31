@@ -1,26 +1,18 @@
 ---
-title: "Holy cow!"
+title: "Xinyi Lin"
 output:
-  html_document:
-    toc: true
-    toc_float: true
+  html_document
 ---
 
-### I have a webpage!
+Student of Biostatistic
 
-And I can put all kinds of stuff on it!
+Columbia University Mailman School of Public Health
 
-## Add some links
+![There are always invisible light in the dark.](./images/home_pic.png)
 
-I like [to look for code on the internet](https://www.geogle.com)
+##About
 
-I can link directly to my[about page](about.html)
+I got my Bachelor of Science degrees in Biological Science and Statistics in [Sun Yat-sen University](http://www.sysu.edu.cn/2012/en/index.htm), China from 2014 to 2018. Now, I'm finishing my MS project of Biostatistics in [Columbia University Irving Medical Center](https://www.cuimc.columbia.edu).
 
-<img src="./images/test.png" style="width:75%">
-
-### I can add code
-
-```{r}
-library(tidyverse)
-```
+This is the link of [flexdashboard](dashboard.html)
 

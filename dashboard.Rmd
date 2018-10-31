@@ -1,0 +1,67 @@
+---
+title: "flexdashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(viridis)
+library(plotly)
+```
+
+```{r}
+noaa_df = read_csv(file = "./data/nynoaadat.csv") %>% 
+  filter(id == "US1NYAB0001" | id == "US1NYAB0006" | id == "US1NYAB0010" | id == "US1NYAB0017")
+```
+
+```{r}
+noaa_tidied_df = 
+  noaa_df %>% 
+#  separate(date, into = c("year", "month", "day"), sep = "-") %>% 
+#  mutate(year = as.numeric(year)) %>% 
+#  mutate(month = as.numeric(month)) %>% 
+#  mutate(day = as.numeric(day)) %>% 
+  mutate(prcp = as.numeric(prcp)) %>% 
+  mutate(snow = as.numeric(snow)) %>% 
+  mutate(snwd = as.numeric(snwd)) %>% 
+  mutate(tmax = as.numeric(tmax)) %>% 
+  mutate(tmin = as.numeric(tmin)) 
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+noaa_tidied_df %>% 
+  filter(prcp < 1000) %>% 
+  plot_ly(x = ~date, y = ~prcp, type = "scatter", mode = "markers",
+          color = ~id)
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+noaa_tidied_df %>%
+  plot_ly(y = ~prcp, color = ~id, type = "box",
+          colors = "Set2")
+```
+
+### Chart C
+
+```{r}
+noaa_tidied_df %>% 
+  group_by(prcp, id) %>% 
+  summarise(n = n()) %>% 
+  arrange(desc(n)) %>% 
+  filter(n < 40 & prcp < 500) %>% 
+  plot_ly(x = ~prcp, y = ~n, color = ~id, type = "bar")
+```
