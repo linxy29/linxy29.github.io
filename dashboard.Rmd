@@ -53,7 +53,7 @@ Column {data-width=350}
 
 ```{r}
 noaa_tidied_df %>%
-  filter(prcp < 800) %>% 
+  filter(prcp < 80) %>% 
   plot_ly(y = ~prcp, color = ~id, type = "box",
           colors = "Set2")
 ```
