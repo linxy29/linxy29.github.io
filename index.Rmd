@@ -4,15 +4,27 @@ output:
   html_document
 ---
 
-Student of Biostatistic
+**Student of Biostatistic**
 
-Columbia University Mailman School of Public Health
+**Columbia University Mailman School of Public Health**
 
 ![There are always invisible light in the dark.](./images/home_pic.png)
 
-##About
+<br>
+
+## About
 
 I got my Bachelor of Science degrees in Biological Science and Statistics in [Sun Yat-sen University](http://www.sysu.edu.cn/2012/en/index.htm), China from 2014 to 2018. Now, I'm finishing my MS project of Biostatistics in [Columbia University Irving Medical Center](https://www.cuimc.columbia.edu).
 
-This is the link of [flexdashboard](dashboard.html)
+**This is the link of [flexdashboard](dashboard.html).**
 
+<br>
+
+## Contact Information
+
+Xinyi Lin
+<br>[Department of Biostatistics](https://www.mailman.columbia.edu/become-student/departments/biostatistics)
+<br>[Columbia Mailman School of Public Health](https://www.mailman.columbia.edu)
+
+<br>Email: [xl2836@cumc.columbia.edu](mailto: xl2836@cumc.columbia.edu)
+<br>Phone: 347-393-8012

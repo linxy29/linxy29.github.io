@@ -11,10 +11,12 @@ library(flexdashboard)
 library(tidyverse)
 library(viridis)
 library(plotly)
+library(p8105.datasets)
 ```
 
 ```{r}
-noaa_df = read_csv(file = "./data/nynoaadat.csv") %>% 
+#data.frame(ny_noaa)
+noaa_df = data.frame(ny_noaa) %>% 
   filter(id == "US1NYAB0001" | id == "US1NYAB0006" | id == "US1NYAB0010" | id == "US1NYAB0017")
 ```
 
