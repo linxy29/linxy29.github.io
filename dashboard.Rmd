@@ -27,11 +27,11 @@ noaa_tidied_df =
 #  mutate(year = as.numeric(year)) %>% 
 #  mutate(month = as.numeric(month)) %>% 
 #  mutate(day = as.numeric(day)) %>% 
-  mutate(prcp = as.numeric(prcp)) %>% 
+  mutate(prcp = as.numeric(prcp)/10) %>% 
   mutate(snow = as.numeric(snow)) %>% 
   mutate(snwd = as.numeric(snwd)) %>% 
-  mutate(tmax = as.numeric(tmax)) %>% 
-  mutate(tmin = as.numeric(tmin)) 
+  mutate(tmax = as.numeric(tmax)/10) %>% 
+  mutate(tmin = as.numeric(tmin)/10) 
 ```
 
 Column {data-width=650}
@@ -41,7 +41,7 @@ Column {data-width=650}
 
 ```{r}
 noaa_tidied_df %>% 
-  filter(prcp < 1000) %>% 
+  filter(prcp < 100) %>% 
   plot_ly(x = ~date, y = ~prcp, type = "scatter", mode = "markers",
           color = ~id)
 ```
@@ -53,6 +53,7 @@ Column {data-width=350}
 
 ```{r}
 noaa_tidied_df %>%
+  filter(prcp < 800) %>% 
   plot_ly(y = ~prcp, color = ~id, type = "box",
           colors = "Set2")
 ```
@@ -64,6 +65,6 @@ noaa_tidied_df %>%
   group_by(prcp, id) %>% 
   summarise(n = n()) %>% 
   arrange(desc(n)) %>% 
-  filter(n < 40 & prcp < 500) %>% 
+  filter(n < 40 & prcp < 70) %>% 
   plot_ly(x = ~prcp, y = ~n, color = ~id, type = "bar")
 ```
