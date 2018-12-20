@@ -16,7 +16,6 @@ output:
 
 I got my Bachelor of Science degrees in Biological Science and Statistics in [Sun Yat-sen University](http://www.sysu.edu.cn/2012/en/index.htm), China from 2014 to 2018. Now, I'm finishing my MS project of Biostatistics in [Columbia University Irving Medical Center](https://www.cuimc.columbia.edu).
 
-**This is the link of [flexdashboard](dashboard.html).**
 
 <br>
 
