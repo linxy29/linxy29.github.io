@@ -6,19 +6,31 @@ output: html_document
 
 ## Group Project
 
-1. Factors Associated with Mental Health in Tech Companies [website](https://runanon.github.io/final.github.io/)
+1. Factors Associated with Mental Health in Tech Companies [Website](https://runanon.github.io/final.github.io/) 
 
-2. Using Newton-Raphson and Logistic-LASSO for Predicting Breast Cancer Status [report](./Optimization_project.pdf)
-[code](https://github.com/thecbp/P8160_optimization_project)
+ * My responsibility: Models Building
 
-3. Glasses' Type Prediction [report](./Glass_type_prediction.pdf)
-[code](https://github.com/runanon/p8106_final)
+2. Using Newton-Raphson and Logistic-LASSO for Predicting Breast Cancer Status [Report](./Optimization_project.pdf)
+[Code](https://github.com/thecbp/P8160_optimization_project)
 
-4. Houses' Prices Prediction [report](./House_price_prediction.pdf)
-[code](https://github.com/runanon/P8106_MIDTERM_PROJECT)
+ * My responsibility: Newton-Raphson Algorithm
+
+3. Glasses' Type Prediction [Report](./Glass_type_prediction.pdf)
+[Code](https://github.com/runanon/p8106_final)
+
+ * My responsibility: Support Vector Machine
+
+4. Houses' Prices Prediction [Report](./House_price_prediction.pdf)
+[Code](https://github.com/runanon/P8106_MIDTERM_PROJECT)
+
+ * My responsibility: Data Preprocessing and Writing Report
 
 ## Personal Project
 
-1. Hurricane Trajectory Prediction [questions](./hurricane_questions.pdf)
-[report](./hurricane_report.pdf)
-[code](https://github.com/linxy29/P8160_final_project)
+1. Hurricane Trajectory Prediction [Questions](./hurricane_questions.pdf)
+[Report](./hurricane_report.pdf)
+[Code](https://github.com/linxy29/P8160_final_project)
+
+2. 基于贝叶斯算法的等位基因特异的m6A鉴定算法开发 [Bachelor Dissertation](毕业论文.pdf)
+
+
