@@ -4,12 +4,21 @@ author: "Xinyi Lin"
 output: html_document
 ---
 
-[1. Factors Associated with Mental Health in Tech Companies](https://runanon.github.io/final.github.io/)
+## Group Project
 
-[2. House Prices Prediction](https://github.com/runanon/P8106_MIDTERM_PROJECT)
+1. Factors Associated with Mental Health in Tech Companies [website](https://runanon.github.io/final.github.io/)
 
-[3. Using Newton-Raphson and logistic-LASSO for predicting breast cancer status](https://github.com/thecbp/P8160_optimization_project)
+2. Using Newton-Raphson and logistic-LASSO for predicting breast cancer status [report](./Optimization_project.pdf)
+[code](https://github.com/thecbp/P8160_optimization_project)
 
-[3. Using Newton-Raphson and logistic-LASSO for predicting breast cancer status(Report)](https://www.overleaf.com/1497566479wrhkqpwtfcbx)
+3. Glasses' Type Prediction [report](./Glass_type_prediction.pdf)
+[code](https://github.com/runanon/p8106_final)
 
-#[4. boostraping project](https://github.com/thecbp/P8160_bootstrapping_project)
+4. Houses' Prices Prediction [report](./House_price_prediction.pdf)
+[code](https://github.com/runanon/P8106_MIDTERM_PROJECT)
+
+## Personal Project
+
+1. Hurricane Trajectory Prediction [questions](./hurricane_questions.pdf)
+[report](./hurricane_report.pdf)
+[code](https://github.com/linxy29/P8160_final_project)

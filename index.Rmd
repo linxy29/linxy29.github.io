@@ -4,7 +4,7 @@ output:
   html_document
 ---
 
-**Student of Biostatistic**
+**Master of Science student in Biostatistic**
 
 **Columbia University Mailman School of Public Health**
 
