@@ -8,7 +8,7 @@ output: html_document
 
 1. Factors Associated with Mental Health in Tech Companies [website](https://runanon.github.io/final.github.io/)
 
-2. Using Newton-Raphson and logistic-LASSO for predicting breast cancer status [report](./Optimization_project.pdf)
+2. Using Newton-Raphson and Logistic-LASSO for Predicting Breast Cancer Status [report](./Optimization_project.pdf)
 [code](https://github.com/thecbp/P8160_optimization_project)
 
 3. Glasses' Type Prediction [report](./Glass_type_prediction.pdf)

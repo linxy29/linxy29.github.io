@@ -4,17 +4,17 @@ output:
   html_document
 ---
 
-**Master of Science student in Biostatistic**
+**Master of Science student in Biostatistics**
 
 **Columbia University Mailman School of Public Health**
 
-![There are always invisible light in the dark.](./images/home_pic.png)
+![There is always invisible light in the dark.](./images/home_pic.png)
 
 <br>
 
 ## About
 
-I got my Bachelor of Science degrees in Biological Science and Statistics in [Sun Yat-sen University](http://www.sysu.edu.cn/2012/en/index.htm), China from 2014 to 2018. Now, I'm finishing my MS project of Biostatistics in [Columbia University Irving Medical Center](https://www.cuimc.columbia.edu).
+I got my Bachelor of Science degree in Biological Science in [Sun Yat-sen University](http://www.sysu.edu.cn/2012/en/index.htm), China from 2014 to 2018. Now, I'm finishing my MS project of Biostatistics in [Columbia University Irving Medical Center](https://www.cuimc.columbia.edu).
 
 
 <br>
