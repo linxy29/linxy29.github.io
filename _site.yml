@@ -3,8 +3,11 @@ output_dir: "."
 navbar:
   title: "Home"
   left:
-  - text: "Project"
+    - text: "Project"
     href: project.html
+    - text: "Pulication"
+    href: project.html
+    
   right:
     - text: "CV"
       href: xinyi_lin_CV.pdf

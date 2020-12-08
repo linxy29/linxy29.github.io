@@ -4,9 +4,9 @@ output:
   html_document
 ---
 
-**Master of Science student in Biostatistics**
+**PhD student in Bioinformatics**
 
-**Columbia University Mailman School of Public Health**
+**LKS Faculty of Medicine, HKU**
 
 ![There is always invisible light in the dark.](./images/home_pic.png)
 
@@ -14,7 +14,13 @@ output:
 
 ## About
 
-I got my Bachelor of Science degree in Biological Science in [Sun Yat-sen University](http://www.sysu.edu.cn/2012/en/index.htm), China from 2014 to 2018. Now, I'm finishing my MS project of Biostatistics in [Columbia University Irving Medical Center](https://www.cuimc.columbia.edu).
+<br>
+
+* 2020-Now: PhD, Bioinformatics, [The University of Hong Kong](https://www.hku.hk/)
+
+* 2018-2020: MS, Biostatistics, [Columbia University Irving Medical Center](https://www.cuimc.columbia.edu)
+
+* 2014-2018 : BS, Biological Science, [Sun Yat-sen University](http://www.sysu.edu.cn/2012/en/index.htm)
 
 
 <br>
@@ -22,8 +28,8 @@ I got my Bachelor of Science degree in Biological Science in [Sun Yat-sen Univer
 ## Contact Information
 
 Xinyi Lin
-<br>[Department of Biostatistics](https://www.mailman.columbia.edu/become-student/departments/biostatistics)
-<br>[Columbia Mailman School of Public Health](https://www.mailman.columbia.edu)
+<br>[School of Biomedical Sciences](https://www.sbms.hku.hk/)
+<br>[Li Ka Shing Faculty of Medicine](https://www.med.hku.hk/)
+<br>[The University of Hong Kong](https://www.hku.hk/)
 
-<br>Email: [xl2836@cumc.columbia.edu](mailto: xl2836@cumc.columbia.edu)
-<br>Phone: (1)347-393-8012
+<br>Email: [linxy29@connect.hku.hk](mailto: linxy29@connect.hku.hk)
