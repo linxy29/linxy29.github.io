@@ -1,10 +1,20 @@
 ---
-title: "Project"
+title: "Research"
 author: "Xinyi Lin"
 output: html_document
 ---
 
-## Group Project
+<br>
+
+## Publication
+
+### Working on it ...... (づ●─●)づ
+
+<br>
+
+## Project
+
+### Group Project
 
 1. Factors Associated with Mental Health in Tech Companies [Website](https://runanon.github.io/final.github.io/) 
 
@@ -24,8 +34,10 @@ output: html_document
 [Code](https://github.com/runanon/P8106_MIDTERM_PROJECT)
 
  * My responsibility: Data Preprocessing and Writing Report
+ 
+ <br>
 
-## Personal Project
+### Personal Project
 
 1. Hurricane Trajectory Prediction [Questions](./hurricane_questions.pdf)
 [Report](./hurricane_report.pdf)
