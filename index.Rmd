@@ -16,7 +16,7 @@ output:
 
 <br>
 
-* 2020-Now: PhD, Bioinformatics, [The University of Hong Kong](https://www.hku.hk/)
+* 2020-Now: PhD, Bioinformatics, [Ho Lab](https://holab-hku.github.io/), [The University of Hong Kong](https://www.hku.hk/)
 
 * 2018-2020: MS, Biostatistics, [Columbia University Irving Medical Center](https://www.cuimc.columbia.edu)
 
