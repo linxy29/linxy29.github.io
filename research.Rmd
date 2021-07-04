@@ -12,25 +12,33 @@ output: html_document
 
 <br>
 
+## Tutorial Materials for Workshops
+
+1. Introduction to R(Chapter 5): [Link](https://holab-hku.github.io/R-workshop/)
+
+2. Fundamentals of scRNASeq Analysis: [Link](https://holab-hku.github.io//Fundamental-scRNA/)
+
+ <br>
+
 ## Project
 
 ### Group Project
 
-1. Factors Associated with Mental Health in Tech Companies [Website](https://runanon.github.io/final.github.io/) 
+1. Factors Associated with Mental Health in Tech Companies: [Link](https://runanon.github.io/final.github.io/) 
 
  * My responsibility: Models Building
 
-2. Using Newton-Raphson and Logistic-LASSO for Predicting Breast Cancer Status [Report](./Optimization_project.pdf)
+2. Using Newton-Raphson and Logistic-LASSO for Predicting Breast Cancer Status: [Report](./Optimization_project.pdf)
 [Code](https://github.com/thecbp/P8160_optimization_project)
 
  * My responsibility: Newton-Raphson Algorithm
 
-3. Glasses' Type Prediction [Report](./Glass_type_prediction.pdf)
+3. Glasses' Type Prediction: [Report](./Glass_type_prediction.pdf)
 [Code](https://github.com/runanon/p8106_final)
 
  * My responsibility: Support Vector Machine
 
-4. Houses' Prices Prediction [Report](./House_price_prediction.pdf)
+4. Houses' Prices Prediction: [Report](./House_price_prediction.pdf)
 [Code](https://github.com/runanon/P8106_MIDTERM_PROJECT)
 
  * My responsibility: Data Preprocessing and Writing Report
@@ -39,10 +47,10 @@ output: html_document
 
 ### Personal Project
 
-1. Hurricane Trajectory Prediction [Questions](./hurricane_questions.pdf)
+1. Hurricane Trajectory Prediction: [Questions](./hurricane_questions.pdf)
 [Report](./hurricane_report.pdf)
 [Code](https://github.com/linxy29/P8160_final_project)
 
-2. 基于贝叶斯算法的等位基因特异的m6A鉴定算法开发 [Bachelor Dissertation](毕业论文.pdf)
+2. 基于贝叶斯算法的等位基因特异的m6A鉴定算法开发: [Bachelor Dissertation](毕业论文.pdf)
 
 
