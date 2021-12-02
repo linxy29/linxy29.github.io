@@ -22,7 +22,7 @@ output: html_document
  
 ## Talks
 
-1. Contributed Talks in BioC Asia 2021: [Link](https://biocasia2021.bioconductor.org/contributions/)
+1. Contributed Talks in BioC Asia 2021: [Link](https://biocasia2021.bioconductor.org/contributions/) [Video](https://www.youtube.com/watch?v=_Fh3sp59ui0) [Slides](https://f1000research.com/slides/10-1119)
 
  <br>
 
