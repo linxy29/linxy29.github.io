@@ -21,7 +21,7 @@
 window.FlexDashboardComponents = [];
 </script>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -38,6 +38,9 @@ window.FlexDashboardComponents = [];
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
 <script src="site_libs/stickytableheaders-0.1.19/jquery.stickytableheaders.min.js"></script>
+<link href="site_libs/value-box-accent-static-0.6.0/theme-cosmo-value-box.css" rel="stylesheet" />
+<link href="site_libs/flexdashboard-css-0.6.0/flexdashboard.min.css" rel="stylesheet" />
+<link href="site_libs/flexdashboard-css-0.6.0/theme-cosmo.css" rel="stylesheet" />
 <script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="site_libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
@@ -46,365 +49,11 @@ window.FlexDashboardComponents = [];
 <link href="site_libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="site_libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 <style type="text/css">
-
 /*
- Dashboard CSS from Keen IO Dashboards
- (https://github.com/keen/dashboards)
+  CSS for flexdashboard.js' use of Sly(). The sizing/position of this CSS needs to be
+  applied _before_ flexdashboard.js initializes, which is why this CSS has been pulled
+  out from flexdashboard.scss and inlined in the document's head.
 */
-
-body {
-  background: #f2f2f2;
-  padding: 60px 0 0 8px; /* padding-top overridden by theme */
-}
-
-body hr {
-  border-color: #d7d7d7;
-  margin: 10px 0;
-}
-
-.navbar-inverse .navbar-nav > li > a,
-.navbar .navbar-brand {
-  text-decoration: none;
-}
-
-.navbar-logo {
-  margin-top: 1px;
-}
-
-.navbar-logo img {
-  margin-right: 12px;
-}
-
-.navbar-author {
-  margin-left: 10px;
-  font-size: 15px;
-}
-
-.navbar .dropdown-menu .fa {
-  min-width: 20px;
-}
-
-.navbar .dropdown-menu {
-  min-width: 150px;
-  max-height: 500px;
-  overflow: auto;
-}
-
-.chart-wrapper,
-.nav-tabs-custom,
-.sbframe-commentary
-{
-  background: #fff;
-  border: 1px solid #e2e2e2;
-  border-radius: 3px;
-  margin-bottom: 8px;
-  margin-right: 8px;
-}
-
-.chart-title {
-  border-bottom: 1px solid #d7d7d7;
-  color: #666;
-  font-size: 14px;
-  font-weight: 300;
-  padding: 7px 10px 4px;
-}
-
-.chart-wrapper .chart-title:empty {
-  display: none;
-}
-
-.chart-wrapper .chart-stage {
-  overflow: hidden;
-  padding: 5px 10px;
-  position: relative;
-}
-
-.chart-wrapper .chart-notes {
-  background: #fbfbfb;
-  border-top: 1px solid #e2e2e2;
-  color: #808080;
-  font-size: 12px;
-  padding: 8px 10px 5px;
-}
-
-/*
- CSS for handling flexbox layout
-*/
-
-#dashboard-container {
-  visibility: hidden;
-}
-
-.tab-content>.dashboard-page-wrapper.active {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.dashboard-page-wrapper {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.dashboard-row-orientation {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.dashboard-row {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-
-.dashboard-row-flex {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
-.dashboard-column-orientation {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-
-.dashboard-column {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.chart-wrapper-flex {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.chart-stage-flex {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  position: relative;
-}
-
-.chart-shim {
-  position: absolute;
-  left: 8px; top: 8px; right: 8px; bottom: 8px;
-}
-
-.no-padding .chart-shim {
-  left: 0; top: 0; right: 0; bottom: 0;
-}
-
-.flowing-content-shim {
-  overflow: auto;
-  left: 0; top: 0; right: 0; bottom: 0;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
-.flowing-content-container {
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
-
-.chart-stage .table-bordered {
-  border: none;
-}
-
-.chart-stage .table-bordered > tbody > tr > th,
-.chart-stage .table-bordered > tfoot > tr > th,
-.chart-stage .table-bordered > tbody > tr > td,
-.chart-stage .table-bordered > tfoot > tr > td {
-  border: none;
-}
-
-.chart-stage .table-bordered > tbody > tr > td {
-  border-top: 1px solid #dddddd;
-}
-
-.chart-stage .table-bordered > thead > tr > th {
-  border: none;
-  border-bottom: 2px solid #dddddd;
-}
-
-.bootstrap-table table>thead {
-  background-color: #fff;
-}
-
-.bootstrap-table table.data,
-.bootstrap-table table.shiny-table {
-  width: inherit !important;
-}
-
-.bootstrap-table table.data>tbody>tr>th,
-.bootstrap-table table.shiny-table>tbody>tr>th {
-  border-top: none;
-  border-bottom: 2px solid #dddddd;
-  padding: 5px;
-}
-
-.bootstrap-table .data td[align=right] {
-  font-family: inherit;
-}
-
-.chart-wrapper form {
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-.shiny-input-container label {
-  font-weight: normal;
-}
-
-.chart-stage .html-widget {
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.chart-stage .html-widget-static-bound {
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.chart-stage .shiny-bound-output {
-  width: 100% !important;
-  height: 100% !important;
-}
-
-/* Omit display of empty paragraphs */
-
-.chart-shim>p:empty {
-  display: none;
-}
-
-.chart-stage>p:empty {
-  display: none;
-}
-
-/* Omit display of special knitr options div*/
-
-.chart-stage .knitr-options {
-  display: none;
-}
-
-/* Automatically resizing images */
-
-.image-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0;
-}
-
-.image-container img {
-  opacity: 0;
-  overflow: hidden;
-}
-
-/* Value box */
-
-.value-box {
-  border-radius: 2px;
-  position: relative;
-  display: block;
-  margin-right: 8px;
-  margin-bottom: 8px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-}
-
-.value-box > .inner {
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.value-box .value {
-  font-size: 38px;
-  font-weight: bold;
-  margin: 0 0 3px 0;
-  white-space: nowrap;
-  padding: 0;
-}
-
-.value-box .caption {
-  font-size: 15px;
-}
-.value-box .caption > small {
-  display: block;
-  font-size: 13px;
-  margin-top: 5px;
-}
-
-.value-box .icon i {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 80px;
-  color: rgba(0, 0, 0, 0.15);
-}
-
-.linked-value:hover {
-  cursor: pointer;
-}
-
-.value-box.linked-value:hover {
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* STORYBOARD */
 
 .storyboard-nav button {
   background: transparent;
@@ -429,7 +78,6 @@ body hr {
   float: left;
   width: 2%;
   height: 120px;
-  font-size: 50px;
 }
 
 .storyboard-nav .sbprev {
@@ -465,12 +113,7 @@ body hr {
   height: 100%;
   padding: 10px 10px 10px 10px;
   margin-right: 8px;
-  background: #fff;
-  border: 1px solid #e2e2e2;
-  border-radius: 3px;
-  color: #3a3c47;
   text-align: left;
-  font-size: 14px;
   cursor: pointer;
 }
 
@@ -478,15 +121,8 @@ body hr {
   margin-right: 0px;
 }
 
-.storyboard-nav .sbframelist ul li.active {
-  color: #fff;
-  background: #B8B8B8;
-}
-
 .sbframe-commentary {
   width: 300px;
-  background: #fbfbfb;
-  font-size: 14px;
 }
 
 .sbframe-commentary ul {
@@ -500,297 +136,6 @@ body hr {
 .sbframe:not(.active) {
   display: none;
 }
-
-/* NAV TABS */
-
-.nav-tabs-custom > .nav-tabs {
-  margin: 0;
-  border-bottom: 1px solid #d7d7d7;
-  color: #666;
-  font-size: 14px;
-  font-weight: 300;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
-}
-.nav-tabs-custom > .nav-tabs > li {
-  border-top: 3px solid transparent;
-  margin-bottom: -1px;
-  margin-right: 5px;
-}
-.nav-tabs-custom > .nav-tabs > li > a,
-.nav-tabs-custom > .nav-tabs > li > a:active {
-  color: #666;
-  font-weight: 300;
-  font-size: 14px;
-  border-radius: 0;
-  padding: 3px 10px 5px;
-  text-transform: none;
-}
-
-.nav-tabs-custom > .nav-tabs > li:not(.active) > a {
-  border-bottom-color: transparent;
-}
-
-.nav-tabs-custom > .nav-tabs > li > a.text-muted {
-  color: #999;
-}
-.nav-tabs-custom > .nav-tabs > li > a,
-.nav-tabs-custom > .nav-tabs > li > a:hover {
-  background: transparent;
-  margin: 0;
-}
-.nav-tabs-custom > .nav-tabs > li > a:hover {
-  color: #999;
-}
-.nav-tabs-custom > .nav-tabs > li:not(.active) > a:hover,
-.nav-tabs-custom > .nav-tabs > li:not(.active) > a:focus,
-.nav-tabs-custom > .nav-tabs > li:not(.active) > a:active {
-  border-color: transparent;
-}
-.nav-tabs-custom > .nav-tabs > li.active {
-  border-top-color: #3c8dbc;
-}
-.nav-tabs-custom > .nav-tabs > li.active > a,
-.nav-tabs-custom > .nav-tabs > li.active:hover > a {
-  background-color: #fff;
-  color: #666;
-}
-.nav-tabs-custom > .nav-tabs > li.active > a {
-  border-top-color: transparent;
-  border-left-color: #d7d7d7;
-  border-right-color: #d7d7d7;
-}
-.nav-tabs-custom > .nav-tabs > li:first-of-type {
-  margin-left: 0;
-}
-.nav-tabs-custom > .nav-tabs > li:first-of-type.active > a {
-  border-left-color: transparent;
-}
-.nav-tabs-custom > .nav-tabs.pull-right {
-  float: none !important;
-}
-.nav-tabs-custom > .nav-tabs.pull-right > li {
-  float: right;
-}
-.nav-tabs-custom > .nav-tabs.pull-right > li:first-of-type {
-  margin-right: 0;
-}
-.nav-tabs-custom > .nav-tabs.pull-right > li:first-of-type > a {
-  border-left-width: 1px;
-}
-.nav-tabs-custom > .nav-tabs.pull-right > li:first-of-type.active > a {
-  border-left-color: #d7d7d7;
-  border-right-color: transparent;
-}
-.nav-tabs-custom > .nav-tabs > li.header {
-  line-height: 35px;
-  padding: 0 10px;
-  font-size: 20px;
-  color: #666;
-}
-.nav-tabs-custom > .nav-tabs > li.header > .fa,
-.nav-tabs-custom > .nav-tabs > li.header > .glyphicon,
-.nav-tabs-custom > .nav-tabs > li.header > .ion {
-  margin-right: 5px;
-}
-.nav-tabs-custom > .tab-content {
-  background: #fff;
-  padding: 0;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.nav-tabs-custom > .tab-content > .chart-wrapper {
-  background: #fff;
-  border: none;
-  margin: 0;
-}
-
-
-.nav-tabs-custom > .tab-content > .active {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.nav-tabs-custom .dropdown.open > a:active,
-.nav-tabs-custom .dropdown.open > a:focus {
-  background: transparent;
-  color: #999;
-}
-
-
-@media (max-width: 767px) {
-  .value-box {
-    text-align: center;
-    margin-right: 8px;
-  }
-  .value-box .icon {
-    display: none;
-  }
-}
-
-/* Fixed position sidebar */
-
-.section.sidebar {
-  position: fixed;
-  top: 51px; /* overridden by theme */
-  left: 0;
-  bottom: 0;
-  border-right: 1px solid #e2e2e2;
-  background-color: white; /* overridden by theme */
-  padding-left: 10px;
-  padding-right: 10px;
-  visibility: hidden;
-  overflow: auto;
-}
-
-.section.sidebar form p:first-child {
-  margin-top: 10px;
-}
-
-/* Embedded source code */
-
-#flexdashboard-source-code {
-  display: none;
-}
-
-.featherlight-content #flexdashboard-source-code {
-  display: inline-block;
-}
-
-.featherlight-content {
-  width: 80%;
-  max-width: 800px;
-  padding: 0 !important;
-  border-bottom: none !important;
-}
-
-.featherlight:last-of-type {
-  background: rgba(0, 0, 0, 0.7);
-}
-
-.featherlight-inner {
-  width: 100%;
-}
-
-.featherlight-content pre {
-  margin: 0;
-  border: 0;
-  background: #fff;
-  font-size: 12px;
-}
-
-.unselectable {
-  -ms-user-select: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: -moz-none;
-  -o-user-select: none;
-  user-select: none;
-}
-
-#flexdashboard-source-code code {
-  -ms-user-select: text;
-  -webkit-user-select: text;
-  -khtml-user-select: text;
-  -moz-user-select: text;
-  -o-user-select: text;
-  user-select: text;
-}
-
-/* DataTables Tweaks */
-
-.dataTables_filter input[type="search"] {
-  -webkit-appearance: searchfield;
-  outline: none;
-}
-
-.dataTables_wrapper.no-footer
-.dataTables_info {
-  padding-top: 0;
-}
-
-
-table.dataTable thead th {
-  border-bottom: 1px solid #d7d7d7;
-}
-
-.dataTables_wrapper.no-footer .dataTables_scrollBody {
-  border-bottom: 1px solid #d7d7d7;
-}
-
-/* Mobile phone only CSS */
-
-.desktop-layout div.section.mobile {
-  display: none;
-}
-
-.mobile-layout div.section.no-mobile {
-  display: none;
-}
-
-.mobile-figure {
-  display: none;
-}
-
-
-
-body {
-  padding-top: 60px;
-}
-
-.section.sidebar {
-  top: 51px;
-  background-color: rgba(39, 128, 227, 0.1);
-}
-
-.value-box {
-  color: #f9f9f9;
-}
-
-.bg-primary {
-  background-color: rgba(39, 128, 227, 0.7);
-}
-
-.storyboard-nav .sbframelist ul li.active {
-  background-color: rgba(39, 128, 227, 0.7);
-}
-
-.nav-tabs-custom > .nav-tabs > li.active {
-  border-top-color: rgba(39, 128, 227, 0.7);
-}
-
-.bg-info {
-  background-color: rgba(153, 84, 187, 0.7);
-}
-
-.bg-warning {
-  background-color: rgba(255, 117, 24, 0.7);
-}
-
-.bg-danger {
-  background-color: rgba(255, 0, 57, 0.7);
-}
-
-.bg-success {
-  background-color: rgba(63, 182, 24, 0.7);
-}
-
-.chart-title {
-  font-weight: 500;
-}
-
-.nav-tabs-custom > .nav-tabs > li > a,
-.nav-tabs-custom > .nav-tabs > li > a:active {
-  font-weight: 500;
-}
-
 @media only screen and (min-width: 768px) {
 html, body {
   height: 100%;
@@ -812,13 +157,7 @@ html, body {
 <div class="container-fluid">
 <div class="navbar-header">
 
-<button id="navbar-button" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-
-<span class="navbar-logo pull-left">
+<span class="navbar-logo">
   
 </span>
 <span class="navbar-brand">
@@ -826,6 +165,12 @@ html, body {
   <span class="navbar-author">
         </span>
 </span>
+
+<button id="navbar-button" type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
 
 </div>
 <div id="navbar" class="navbar-collapse collapse">
@@ -1043,11 +388,13 @@ var FlexDashboard = (function () {
         for (var j = 0; j<item.items.length; j++) {
           var subItem = item.items[j];
           var li = $('<li></li>');
-          li.append(navbarLink(subItem.icon, subItem.title, subItem.href, subItem.target));
+          var a = navbarLink(subItem.icon, subItem.title, subItem.href, subItem.target);
+          a.removeClass("nav-link").addClass("dropdown-item");
+          li.append(a);
           menu.append(li);
         }
       } else {
-        var li = $('<li></li>');
+        var li = $('<li class="nav-item"></li>');
         li.append(navbarLink(item.icon, item.title, item.href, item.target));
         container.append(li);
       }
@@ -1062,7 +409,7 @@ var FlexDashboard = (function () {
     if (existingMenu.length > 0) {
       return existingMenu.children('ul');
     } else {
-      var li = $('<li></li>');
+      var li = $('<li class="nav-item"></li>');
       if (id)
         li.attr('id', id);
       li.addClass('dropdown');
@@ -1075,6 +422,7 @@ var FlexDashboard = (function () {
       var a = navbarLink(icon, title, "#");
       a.addClass('dropdown-toggle');
       a.attr('data-toggle', 'dropdown');
+      a.attr('data-bs-toggle', 'dropdown');
       a.attr('role', 'button');
       a.attr('aria-expanded', 'false');
       li.append(a);
@@ -1129,8 +477,10 @@ var FlexDashboard = (function () {
     if (navmenu) {
       var menuId = navmenu.replace(/\s+/g, '');
       var menu = navbarMenu(menuId, null, navmenu, container);
+      li.find("> a").removeClass("nav-link").addClass("dropdown-item");
       menu.append(li);
     } else {
+      li.addClass("nav-item")
       container.append(li);
     }
 
@@ -1141,7 +491,7 @@ var FlexDashboard = (function () {
 
   function navbarLink(icon, title, href, target) {
 
-    var a = $('<a></a>');
+    var a = $('<a class="nav-link"></a>');
     if (icon) {
 
       // get the name of the icon set and icon
@@ -1199,7 +549,6 @@ var FlexDashboard = (function () {
      var serviceLinks = {
       "twitter": "https://twitter.com/share?text=" + encodeURIComponent(document.title) + "&url="+encodeURIComponent(location.href),
       "facebook": "https://www.facebook.com/sharer/sharer.php?s=100&p[url]="+encodeURIComponent(location.href),
-      "google-plus": "https://plus.google.com/share?url="+encodeURIComponent(location.href),
       "linkedin": "https://www.linkedin.com/shareArticle?mini=true&url="+encodeURIComponent(location.href) + "&title=" + encodeURIComponent(document.title),
       "pinterest": "https://pinterest.com/pin/create/link/?url="+encodeURIComponent(location.href) + "&description=" + encodeURIComponent(document.title)
     };
@@ -1816,7 +1165,8 @@ var FlexDashboard = (function () {
 
     // check for fade option
     var fade = tabset.hasClass("tabset-fade");
-    var navClass = "nav-tabs";
+    var pills = tabset.hasClass("tabset-pills");
+    var navClass = pills ? "nav-pills" : "nav-tabs";
 
     // determine the heading level of the tabset and tabs
     var match = tabset.attr('class').match(/level(\d) /);
@@ -1837,6 +1187,7 @@ var FlexDashboard = (function () {
     $(tabs[0]).before(tabContent);
 
     // build the tabset
+    var activeTab = 0;
     tabs.each(function(i) {
 
       // get the tab div
@@ -1844,6 +1195,10 @@ var FlexDashboard = (function () {
 
       // get the id then sanitize it for use with bootstrap tabs
       var id = tab.attr('id');
+
+      // see if this is marked as the active tab
+      if (tab.hasClass('active'))
+        activeTab = i;
 
       // sanitize the id for use with bootstrap tabs
       id = id.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_');
@@ -1854,14 +1209,12 @@ var FlexDashboard = (function () {
       var headingDom = heading.contents();
 
       // build and append the tab list item
-      var a = $('<a role="tab" data-toggle="tab"></a>');
+      var a = $('<a role="tab" data-toggle="tab" class="nav-link"></a>');
       a.append(headingDom);
       a.attr('href', '#' + id);
       a.attr('aria-controls', id);
-      var li = $('<li role="presentation"></li>');
+      var li = $('<li role="presentation" class="nav-item"></li>');
       li.append(a);
-      if (i === 0)
-        li.attr('class', 'active');
       tabList.append(li);
 
       // set it's attributes
@@ -1871,15 +1224,17 @@ var FlexDashboard = (function () {
       tab.addClass('no-title');
       if (fade)
         tab.addClass('fade');
-      if (i === 0) {
-        tab.addClass('active');
-        if (fade)
-          tab.addClass('in');
-      }
 
       // move it into the tab content div
       tab.detach().appendTo(tabContent);
     });
+
+    // set active tab
+    $(tabList.children()[activeTab]).tab("show");
+    var active = $(tabContent.children('div.section')[activeTab]);
+    active.addClass('active');
+    if (fade)
+      active.addClass('in');
 
     // add nav-tabs-custom
     tabset.addClass('nav-tabs-custom');
@@ -2121,111 +1476,11 @@ var FlexDashboard = (function () {
     }
   }
 
-
-  // get theme color
-  var themeColors = {
-    bootstrap: {
-      primary: "rgba(51, 122, 183, 0.4)",
-      info: "rgb(217, 237, 247)",
-      success: "rgb(223, 240, 216)",
-      warning: "rgb(252, 248, 227)",
-      danger: "rgb(242, 222, 222)"
-    },
-    cerulean: {
-      primary: "rgb(47, 164, 231)",
-      info: "rgb(217, 237, 247)",
-      success: "rgb(223, 240, 216)",
-      warning: "rgb(252, 248, 227)",
-      danger: "rgb(242, 222, 222)"
-    },
-    journal: {
-      primary: "rgba(235, 104, 100, 0.70)",
-      info: "rgb(217, 237, 247)",
-      success: "rgb(223, 240, 216)",
-      warning: "rgb(252, 248, 227)",
-      danger: "rgb(242, 222, 222)"
-    },
-    flatly: {
-      primary: "rgba(44, 62, 80, 0.70)",
-      info: "rgba(52, 152, 219, 0.70)",
-      success: "rgba(24, 188, 156, 0.70)",
-      warning: "rgba(243, 156, 18, 0.70)",
-      danger: "rgba(231, 76, 60, 0.70)"
-    },
-    readable: {
-      primary: "rgba(69, 130, 236, 0.4)",
-      info: "rgb(217, 237, 247)",
-      success: "rgb(223, 240, 216)",
-      warning: "rgb(252, 248, 227)",
-      danger: "rgb(242, 222, 222)"
-    },
-    spacelab: {
-      primary: "rgba(68, 110, 155, 0.25)",
-      info: "rgb(217, 237, 247)",
-      success: "rgb(223, 240, 216)",
-      warning: "rgb(252, 248, 227)",
-      danger: "rgb(242, 222, 222)"
-    },
-    united: {
-      primary: "rgba(221, 72, 20, 0.30)",
-      info: "rgb(217, 237, 247)",
-      success: "rgb(223, 240, 216)",
-      warning: "rgb(252, 248, 227)",
-      danger: "rgb(242, 222, 222)"
-    },
-    cosmo: {
-      primary: "rgba(39, 128, 227, 0.7)",
-      info: "rgba(153, 84, 187, 0.7)",
-      success: "rgba(63, 182, 24, 0.7)",
-      warning: "rgba(255, 117, 24, 0.7)",
-      danger: "rgba(255, 0, 57, 0.7)"
-    },
-    lumen: {
-      primary: "rgba(21, 140, 186, 0.70)",
-      info: "rgba(117, 202, 235, 0.90)",
-      success: "rgba(40, 182, 44, 0.70)",
-      warning: "rgba(255, 133, 27, 0.70)",
-      danger: "rgba(255, 65, 54, 0.70)"
-    },
-    paper: {
-      primary: "rgba(33, 150, 243, 0.35)",
-      info: "rgb(225, 190, 231)",
-      success: "rgb(223, 240, 216)",
-      warning: "rgb(255, 224, 178)",
-      danger: "rgb(249, 189, 187)"
-    },
-    sandstone: {
-      primary: "rgba(50, 93, 136, 0.3)",
-      info: "rgb(217, 237, 247)",
-      success: "rgb(223, 240, 216)",
-      warning: "rgb(252, 248, 227)",
-      danger: "rgb(242, 222, 222)"
-    },
-    simplex: {
-      primary: "rgba(217, 35, 15, 0.25)",
-      info: "rgb(217, 237, 247)",
-      success: "rgb(223, 240, 216)",
-      warning: "rgb(252, 248, 227)",
-      danger: "rgb(242, 222, 222)"
-    },
-    yeti: {
-      primary: "rgba(0, 140, 186, 0.298039)",
-      info: "rgb(217, 237, 247)",
-      success: "rgb(223, 240, 216)",
-      warning: "rgb(252, 248, 227)",
-      danger: "rgb(242, 222, 222)"
-    }
-  }
-  function themeColor(color) {
-    return themeColors[_options.theme][color];
-  }
-
   FlexDashboard.prototype = {
     constructor: FlexDashboard,
     init: init,
     isMobilePhone: isMobilePhone,
-    isFillPage: isFillPage,
-    themeColor: themeColor
+    isFillPage: isFillPage
   };
 
   return FlexDashboard;
@@ -2282,14 +1537,14 @@ window.FlexDashboardUtils = {
       return "";
   },
   manageActiveNavbarMenu: function () {
-    // remove active from anyone currently active
-    $('.navbar ul.nav').find('li').removeClass('active');
+    // remove active from currently active tabs
+    $('.navbar ul.nav .active').removeClass('active');
     // find the active tab
     var activeTab = $('.dashboard-page-wrapper.tab-pane.active');
     if (activeTab.length > 0) {
       var tabId = activeTab.attr('id');
       if (tabId)
-        $(".navbar ul.nav a[href='#" + tabId + "']").parents('li').addClass('active');
+        $(".navbar ul.nav a[href='#" + tabId + "']").tab("show");
     }
   }
 };
@@ -2371,16 +1626,6 @@ window.FlexDashboardComponents.push({
 window.FlexDashboardComponents.push({
   find: function(container) {
     return container.children('div[class^="shiny-"]');
-  }
-});
-
-// datatables
-window.FlexDashboardComponents.push({
-  find: function(container) {
-    return container.find('.datatables');
-  },
-  flex: function(fillPage) {
-    return fillPage;
   }
 });
 
@@ -2552,21 +1797,6 @@ window.FlexDashboardComponents.push({
     if (chartIcon)
       setIcon(chartIcon);
 
-    // set color based on data-background if necessary
-    var dataBackground = valueBox.attr('data-background');
-    if (dataBackground)
-      valueBox.css('background-color', bgColor);
-    else {
-      // default to bg-primary if no other background is specified
-      if (!valueBox.hasClass('bg-primary') &&
-          !valueBox.hasClass('bg-info') &&
-          !valueBox.hasClass('bg-warning') &&
-          !valueBox.hasClass('bg-success') &&
-          !valueBox.hasClass('bg-danger')) {
-        valueBox.addClass('bg-primary');
-      }
-    }
-
     // handle data attributes in valueOutputSpan
     function handleValueOutput(valueOutput) {
 
@@ -2580,19 +1810,30 @@ window.FlexDashboardComponents.push({
       if (dataIcon)
         setIcon(dataIcon);
 
-      // color
+      // If valueBox(color=) was an accent color, this attr should
+      // be populated with the accent color and the relevant CSS comes
+      // in through HTML dependencies
+      var dataColorAccent = valueOutput.attr('data-color-accent');
+      var valueBoxClasses = "value-box-" + (["primary", "info", "danger", "warning", "success"].join(" value-box-"));
+      if (dataColorAccent) {
+        valueBox.removeClass(valueBoxClasses);
+        valueBox.addClass('value-box-' + dataColorAccent);
+      }
+
+      // If valueBox(color=) was a CSS color, these other data-color-*
+      // attrs will be populated
       var dataColor = valueOutput.attr('data-color');
       if (dataColor) {
-        if (dataColor.indexOf('bg-') === 0) {
-          valueBox.css('background-color', '');
-          if (!valueBox.hasClass(dataColor)) {
-             valueBox.removeClass('bg-primary bg-info bg-warning bg-danger bg-success');
-             valueBox.addClass(dataColor);
-          }
-        } else {
-          valueBox.removeClass('bg-primary bg-info bg-warning bg-danger bg-success');
-          valueBox.css('background-color', dataColor);
-        }
+        valueBox.removeClass(valueBoxClasses);
+        valueBox.css('background-color', dataColor);
+      }
+      var dataColorText = valueOutput.attr('data-color-text');
+      if (dataColorText) {
+        valueBox.find(".inner").css('color', dataColorText);
+      }
+      var dataColorIcon = valueOutput.attr('data-color-icon');
+      if (dataColorIcon) {
+        valueBox.find(".icon").css('color', dataColorIcon);
       }
 
       // url
@@ -2642,8 +1883,8 @@ window.FlexDashboardComponents.push({
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<div id="htmlwidget-ce188b10e4eacad4ee97" style="width:576px;height:460.8px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ce188b10e4eacad4ee97">{"x":{"visdat":{"4d8448cb5a05":["function () ","plotlyVisDat"]},"cur_data":"4d8448cb5a05","attrs":{"4d8448cb5a05":{"x":{},"y":{},"mode":"markers","color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"date"},"yaxis":{"domain":[0,1],"automargin":true,"title":"prcp"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["2007-11-17","2007-11-18","2007-11-19","2007-11-20","2007-11-21","2007-11-22","2007-11-23","2007-11-24","2007-11-25","2007-11-26","2007-11-27","2007-11-28","2007-11-29","2007-11-30","2007-12-01","2007-12-02","2007-12-03","2007-12-04","2007-12-05","2007-12-06","2007-12-07","2007-12-08","2007-12-09","2007-12-10","2007-12-11","2007-12-12","2007-12-13","2007-12-14","2007-12-15","2007-12-16","2007-12-17","2007-12-18","2007-12-19","2007-12-20","2007-12-21","2007-12-22","2007-12-23","2007-12-24","2007-12-25","2007-12-26","2007-12-27","2007-12-28","2007-12-29","2007-12-30","2007-12-31","2008-01-01","2008-01-02","2008-01-03","2008-01-04","2008-01-05","2008-01-06","2008-01-07","2008-01-08","2008-01-09","2008-01-10","2008-01-11","2008-01-12","2008-01-13","2008-01-14","2008-01-15","2008-01-16","2008-01-17","2008-01-18","2008-01-19","2008-01-20","2008-01-21","2008-01-22","2008-01-23","2008-01-24","2008-01-25","2008-01-26","2008-01-27","2008-01-28","2008-01-29","2008-01-30","2008-01-31","2008-02-01","2008-02-02","2008-02-03","2008-02-04","2008-02-05","2008-02-06","2008-02-07","2008-02-08","2008-02-09","2008-02-10","2008-02-11","2008-02-12","2008-02-13","2008-02-14","2008-02-15","2008-02-16","2008-02-17","2008-02-18","2008-02-19","2008-02-20","2008-02-21","2008-02-22","2008-02-23","2008-02-24","2008-02-25","2008-02-26","2008-02-27","2008-02-28","2008-02-29","2008-03-01","2008-03-02","2008-03-03","2008-03-04","2008-03-05","2008-03-06","2008-03-07","2008-03-08","2008-03-09","2008-03-10","2008-03-11","2008-03-12","2008-03-13","2008-03-14","2008-03-15","2008-03-16","2008-03-17","2008-03-18","2008-03-19","2008-03-20","2008-03-21","2008-03-22","2008-03-23","2008-03-24","2008-03-25","2008-03-26","2008-03-27","2008-03-28","2008-03-29","2008-03-30","2008-03-31","2008-04-01","2008-04-02","2008-04-03","2008-04-04","2008-04-05","2008-04-06","2008-04-07","2008-04-08","2008-04-09","2008-04-10","2008-04-11","2008-04-12","2008-04-13","2008-04-14","2008-04-15","2008-04-16","2008-04-17","2008-04-18","2008-04-19","2008-04-20","2008-04-21","2008-04-22","2008-04-23","2008-04-24","2008-04-25","2008-04-26","2008-04-27","2008-04-28","2008-04-29","2008-04-30","2008-05-01","2008-05-02","2008-05-03","2008-05-04","2008-05-05","2008-05-06","2008-05-07","2008-05-08","2008-05-09","2008-05-10","2008-05-11","2008-05-12","2008-05-13","2008-05-14","2008-05-15","2008-05-16","2008-05-17","2008-05-18","2008-05-19","2008-05-20","2008-05-21","2008-05-22","2008-05-23","2008-05-24","2008-05-25","2008-05-26","2008-05-27","2008-05-28","2008-05-29","2008-05-30","2008-05-31","2008-06-01","2008-06-02","2008-06-03","2008-06-04","2008-06-05","2008-06-06","2008-06-07","2008-06-08","2008-06-09","2008-06-10","2008-06-11","2008-06-12","2008-06-13","2008-06-14","2008-06-15","2008-06-16","2008-06-17","2008-06-18","2008-06-19","2008-06-20","2008-06-21","2008-06-22","2008-06-23","2008-06-24","2008-06-25","2008-06-26","2008-06-27","2008-06-28","2008-06-29","2008-06-30","2008-07-01","2008-07-02","2008-07-03","2008-07-04","2008-07-05","2008-07-06","2008-07-07","2008-07-08","2008-07-09","2008-07-10","2008-07-11","2008-07-12","2008-07-13","2008-07-14","2008-07-15","2008-07-16","2008-07-17","2008-07-18","2008-07-19","2008-07-20","2008-07-21","2008-07-22","2008-07-23","2008-07-24","2008-07-25","2008-08-05","2008-08-06","2008-08-07","2008-08-08","2008-08-09","2008-08-10","2008-08-11","2008-08-12","2008-08-13","2008-08-14","2008-08-15","2008-08-16","2008-08-17","2008-08-18","2008-08-19","2008-08-20","2008-08-21","2008-08-22","2008-08-23","2008-08-24","2008-08-25","2008-08-26","2008-08-27","2008-08-28","2008-08-29","2008-08-30","2008-08-31","2008-09-01","2008-09-02","2008-09-03","2008-09-04","2008-09-05","2008-09-06","2008-09-07","2008-09-08","2008-09-09","2008-09-10","2008-09-11","2008-09-12","2008-09-13","2008-09-14","2008-09-15","2008-09-16","2008-09-17","2008-09-18","2008-09-19","2008-09-20","2008-09-21","2008-09-22","2008-09-23","2008-09-24","2008-09-25","2008-09-26","2008-09-27","2008-09-28","2008-09-29","2008-09-30","2008-10-01","2008-10-02","2008-10-03","2008-10-04","2008-10-05","2008-10-06","2008-10-07","2008-10-08","2008-10-09","2008-10-10","2008-10-11","2008-10-12","2008-10-13","2008-10-14","2008-10-15","2008-10-16","2008-10-17","2008-10-18","2008-10-19","2008-10-20","2008-10-21","2008-10-22","2008-10-23","2008-10-24","2008-10-25","2008-10-26","2008-10-27","2008-10-28","2008-10-29","2008-10-30","2008-10-31","2008-11-01","2008-11-02","2008-11-03","2008-11-04","2008-11-05","2008-11-06","2008-11-07","2008-11-08","2008-11-09","2008-11-10","2008-11-11","2008-11-12","2008-11-13","2008-11-14","2008-11-17","2008-11-18","2008-11-19","2008-11-20","2008-11-21","2008-11-22","2008-11-23","2008-11-24","2008-11-25","2008-11-26","2008-11-27","2008-11-28","2008-11-29","2008-11-30","2008-12-01","2008-12-02","2008-12-03","2008-12-04","2008-12-05","2008-12-06","2008-12-07","2008-12-08","2008-12-09","2008-12-10","2008-12-11","2008-12-14","2008-12-15","2008-12-16","2008-12-17","2008-12-18","2008-12-19","2008-12-20","2008-12-21","2008-12-22","2008-12-23","2008-12-26","2008-12-27","2008-12-28","2008-12-29","2008-12-30","2008-12-31","2009-01-01","2009-01-02","2009-01-03","2009-01-04","2009-01-05","2009-01-06","2009-01-09","2009-01-10","2009-01-11","2009-01-12","2009-01-13","2009-01-14","2009-01-15","2009-01-16","2009-01-17","2009-01-18","2009-01-19","2009-01-20","2009-01-21","2009-01-22","2009-01-23","2009-01-24","2009-01-25","2009-01-26","2009-01-27","2009-01-28","2009-01-29","2009-01-30","2009-01-31","2009-02-01","2009-02-02","2009-02-03","2009-02-04","2009-02-05","2009-02-06","2009-02-07","2009-02-08","2009-02-09","2009-02-10","2009-02-11","2009-02-12","2009-02-13","2009-02-14","2009-02-15","2009-02-16","2009-02-17","2009-02-18","2009-02-19","2009-02-20","2009-02-21","2009-02-22","2009-02-23","2009-02-24","2009-02-25","2009-02-26","2009-02-27","2009-02-28","2009-03-01","2009-03-02","2009-03-03","2009-03-04","2009-03-05","2009-03-06","2009-03-07","2009-03-08","2009-03-09","2009-03-10","2009-03-11","2009-03-12","2009-03-13","2009-03-14","2009-03-15","2009-03-16","2009-03-17","2009-03-18","2009-03-19","2009-03-20","2009-03-21","2009-03-22","2009-03-23","2009-03-24","2009-03-25","2009-03-26","2009-03-27","2009-03-28","2009-03-29","2009-03-30","2009-03-31","2009-04-01","2009-04-02","2009-04-03","2009-04-04","2009-04-05","2009-04-06","2009-04-07","2009-04-08","2009-04-09","2009-04-10","2009-04-11","2009-04-12","2009-04-13","2009-04-14","2009-04-15","2009-04-16","2009-04-17","2009-04-18","2009-04-19","2009-04-20","2009-04-21","2009-04-22","2009-04-23","2009-04-24","2009-04-25","2009-04-26","2009-04-27","2009-04-28","2009-04-29","2009-04-30","2009-05-01","2009-05-02","2009-05-03","2009-05-04","2009-05-05","2009-05-06","2009-05-07","2009-05-08","2009-05-09","2009-05-10","2009-05-11","2009-05-12","2009-05-13","2009-05-14","2009-05-15","2009-05-16","2009-05-17","2009-05-18","2009-05-19","2009-05-20","2009-05-21","2009-05-22","2009-05-23","2009-05-24","2009-05-25","2009-05-26","2009-05-27","2009-05-28","2009-05-29","2009-05-30","2009-06-01","2009-06-02","2009-06-03","2009-06-04","2009-06-05","2009-06-06","2009-06-07","2009-06-08","2009-06-09","2009-06-10","2009-06-11","2009-06-12","2009-06-13","2009-06-14","2009-06-15","2009-06-16","2009-06-17","2009-06-18","2009-06-19","2009-06-20","2009-06-21","2009-06-22","2009-06-23","2009-06-24","2009-06-25","2009-06-26","2009-06-27","2009-06-28","2009-06-29","2009-06-30","2009-07-01","2009-07-02","2009-07-03","2009-07-04","2009-07-05","2009-07-06","2009-07-07","2009-07-08","2009-07-09","2009-07-10","2009-07-11","2009-07-12","2009-07-13","2009-07-14","2009-07-15","2009-07-16","2009-07-17","2009-07-18","2009-07-19","2009-07-20","2009-07-21","2009-07-22","2009-07-23","2009-07-24","2009-07-25","2009-08-02","2009-08-03","2009-08-04","2009-08-05","2009-08-06","2009-08-07","2009-08-08","2009-08-09","2009-08-10","2009-08-11","2009-08-12","2009-08-13","2009-08-14","2009-08-15","2009-08-16","2009-08-17","2009-08-18","2009-08-19","2009-08-20","2009-08-21","2009-08-22","2009-08-23","2009-08-24","2009-08-25","2009-08-26","2009-08-27","2009-08-28","2009-08-29","2009-08-30","2009-08-31","2009-09-01","2009-09-02","2009-09-03","2009-09-04","2009-09-05","2009-09-06","2009-09-07","2009-09-08","2009-09-09","2009-09-10","2009-09-11","2009-09-12","2009-09-13","2009-09-14","2009-09-15","2009-09-16","2009-09-17","2009-09-18","2009-09-19","2009-09-20","2009-09-21","2009-09-22","2009-09-23","2009-09-24","2009-09-25","2009-09-26","2009-09-27","2009-09-28","2009-09-29","2009-09-30","2009-10-01","2009-10-02","2009-10-03","2009-10-04","2009-10-05","2009-10-06","2009-10-07","2009-10-08","2009-10-09","2009-10-10","2009-10-11","2009-10-12","2009-10-13","2009-10-14","2009-10-15","2009-10-16","2009-10-17","2009-10-18","2009-10-19","2009-10-20","2009-10-21","2009-10-22","2009-10-23","2009-10-24","2009-10-25","2009-10-26","2009-10-27","2009-10-28","2009-10-29","2009-10-30","2009-10-31","2009-11-01","2009-11-02","2009-11-03","2009-11-04","2009-11-05","2009-11-06","2009-11-07","2009-11-08","2009-11-09","2009-11-10","2009-11-11","2009-11-12","2009-11-13","2009-11-14","2009-11-15","2009-11-16","2009-11-17","2009-11-18","2009-11-19","2009-11-20","2009-11-21","2009-11-22","2009-11-23","2009-11-24","2009-11-25","2009-11-26","2009-11-27","2009-11-28","2009-11-29","2009-11-30","2009-12-01","2009-12-02","2009-12-03","2009-12-04","2009-12-05","2009-12-06","2009-12-07","2009-12-08","2009-12-09","2009-12-10","2009-12-11","2009-12-12","2009-12-13","2009-12-14","2009-12-15","2009-12-16","2009-12-17","2009-12-18","2009-12-19","2009-12-20","2009-12-21","2009-12-22","2009-12-23","2009-12-24","2009-12-28","2009-12-29","2009-12-30","2009-12-31","2010-01-01","2010-01-02","2010-01-03","2010-01-04","2010-01-05","2010-01-06","2010-01-07","2010-01-08","2010-01-09","2010-01-10","2010-01-11","2010-01-12","2010-01-13","2010-01-14","2010-01-15","2010-01-16","2010-01-17","2010-01-18","2010-01-19","2010-01-20","2010-01-21","2010-01-22","2010-01-23","2010-01-24","2010-01-25","2010-01-26","2010-01-27","2010-01-28","2010-01-29","2010-01-30","2010-01-31","2010-02-01","2010-02-02","2010-02-03","2010-02-04","2010-02-05","2010-02-06","2010-02-07","2010-02-08","2010-02-09","2010-02-10","2010-02-11","2010-02-12","2010-02-13","2010-02-14","2010-02-15","2010-02-16","2010-02-17","2010-02-18","2010-02-19","2010-02-20","2010-02-21","2010-02-22","2010-02-23","2010-02-24","2010-02-25","2010-02-26","2010-02-27","2010-02-28","2010-03-01","2010-03-02","2010-03-03","2010-03-04","2010-03-05","2010-03-06","2010-03-07","2010-03-08","2010-03-09","2010-03-10","2010-03-11","2010-03-12","2010-03-13","2010-03-14","2010-03-15","2010-03-16","2010-03-17","2010-03-18","2010-03-19","2010-03-20","2010-03-21","2010-03-22","2010-03-23","2010-03-24","2010-03-25","2010-03-26","2010-03-27","2010-03-28","2010-03-29","2010-03-30","2010-03-31","2010-04-01","2010-04-02","2010-04-03","2010-04-04","2010-04-05","2010-04-06","2010-04-07","2010-04-08","2010-04-09","2010-04-10","2010-04-11","2010-04-12","2010-04-13","2010-04-14","2010-04-15","2010-04-16","2010-04-17","2010-04-18","2010-04-19","2010-04-20","2010-04-21","2010-04-22","2010-04-23","2010-04-24","2010-04-25","2010-04-26","2010-04-27","2010-04-28","2010-04-29","2010-04-30","2010-05-01","2010-05-02","2010-05-03","2010-05-04","2010-05-05","2010-05-06","2010-05-07","2010-05-08","2010-05-09","2010-05-10","2010-05-11","2010-05-12","2010-05-13","2010-05-14","2010-05-15","2010-05-16","2010-05-17","2010-05-18","2010-05-19","2010-05-20","2010-05-21","2010-05-22","2010-05-23","2010-05-24","2010-05-25","2010-05-26","2010-05-27","2010-05-28","2010-05-29","2010-05-30","2010-05-31","2010-06-01","2010-06-02","2010-06-03","2010-06-04","2010-06-05","2010-06-06","2010-06-07","2010-06-08","2010-06-09","2010-06-10","2010-06-11","2010-06-12","2010-06-13","2010-06-14","2010-06-15","2010-06-16","2010-06-17","2010-06-18","2010-06-19","2010-06-20","2010-06-21","2010-06-22","2010-06-23","2010-06-24","2010-06-25","2010-06-26","2010-06-27","2010-06-28","2010-06-29","2010-06-30","2010-07-01","2010-07-02","2010-07-03","2010-07-04","2010-07-05","2010-07-06","2010-07-07","2010-07-08","2010-07-09","2010-07-10","2010-07-11","2010-07-12","2010-07-13","2010-07-14","2010-07-15","2010-07-16","2010-07-17","2010-07-18","2010-07-19","2010-07-20","2010-07-21","2010-07-22","2010-07-23","2010-07-24","2010-07-25","2010-07-26","2010-07-27","2010-07-28","2010-07-29","2010-07-30","2010-08-09","2010-08-10","2010-08-11","2010-08-12","2010-08-13","2010-08-14","2010-08-15","2010-08-16","2010-08-17","2010-08-18","2010-08-19","2010-08-20","2010-08-21","2010-08-22","2010-08-27","2010-08-28","2010-08-29","2010-08-30","2010-08-31","2010-09-01","2010-09-02","2010-09-03","2010-09-04","2010-09-05","2010-09-06","2010-09-07","2010-09-08","2010-09-09","2010-09-10","2010-09-11","2010-09-12","2010-09-13","2010-09-14","2010-09-15","2010-09-16","2010-09-17","2010-09-19","2010-09-20","2010-09-21","2010-09-22","2010-09-23","2010-09-24","2010-09-25","2010-09-26","2010-09-27","2010-09-28","2010-09-29","2010-09-30","2010-10-02","2010-10-03","2010-10-04","2010-10-05","2010-10-06","2010-10-07","2010-10-08","2010-10-09","2010-10-10","2010-10-11","2010-10-12","2010-10-13","2010-10-14","2010-10-15","2010-10-16","2010-10-17","2010-10-18","2010-10-19","2010-10-20","2010-10-21","2010-10-22","2010-10-23","2010-10-24","2010-10-25","2010-10-26","2010-10-27","2010-10-28","2010-10-29","2010-10-30","2010-10-31","2010-11-01","2010-11-02","2010-11-03","2010-11-04","2010-11-05","2010-11-06","2010-11-07","2010-11-08","2010-11-09","2010-11-10","2010-11-11","2010-11-12","2010-11-13","2010-11-14","2010-11-15","2010-11-16","2010-11-17","2010-11-18","2010-11-19","2010-11-20","2010-11-21","2010-11-22","2010-11-23","2010-11-24","2010-11-26","2010-11-27","2010-11-28","2010-11-29","2010-11-30","2010-12-01","2010-12-02","2010-12-03","2010-12-04","2010-12-05","2010-12-06","2010-12-07","2010-12-08","2010-12-09","2010-12-10","2010-12-11","2010-12-12","2010-12-13","2010-12-14","2010-12-15","2010-12-16","2010-12-17","2010-12-18","2010-12-19","2010-12-20","2010-12-21","2010-12-22","2010-12-23","2010-12-24","2010-12-25","2010-12-26","2010-12-27","2010-12-28","2010-12-29","2010-12-30","2010-12-31"],"y":[0.3,0,0,2.5,7.1,0.8,0.8,0.3,0,0.8,15,0.8,0,0,4.6,0,11.7,1.5,0.5,0.3,0,0,0,4.6,0,8.1,0,15,0,19.6,9.9,0,0,1.5,0,0,0,10.9,0,0,0,4.1,2.3,0,20.6,0,8.6,0,0,0,0,0,0,0,0,4.1,5.8,0,4.3,4.1,4.1,0,2.3,0,0,0,0,0.5,0,0.8,0,0.5,0,0,1.3,2,0,25.7,0,0,0.5,15.2,23.6,0.5,0.8,3,3.3,0,6.1,20.8,0,0,0,5.8,0,2.5,0.5,0.8,5.8,0.3,0,0,17.3,8.6,0,17.3,2.5,0,0,48.3,17.8,0,14.7,27.9,0,0,0,0.5,0,7.9,0.8,0.3,0,6.4,10.7,0.3,0,0,0,0,0,0,16.3,7.6,0,0,7.6,8.4,0,5.1,9.9,0,0,0,0,0,0,6.1,0,0.3,0,0,0,0,0,0,0,0,0,0,0,0,3.3,1.5,21.8,1.3,0,1.8,2,15.5,0.3,0,0,0,0,0,0,0,0,0,0,0.3,3.6,1.3,4.1,0,0,3.6,2,0.8,0,0,0,0,0,0,0,17.5,0,0,1.5,0.3,35.3,5.3,0,12.4,0,8.1,0,0,0,25.9,0.3,15.7,0,11.4,0,1,0,1.8,2,0,0,3.8,0,10.9,4.8,0,0,0,1,0,0,0,0,0,0,0,0,0,22.4,0,0,0,0,12.7,4.1,19.6,3,21.1,48,26.2,0,1.3,0,3.6,1.5,0,5.3,22.4,0,0.5,0,4.3,0,0,0.8,0,0,0,0,0,0.3,0,0,0,0,1.3,0,0,0,0,0,0,14.5,31.5,0,0,16.8,0,0,7.4,8.1,0,0,0,0,0,0,0,0,0,0,0,4.8,19.8,0.3,26.4,0.3,6.4,1.5,4.6,0.5,0,0,2.3,0,4.8,0,0,0,0,0,0,0,10.7,0,0,0,0,2.8,0.3,0,0,55.4,0,24.1,38.1,0,0,0,0,0,0,0,0,11.9,0.3,1.3,0,0,0,0,2,0,0,0,0,0,0,0,0,7.6,5.3,0,0,0,0,16.8,0,0,0,2.5,0,0,0.8,0,1.8,3.8,0,0,5.1,5.8,1,0,24.6,5.1,9.1,0,0,1,8.4,0,0.5,5.1,8.4,0,1.3,0,1.8,0,1.3,0,11.7,0,0,0,0,0,0,3.3,1.3,0,0,0,0,0,0,0,0,4.8,18.8,0.8,4.3,0,0,0,1.8,0,0,0,0,0,0,0,1,0.3,0,0,0,0,0,10.7,1.3,1,0,2,0,0,2,0,2.8,0,0,3.8,0,0,0,0,4.8,17.3,10.9,10.2,1.5,0,0,0,0,0,0,11.7,0.3,0,0,0,0,0,0,5.3,0,2.3,5.3,3.6,0,0.8,0,15.5,0,0,5.3,0.3,0.5,0,3,0,0,0,0,0,0,0,0.8,0,6.9,4.8,0.3,0,0,0,0.5,0,0.3,0,1.3,2.5,0,0,0,5.3,6.6,0,1,7.4,0,0,0,0,7.4,0,11.7,0,0,0,0,0,0,0,0,0,24.4,0.3,10.9,2.3,0,0,0,0,0,0,0,0,11.9,2.5,0,10.9,1,23.6,10.9,2.5,0,14.5,17,0.3,14.2,1.3,0,0,0,0,15.2,4.1,0.3,0,16.8,67.1,3.8,9.1,0,0,4.1,14.5,0.3,0,0,3.8,0,0,0,0.5,9.4,16.8,0,0,0,6.1,1.3,0,6.6,0,1,0,0,0,0,0,0,3,1,0,0,0,0,0,0,0,6.1,1.3,0,39.1,10.2,1.5,0,0,0.5,0,21.6,8.9,0,0,0,0,0,0,0,0,0,0,0,0,14.7,2,0,0,0,0,0,0,0,0,0,0,0.3,0,0,11.2,16,0.3,4.6,1.3,0.5,3,0.5,0,1,3.8,5.8,0,3.3,0,0,4.3,1,0,0,0,0,0,0,0,0,0,11.2,21.1,0,0,6.1,34.3,0.3,0,6.4,0,0,0,0,2,0,0,0,0,0,0,0,10.4,16.3,0,0,0,0,18.8,0,0,0,0,0,2,0,0.8,0,0,1,0,19.3,0.3,0,12.2,0,0,21.3,9.1,0,0,0,9.7,0,0,0.3,0,0,0,0,0,0,1.3,0,0.3,0,0,3.3,2.8,5.6,3.8,0,0,0,0,3.6,0,0,0,0,0,0,0,0,22.6,0,0.8,0.5,0,0,0,1.5,22.1,0,0,1.8,0,0,0,0,1.3,1.8,0,0,0,0,0,0,4.6,0,0,1.3,0.5,0,10.7,1.3,0,0,0,0,1.3,62.2,14.5,78.5,16,8.9,2.5,0,0.5,0,0,0,0,0,0,0,0,0,5.6,26.9,6.6,0,0,0,0,0,0,0,37.1,1,0,7.6,0,0,2.8,1,61.7,1.3,0,0,0,0,0,4.6,0,12.4,0,0,0,0,0,0,2,5.6,1.3,0,0,0,0,0,0,0.5,0.5,9.9,6.6,0,0,0,0,0.3,2.8,4.3,2.8,0.5,18.5,2.8,0,0,1.8,0.8,9.4,0,0,0,0,11.4,2.3,0,0,0,0,0,0,0,0,0,0,0,2,6.1,0,3,4.1,18.8,26.9,0,0,11.2,5.8,0,21.8,0,0,0,15.2,0,0,8.1,0,0,5.8,0,11.2,0,1.3,11.2,9.4,0,0,0,0,0,0,0,0,0,0,9.1,0.5,0,0,22.4,0.5,0,0.5,25.7,0,0,0,4.3,0,27.2,14,0.3,0,0,0,0,0,8.6,0,0,0.3,0,0,1.3,1.3,0,0,6.4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.3,0.3,0.8,0,0,0.8,5.1,0,0,4.1,0,0,0,0,2,0,0,0,0,12.2,3,0,13.5,0,0,6.9,7.1,51.3,3,0,0,0,0,0,0,25.1,14.5,0,0,0,0,0,2.5,0,1.3,0.5,15.7,17.8,0.3,0,2.3,0.5,0,0,0,0,31.2,1.5,0,0,11.2,0.3,0,0,0,0,0,0,20.8,4.3,0,0,0,0,1.3,1,6.6,0,0.3,0,0,8.6,42.7,0,0,0,0.5,2.3,1,0,0,0,21.8,5.3,1.8,0.3,4.1,0,0,0,0,0,0,1.3,0,0,5.1,8.4,0,0,0,0],"mode":"markers","type":"scatter","name":"US1NYAB0001","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2008-09-11","2008-09-12","2008-09-13","2008-09-14","2008-09-15","2008-09-16","2008-09-17","2008-09-18","2008-09-19","2008-09-20","2008-09-21","2008-09-22","2008-09-23","2008-09-24","2008-09-25","2008-09-26","2008-09-27","2008-09-28","2008-09-29","2008-09-30","2008-10-01","2008-10-02","2008-10-03","2008-10-04","2008-10-05","2008-10-06","2008-10-07","2008-10-08","2008-10-09","2008-10-10","2008-10-11","2008-10-12","2008-10-13","2008-10-14","2008-10-15","2008-10-16","2008-10-17","2008-10-18","2008-10-19","2008-10-20","2008-10-21","2008-10-22","2008-10-23","2008-10-24","2008-10-25","2008-10-26","2008-10-27","2008-10-28","2008-10-29","2008-10-30","2008-10-31","2008-11-01","2008-11-02","2008-11-03","2008-11-04","2008-11-05","2008-11-06","2008-11-07","2008-11-08","2008-11-09","2008-11-10","2008-11-11","2008-11-12","2008-11-13","2008-11-14","2008-11-15","2008-11-16","2008-11-17","2008-11-18","2008-11-19","2008-11-20","2008-11-21","2008-11-22","2008-11-23","2008-11-24","2008-11-25","2008-11-26","2008-11-27","2008-11-28","2008-11-29","2008-11-30","2008-12-01","2008-12-02","2008-12-03","2008-12-04","2008-12-05","2008-12-06","2008-12-07","2008-12-08","2008-12-09","2008-12-10","2008-12-11","2008-12-12","2008-12-13","2008-12-14","2008-12-15","2008-12-16","2008-12-17","2008-12-18","2008-12-19","2008-12-20","2008-12-21","2008-12-22","2008-12-23","2008-12-24","2008-12-25","2008-12-26","2008-12-27","2008-12-28","2008-12-29","2008-12-30","2008-12-31","2009-01-01","2009-01-02","2009-01-03","2009-01-04","2009-01-05","2009-01-06","2009-01-07","2009-01-08","2009-01-09","2009-01-10","2009-01-11","2009-01-12","2009-01-13","2009-01-14","2009-01-15","2009-01-16","2009-01-17","2009-01-18","2009-01-19","2009-01-20","2009-01-21","2009-01-22","2009-01-23","2009-01-24","2009-01-25","2009-01-26","2009-01-27","2009-01-28","2009-01-29","2009-01-30","2009-01-31","2009-02-01","2009-02-02","2009-02-03","2009-02-04","2009-02-05","2009-02-06","2009-02-07","2009-02-08","2009-02-09","2009-02-10","2009-02-11","2009-02-12","2009-02-13","2009-02-14","2009-02-15","2009-02-16","2009-02-17","2009-02-18","2009-02-19","2009-02-20","2009-02-21","2009-02-22","2009-02-23","2009-02-24","2009-02-25","2009-02-26","2009-02-27","2009-02-28","2009-03-01","2009-03-02","2009-03-03","2009-03-04","2009-03-05","2009-03-06","2009-03-07","2009-03-08","2009-03-09","2009-03-10","2009-03-11","2009-03-12","2009-03-13","2009-03-14","2009-03-15","2009-03-16","2009-03-17","2009-03-18","2009-03-19","2009-03-20","2009-03-21","2009-03-22","2009-03-23","2009-03-24","2009-03-26","2009-03-27","2009-03-28","2009-03-29","2009-03-30","2009-03-31","2009-04-01","2009-04-02","2009-04-03","2009-04-04","2009-04-05","2009-04-06","2009-04-07","2009-04-08","2009-04-09","2009-04-10","2009-04-11","2009-04-12","2009-04-13","2009-04-14","2009-04-15","2009-04-16","2009-04-17","2009-04-18","2009-04-19","2009-04-20","2009-04-21","2009-04-22","2009-04-23","2009-04-24","2009-04-25","2009-04-26","2009-04-27","2009-04-28","2009-04-29","2009-04-30","2009-05-01","2009-05-02","2009-05-03","2009-05-04","2009-05-05","2009-05-06","2009-05-07","2009-05-08","2009-05-09","2009-05-10","2009-05-11","2009-05-12","2009-05-13","2009-05-14","2009-05-15","2009-05-16","2009-05-17","2009-05-18","2009-05-19","2009-05-20","2009-05-21","2009-05-22","2009-05-23","2009-05-24","2009-05-25","2009-05-26","2009-05-27","2009-05-28","2009-05-29","2009-05-30","2009-05-31","2009-06-01","2009-06-02","2009-06-03","2009-06-04","2009-06-05","2009-06-06","2009-06-07","2009-06-08","2009-06-09","2009-06-10","2009-06-11","2009-06-12","2009-06-13","2009-06-14","2009-06-15","2009-06-16","2009-06-17","2009-06-18","2009-06-19","2009-06-20","2009-06-21","2009-06-22","2009-06-23","2009-06-24","2009-06-25","2009-06-26","2009-06-27","2009-06-28","2009-06-29","2009-06-30","2009-07-01","2009-07-02","2009-07-03","2009-07-04","2009-07-05","2009-07-06","2009-07-07","2009-07-08","2009-07-09","2009-07-10","2009-07-11","2009-07-12","2009-07-13","2009-07-14","2009-07-15","2009-07-16","2009-07-17","2009-07-18","2009-07-19","2009-07-20","2009-07-21","2009-07-22","2009-07-23","2009-07-24","2009-07-25","2009-07-26","2009-07-27","2009-07-28","2009-07-29","2009-07-30","2009-07-31","2009-08-01","2009-08-02","2009-08-03","2009-08-04","2009-08-05","2009-08-06","2009-08-07","2009-08-08","2009-08-09","2009-08-10","2009-08-11","2009-08-12","2009-08-13","2009-08-14","2009-08-15","2009-08-16","2009-08-17","2009-08-18","2009-08-19","2009-08-20","2009-08-21","2009-08-22","2009-08-23","2009-08-24","2009-08-25","2009-08-26","2009-08-27","2009-08-28","2009-08-29","2009-08-30","2009-08-31","2009-09-01","2009-09-02","2009-09-03","2009-09-04","2009-09-05","2009-09-06","2009-09-07","2009-09-08","2009-09-09","2009-09-10","2009-09-11","2009-09-12","2009-09-13","2009-09-14","2009-09-15","2009-09-16","2009-09-17","2009-09-18","2009-09-19","2009-09-20","2009-09-21","2009-09-22","2009-09-23","2009-09-24","2009-09-25","2009-09-26","2009-09-27","2009-09-28","2009-09-29","2009-09-30","2009-10-01","2009-10-02","2009-10-03","2009-10-04","2009-10-05","2009-10-06","2009-10-07","2009-10-08","2009-10-09","2009-10-10","2009-10-11","2009-10-12","2009-10-13","2009-10-14","2009-10-15","2009-10-16","2009-10-17","2009-10-18","2009-10-19","2009-10-20","2009-10-21","2009-10-22","2009-10-23","2009-10-24","2009-10-25","2009-10-26","2009-10-27","2009-10-28","2009-10-29","2009-10-30","2009-10-31","2009-11-01","2009-11-02","2009-11-03","2009-11-04","2009-11-05","2009-11-06","2009-11-07","2009-11-08","2009-11-09","2009-11-10","2009-11-11","2009-11-12","2009-11-13","2009-11-14","2009-11-15","2009-11-16","2009-11-17","2009-11-18","2009-11-19","2009-11-20","2009-11-21","2009-11-23","2009-11-24","2009-11-25","2009-11-26","2009-11-27","2009-11-28","2009-11-29","2009-11-30","2009-12-01","2009-12-02","2009-12-03","2009-12-04","2009-12-05","2009-12-06","2009-12-07","2009-12-08","2009-12-09","2009-12-10","2009-12-11","2009-12-12","2009-12-13","2009-12-14","2009-12-15","2009-12-16","2009-12-17","2009-12-18","2009-12-19","2009-12-20","2009-12-21","2009-12-22","2009-12-23","2009-12-24","2009-12-25","2009-12-26","2009-12-27","2009-12-28","2009-12-29","2009-12-30","2009-12-31","2010-01-01","2010-01-02","2010-01-03","2010-01-04","2010-01-05","2010-01-06","2010-01-07","2010-01-08","2010-01-09","2010-01-10","2010-01-11","2010-01-12","2010-01-13","2010-01-14","2010-01-15","2010-01-16","2010-01-17","2010-01-18","2010-01-19","2010-01-20","2010-01-21","2010-01-22","2010-01-23","2010-01-24","2010-01-25","2010-01-26","2010-01-27","2010-01-28","2010-01-29","2010-01-30","2010-01-31","2010-02-01","2010-02-02","2010-02-03","2010-02-04","2010-02-05","2010-02-06","2010-02-07","2010-02-08","2010-02-09","2010-02-10","2010-02-11","2010-02-12","2010-02-13","2010-02-14","2010-02-15","2010-02-16","2010-02-17","2010-02-18","2010-02-19","2010-02-20","2010-02-21","2010-02-22","2010-02-23","2010-02-24","2010-02-25","2010-02-26","2010-02-27","2010-02-28","2010-03-01","2010-03-02","2010-03-03","2010-03-04","2010-03-05","2010-03-07","2010-03-08","2010-03-09","2010-03-10","2010-03-11","2010-03-12","2010-03-13","2010-03-14","2010-03-15","2010-03-16","2010-03-17","2010-03-18","2010-03-19","2010-03-20","2010-03-21","2010-03-22","2010-03-23","2010-03-24","2010-03-25","2010-03-26","2010-03-27","2010-03-28","2010-03-29","2010-03-30","2010-03-31","2010-04-01","2010-04-02","2010-04-03","2010-04-04","2010-04-05","2010-04-06","2010-04-07","2010-04-08","2010-04-09","2010-04-10","2010-04-11","2010-04-12","2010-04-13","2010-04-14","2010-04-15","2010-04-16","2010-04-17","2010-04-18","2010-04-19","2010-04-20","2010-04-21","2010-04-22","2010-04-23","2010-04-24","2010-04-25","2010-04-26","2010-04-28","2010-05-04","2010-05-05","2010-05-06","2010-05-07","2010-05-08","2010-05-09","2010-05-10","2010-05-11","2010-05-12","2010-05-13","2010-05-14","2010-05-15","2010-05-16","2010-05-17","2010-05-18","2010-05-19","2010-05-20","2010-05-21","2010-05-22","2010-05-23","2010-05-24","2010-05-25","2010-05-26","2010-05-27","2010-05-28","2010-05-29","2010-05-30","2010-05-31","2010-06-01","2010-06-02","2010-06-03","2010-06-04","2010-06-05","2010-06-06","2010-06-07","2010-06-08","2010-06-09","2010-06-10","2010-06-11","2010-06-12","2010-06-13","2010-06-14","2010-06-15","2010-06-16","2010-06-17","2010-06-18","2010-06-19","2010-06-20","2010-06-21","2010-06-22","2010-06-23","2010-06-24","2010-06-25","2010-06-26","2010-06-27","2010-06-28","2010-06-29","2010-06-30","2010-07-01","2010-07-02","2010-07-03","2010-07-04","2010-07-05","2010-07-06","2010-07-07","2010-07-08","2010-07-09","2010-07-10","2010-07-11","2010-07-12","2010-07-13","2010-07-14","2010-07-15","2010-07-16","2010-07-17","2010-07-18","2010-07-19","2010-07-20","2010-07-21","2010-07-22","2010-07-23","2010-07-24","2010-07-25","2010-07-26","2010-07-27","2010-07-28","2010-07-29","2010-07-30","2010-07-31","2010-08-01","2010-08-02","2010-08-03","2010-08-04","2010-08-05","2010-08-06","2010-08-07","2010-08-08","2010-08-09","2010-08-10","2010-08-11","2010-08-12","2010-08-13","2010-08-14","2010-08-15","2010-08-16","2010-08-17","2010-08-18","2010-08-19","2010-08-20","2010-08-21","2010-08-22","2010-08-23","2010-08-24","2010-08-25","2010-08-26","2010-08-27","2010-08-28","2010-08-29","2010-08-30","2010-08-31","2010-09-01","2010-09-02","2010-09-03","2010-09-04","2010-09-05","2010-09-06","2010-09-07","2010-09-08","2010-09-09","2010-09-10","2010-09-11","2010-09-12","2010-09-13","2010-09-14","2010-09-15","2010-09-16","2010-09-17","2010-09-18","2010-09-19","2010-09-20","2010-09-21","2010-09-22","2010-09-23","2010-09-24","2010-09-25","2010-09-26","2010-09-27","2010-09-28","2010-09-29","2010-09-30","2010-10-02","2010-10-03","2010-10-04","2010-10-05","2010-10-06","2010-10-07","2010-10-08","2010-10-09","2010-10-10","2010-10-11","2010-10-12","2010-10-13","2010-10-14","2010-10-15","2010-10-16","2010-10-17","2010-10-18","2010-10-19","2010-10-20","2010-10-21","2010-10-22","2010-10-23","2010-10-24","2010-10-25","2010-10-26","2010-10-27","2010-10-28","2010-10-29","2010-10-30","2010-10-31","2010-11-01","2010-11-02","2010-11-03","2010-11-04","2010-11-05","2010-11-06","2010-11-07","2010-11-08","2010-11-09","2010-11-10","2010-11-11","2010-11-12","2010-11-13","2010-11-14","2010-11-15","2010-11-16","2010-11-17","2010-11-18","2010-11-19","2010-11-20","2010-11-21","2010-11-22","2010-11-23","2010-11-24","2010-11-25","2010-11-26","2010-11-27","2010-11-28","2010-11-29","2010-11-30","2010-12-01","2010-12-02","2010-12-03","2010-12-04","2010-12-05","2010-12-06","2010-12-07","2010-12-08","2010-12-09","2010-12-10","2010-12-11","2010-12-12","2010-12-13","2010-12-14","2010-12-15","2010-12-16","2010-12-17","2010-12-18","2010-12-19","2010-12-20","2010-12-21","2010-12-22","2010-12-23","2010-12-24","2010-12-25","2010-12-26","2010-12-27","2010-12-28","2010-12-29","2010-12-30","2010-12-31"],"y":[0,0,6.6,6.4,0.3,0,0,0,0,0,0,0,0,0,0,3.6,10.9,0.5,21.6,0.5,8.4,1.5,0.8,0.5,0,0,5.6,0.3,6.6,0.3,0,0,0,0,0,0,10.9,0,0,0,0,2.8,0,0,0,54.6,0.3,16.5,38.6,0,0,0,0,0,0,0,0,5.3,0,2.5,0.3,0,1,0.5,3.8,0.3,17.5,0,0,0,0,0,0,0,0,11.4,11.2,0,0,0,0,15.5,0,0,0,2.8,0,0,0,0,1.3,3.8,56.4,1.5,0,0,3.8,7.4,1.3,0,24.6,2.3,11.7,0,1.5,4.1,0,4.6,8.1,0,0.3,4.1,9.7,0,1.3,0,1.5,0,6.9,11.7,0.5,0,12.4,0.3,0,0,0,0,0,2.3,1.5,0,0,0,0,0,0,0,0,4.8,17.3,0,1.3,0,0,0,0,0,0,0,0,0,0,0,0.8,0,0,0,0,0,0,10.4,0,0,0,1.3,0,0,1,0,1.8,0,0.3,2.3,0,0,0,0,4.8,17.8,11.2,11.2,1.8,0,0,0,0,0,0,9.1,0.5,0,0,0,0,0,6.4,0,0.5,9.9,1.5,0,1,0.3,9.1,0.3,0.3,7.6,0.8,0,0,2.5,0,0,0,0,0,0,0,0.8,0,6.4,6.6,0.3,0,0,0,0,0,0.5,0,1.5,0.8,0,0,0,4.6,8.9,0.3,1.5,7.9,0.3,0,0,0,10.4,0,9.7,0,0,0,0,0,0,1,0,0,31,0.3,20.1,1.3,0.3,0.5,0,0,0,0,0,0,0,11.2,1.5,0.3,20.1,1.8,11.4,16.5,15.2,0,16,18.5,0.5,10.7,2.8,0.5,0,0,0,15,33,0.3,0,16.3,14.7,13.2,2.3,0.3,0,2.8,27.4,0.5,0,0,6.4,0,0,0,0.5,18.3,13.7,0,0,0,4.3,0,0,6.4,3.3,0,0,0,42.9,0.8,56.6,0,3.3,0,0,0,0,0,0,1.8,0.8,0,0,0,0,0,0,0,1.8,7.9,0,49,2.5,5.3,0,0,0,0,23.4,10.9,0,0,0,0,0,0,0,0,0,0,0,0,13.7,1.3,0,0,0,0,0,0,0,0,0,0,0,0,0,13.7,16.5,0.8,1.5,1,0.3,3.3,2.8,0.5,1.3,3.8,3.8,0,2.8,0,0,5.3,0.8,0,0,0,0,0,0,0,0,0,10.4,23.9,0,0,5.8,30.7,0,0,4.8,0,0,0.5,0,1.3,0,0,0,0,0,0,0,7.9,22.6,0,0,0,0,19.1,0,0,0,0,1.3,0,0,0,0,0,0,25.1,0,0,9.9,0,0,13,13.5,0,0,0,6.9,0,0.5,0,0,0,0,0,0,0,0.5,0,7.4,20.8,1.5,0,0,0,3.3,0.3,1.8,1,0,0,0,0.8,1.5,0,0,0,0,0,0,0,0,17.3,0.8,1.3,0,0,0,0,3,21.6,0.5,0,0.8,0,0,0,0,1.3,0.3,0,0,0,0,0,0,1.3,0,0,0.5,0,0,8.6,0.3,0,0,0,0,0,47,13,36.8,14.7,10.4,2.5,0,0,0,0,0,0,0,0,0,0,2.8,8.4,4.3,0,0,0,0,0,0,0,41.9,0.3,0,11.4,0,0,3,0.3,32,0.8,0,0,0,0,0,5.6,0,14.5,0.5,0,0,0,0,0,1,5.1,1,0,0,0,0.5,0,0,0,0,7.1,1.8,3.6,3.3,1,11.7,5.6,0,0,3.6,1.3,11.4,0,0,0,0,5.8,1.3,0,0,0,0,0,0,0,0,0,0,0,1.5,3,0,2,4.8,8.1,28.2,0,0,10.7,1.8,0,32,0.5,0.3,0,11.7,0,0,3.3,0,0,7.9,0,9.1,0.3,0.8,0,6.9,0,0,0,0,0,0,0,0,0,0,6.1,2.3,0,0,12.2,0.5,0,0,18.8,0,0.3,0,0.5,0,24.9,3.8,0,0,0,0,0,0,0,0,0,0,0.5,21.3,0,0,0,8.6,0,0,0,0,0,1.5,1,0,0,18.5,0,0,42.4,6.9,0.8,0.8,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0.8,0,0,0.5,0.3,0.3,0,4.3,2.3,0,0,0,0,1.5,0,0,0,0,14.2,3.6,0.3,13.2,0,0.3,5.6,6.4,34.8,2.8,0,0,0,0,0,0,20.6,6.4,0.5,0,0,0,0,0.5,0,0.8,0.8,13.5,17.3,0.5,0,0.8,0,0,0,0,0,27.4,1.8,0,0,15.5,0,0,0,0,0,0,0,22.1,2,0,0,0,0,0.5,0.5,0,8.6,0,0,0,0,13.2,44.5,0,0,0,0.5,0.3,0,0,0,0,0,28.4,1.5,0,0.3,0.3,0,0,0,0,0,0,0,0,0,14.2,1.3,0,0,0],"mode":"markers","type":"scatter","name":"US1NYAB0006","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_y":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"line":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2008-10-28","2008-10-30","2008-10-31","2008-11-01","2008-11-02","2008-11-03","2008-11-04","2008-11-08","2008-11-09","2008-11-10","2008-11-11","2008-11-12","2008-11-13","2008-11-14","2008-11-15","2008-11-16","2008-11-17","2008-11-18","2008-11-19","2008-11-20","2008-11-21","2008-11-22","2008-11-24","2008-11-25","2008-12-02","2008-12-03","2008-12-04","2008-12-05","2008-12-06","2008-12-08","2008-12-09","2008-12-10","2008-12-11","2008-12-12","2008-12-13","2008-12-14","2008-12-15","2008-12-16","2008-12-17","2008-12-18","2008-12-19","2008-12-20","2008-12-21","2008-12-22","2008-12-23","2008-12-24","2009-01-02","2009-01-03","2009-01-04","2009-01-05","2009-01-06","2009-01-07","2009-01-08","2009-01-09","2009-01-10","2009-01-11","2009-01-12","2009-01-13","2009-01-14","2009-01-15","2009-01-16","2009-01-17","2009-01-18","2009-01-19","2009-01-20","2009-01-21","2009-01-22","2009-01-23","2009-01-26","2009-01-27","2009-01-28","2009-01-29","2009-01-30","2009-01-31","2009-02-01","2009-02-02","2009-02-03","2009-02-04","2009-02-05","2009-02-06","2009-02-07","2009-02-09","2009-02-10","2009-02-11","2009-02-12","2009-02-13","2009-02-14","2009-02-15","2009-02-16","2009-02-17","2009-02-19","2009-02-20","2009-02-21","2009-02-22","2009-02-23","2009-02-24","2009-02-25","2009-02-26","2009-02-28","2009-03-01","2009-03-02","2009-03-03","2009-03-04","2009-03-05","2009-03-06","2009-03-07","2009-03-08","2009-03-09","2009-03-10","2009-03-11","2009-03-12","2009-03-13","2009-03-15","2009-03-16","2009-03-18","2009-03-19","2009-03-20","2009-03-21","2009-03-22","2009-03-23","2009-03-24","2009-03-25","2009-03-26","2009-03-27","2009-03-28","2009-03-29","2009-03-30","2009-03-31","2009-04-01","2009-04-02","2009-04-03","2009-04-04","2009-04-05","2009-04-06","2009-04-07","2009-04-08","2009-04-09","2009-04-10","2009-04-11","2009-04-12","2009-04-13","2009-04-14","2009-04-15","2009-04-16","2009-04-17","2009-04-18","2009-04-19","2009-04-20","2009-04-21","2009-04-28","2009-04-29","2009-04-30","2009-05-01","2009-05-02","2009-05-03","2009-05-04","2009-05-05","2009-05-06","2009-05-07","2009-05-08","2009-05-09","2009-05-10","2009-05-11","2009-05-12","2009-05-14","2009-05-15","2009-05-17","2009-05-18","2009-05-19","2009-05-21","2009-05-22","2009-05-23","2009-05-24","2009-05-25","2009-05-26","2009-05-27","2009-05-28","2009-05-29","2009-05-30","2009-05-31","2009-06-01","2009-06-02","2009-06-03","2009-06-04","2009-06-05","2009-06-06","2009-06-07","2009-06-08","2009-06-09","2009-06-10","2009-06-11","2009-06-12","2009-06-14","2009-06-15","2009-06-16","2009-06-17","2009-06-18","2009-06-19","2009-06-20","2009-06-21","2009-06-22","2009-06-23","2009-06-24","2009-06-25","2009-06-26","2009-06-28","2009-06-29","2009-06-30","2009-07-01","2009-07-02","2009-07-03","2009-07-04","2009-07-05","2009-07-06","2009-07-07","2009-07-08","2009-07-09","2009-07-10","2009-07-11","2009-07-12","2009-07-13","2009-07-14","2009-07-21","2009-07-22","2009-07-23","2009-08-04","2009-08-05","2009-08-07","2009-08-08","2009-08-09","2009-08-10","2009-08-11","2009-08-12","2009-08-13","2009-08-14","2009-08-15","2009-08-16","2009-08-17","2009-08-18","2009-08-19","2009-08-20","2009-08-25","2009-08-26","2009-08-27","2009-08-28","2009-08-29","2009-08-30","2009-09-01","2009-09-02","2009-09-03","2009-09-04","2009-09-05","2009-09-06","2009-09-07","2009-09-08","2009-09-09","2009-09-10","2009-09-11","2009-09-12","2009-09-13","2009-09-14","2009-09-16","2009-09-18","2009-09-19","2009-09-21","2009-09-22","2009-09-23","2009-09-24","2009-09-26","2009-09-27","2009-09-28","2009-09-29","2009-09-30","2009-10-02","2009-10-03","2009-10-04","2009-10-05","2009-10-08","2009-10-16","2009-10-18","2009-10-19","2009-10-20","2009-10-21","2009-10-22","2009-10-23","2009-10-24","2009-10-25","2009-10-26","2009-10-27","2009-10-28","2009-10-29","2009-10-30","2009-10-31","2009-11-02","2009-11-03","2009-11-04","2009-11-11","2009-11-12","2009-11-14","2009-11-15","2009-11-16","2009-11-17","2009-11-18","2009-11-19","2009-11-20","2009-11-21","2009-11-22","2009-11-24","2009-11-25","2009-11-26","2009-11-27","2009-11-29","2009-12-01","2009-12-02","2009-12-03","2009-12-04","2009-12-05","2009-12-06","2009-12-07","2009-12-08","2009-12-10","2009-12-12","2009-12-14","2009-12-15","2009-12-16","2009-12-17","2009-12-18","2009-12-19","2009-12-20","2009-12-21","2009-12-22","2009-12-24","2009-12-25","2009-12-26","2009-12-28","2009-12-29","2009-12-30","2010-01-01","2010-01-09","2010-01-10","2010-01-11","2010-01-12","2010-01-13","2010-01-14","2010-01-15","2010-01-16","2010-01-17","2010-01-18","2010-01-19","2010-01-20","2010-01-21","2010-01-22","2010-01-23","2010-01-24","2010-01-25","2010-01-26","2010-01-27","2010-01-28","2010-01-29","2010-01-31","2010-02-01","2010-02-02","2010-02-03","2010-02-04","2010-02-05","2010-02-07","2010-02-08","2010-02-09","2010-02-10","2010-02-11","2010-02-12","2010-02-13","2010-02-14","2010-02-15","2010-02-16","2010-02-17","2010-02-18","2010-02-19","2010-02-20","2010-02-21","2010-02-22","2010-02-23","2010-02-24","2010-02-26","2010-02-27","2010-02-28","2010-03-01","2010-03-03","2010-03-04","2010-03-05","2010-03-06","2010-03-07","2010-03-09","2010-03-10","2010-03-11","2010-03-13","2010-03-14","2010-03-15","2010-03-16","2010-03-17","2010-03-18","2010-03-19","2010-03-21","2010-03-22","2010-03-23","2010-03-24","2010-03-25","2010-03-26","2010-03-27","2010-03-29","2010-03-30","2010-03-31","2010-04-01","2010-04-06","2010-04-07","2010-04-08","2010-04-09","2010-04-11","2010-04-12","2010-04-13","2010-04-14","2010-04-15","2010-04-16","2010-04-17","2010-04-18","2010-04-19","2010-04-20","2010-04-22","2010-04-23","2010-04-24","2010-04-25","2010-04-26","2010-04-27","2010-04-28","2010-05-02","2010-05-03","2010-05-04","2010-05-05","2010-05-06","2010-05-08","2010-05-09","2010-05-11","2010-05-12","2010-05-13","2010-05-14","2010-05-15","2010-05-16","2010-05-17","2010-05-18","2010-05-19","2010-05-20","2010-05-22","2010-05-23","2010-05-24","2010-05-25","2010-05-27","2010-05-29","2010-05-30","2010-06-01","2010-06-03","2010-06-04","2010-06-05","2010-06-06","2010-06-07","2010-06-08","2010-06-09","2010-06-10","2010-06-11","2010-06-12","2010-06-13","2010-06-14","2010-06-15","2010-06-16","2010-06-17","2010-06-18","2010-06-19","2010-06-20","2010-06-23","2010-06-25","2010-06-29","2010-06-30","2010-07-01","2010-07-02","2010-07-04","2010-07-05","2010-07-06","2010-07-07","2010-07-08","2010-07-09","2010-07-10","2010-07-12","2010-07-13","2010-07-14","2010-07-15","2010-07-17","2010-07-18","2010-07-19","2010-07-22","2010-07-24","2010-07-25","2010-07-26","2010-07-29","2010-07-31","2010-08-01","2010-08-02","2010-08-03","2010-08-04","2010-08-05","2010-08-06","2010-08-13","2010-08-14","2010-08-15","2010-08-16","2010-08-17","2010-08-18","2010-08-19","2010-08-20","2010-08-23","2010-08-24","2010-08-25","2010-08-26","2010-08-27","2010-08-29","2010-08-30","2010-08-31","2010-09-01","2010-09-02","2010-09-03","2010-09-04","2010-09-05","2010-09-06","2010-09-07","2010-09-08","2010-09-09","2010-09-10","2010-09-11","2010-09-12","2010-09-13","2010-09-14","2010-09-15","2010-09-16","2010-09-17","2010-09-18","2010-09-20","2010-09-21","2010-09-22","2010-09-24","2010-09-25","2010-09-26","2010-09-27","2010-09-28","2010-09-29","2010-09-30","2010-10-02","2010-10-03","2010-10-04","2010-10-05","2010-10-06","2010-10-07","2010-10-08","2010-10-09","2010-10-10","2010-10-11","2010-10-12","2010-10-13","2010-10-15","2010-10-18","2010-10-19","2010-10-20","2010-10-22","2010-10-23","2010-10-24","2010-10-26","2010-10-27","2010-11-07","2010-11-08","2010-11-09","2010-11-10","2010-11-11","2010-11-12","2010-11-13","2010-11-14","2010-11-15","2010-11-16","2010-11-17","2010-11-18","2010-11-19","2010-11-20","2010-11-21","2010-11-22","2010-11-23","2010-11-24","2010-11-25","2010-11-26","2010-11-27","2010-11-28","2010-11-29","2010-11-30","2010-12-01","2010-12-02","2010-12-12"],"y":[22.6,0,0,0,0,0,0,0.5,2,0,0.3,0,0.3,3.3,0.3,12.2,0,0.3,0,0,0,0.3,0,5.1,0,0,0,3.3,0,5.1,0,2.3,5.3,50.8,0,0,0,2.8,6.1,0,0,26.4,3,8.6,0,0,0,0,0,1.3,0,4.1,9.9,3,0,13,0,0,0,0,0,0,3.3,0,0,0,0,0,0,0,5.3,10.4,0,4.6,0,0,0.3,1,0,0,0,0,0,0,2.3,0,0,0,0,0,8.4,1.5,1.5,0,3.8,0,0,1.8,2,0,0.5,2.5,0,0,0,0,7.1,15.5,10.2,7.9,1.5,0,0,0,0,7.1,0.3,0,0,0.5,0,0,0,3.6,0,2.3,8.4,2.8,0,1,0,17,0,0,7.1,0.5,0.3,0,4.6,0,0,0,0,0,0,0,0.5,0,7.9,0,0.3,0,0.5,2.8,0,0,0,8.1,6.4,0.5,1.3,7.6,0,0,0.3,5.8,16.8,0,0,0,0,0,0,0.5,0,26.2,0.3,16.8,1,0,0,0,0,0,0,0.3,0,0,5.8,0.8,0.3,8.6,34.3,15.2,7.9,0,20.8,11.2,0.3,26.7,2.5,0.3,0,0,2.3,1,0,0,15.5,27.4,15.2,0.5,0,0,4.1,6.1,1.5,0,0,20.8,0,0,0,7.1,0.3,0,0,0,0,0,2.8,1.5,0,0,0,0,0,0,0,11.7,0.3,0,0,2.5,0,18.8,10.7,0,0,0,0,0,0,0,0,0,0,0,26.9,0,0,0,0,0,0,0,0,1.8,0,10.9,41.7,2.8,2.3,2.8,4.1,4.1,0,0,0,0,0,0,0,0,0,13.5,30,0,0,6.9,29.5,0.5,0,0,0,0,0,0,13.5,13,0,0,0,0,18.8,0.3,0,0.3,0,1.8,0.3,0,1.8,0,19.1,0.3,0,8.1,0,0.3,0,0,9.9,0,0,0,0,0,0,0,0,1.3,0,10.4,0.5,0.3,0,2.3,1.8,0,0,0.3,0,0,0,0,0,20.1,0,1.8,0.3,0,0,0,1.8,22.9,0,0,3.3,0,0,0,1.8,0.5,0,0,0,0,0,2.3,0,0.5,0,0,0,8.6,1.3,0,0.3,0,0,1.8,38.9,50.5,20.6,9.9,3.3,1.3,0,0,0,0,0,0,0,4.1,63.2,5.6,0.5,0,0,0,0,0,35.8,1.3,0,5.8,0,3.8,0.8,46,0.8,0,7.6,0,14,0,0,0,0,0,0.8,7.9,1.3,0.5,0,0,0,0,0.8,1.5,13,2.8,0,0.8,0.8,7.6,1.3,15.2,3.3,0,0,0,13.7,0.3,0,0,0,11.7,3.6,0,0,0,0,0,1,0,2,0,4.1,5.3,16,25.7,0,0,12.4,10.2,0,16,0.5,1.3,0,10.2,0,0,0.5,3,10.9,1.5,0,0,0,0,0,0,0,0,0,11.9,0,0,18.8,1,0.8,23.1,0,0.8,27.7,1.5,1.5,0.5,0,0,0,0,0,2.8,11.7,1.5,0,0,1.5,15,0,0,4.1,64.3,10.9,3.6,2.8,0,0,0,0,0,0,0,0,0,0,0,4.3,1.5,1,0.3,0,1.3,0.8,0.5,0,3,0,0,0,0,0.3,0,0,0.3,14,4.1,0.3,9.1,0,0,17.3,9.4,33.8,8.6,0,0,0,0.5,0,18.5,0,0,0.3,2.8,0.3,2.5,8.9,18.5,0,0,8.4,0,0,0,0,0,0,0,21.8,7.1,0,0.3,0,0,0.3,1.3,0,8.6,0.5,0.5,0,0,9.1,38.9,1.5],"mode":"markers","type":"scatter","name":"US1NYAB0010","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2009-07-01","2009-07-02","2009-07-03","2009-07-04","2009-07-05","2009-07-06","2009-07-07","2009-07-08","2009-07-10","2009-07-11","2009-07-12","2009-07-13","2009-07-14","2009-07-15","2009-07-16","2009-07-17","2009-07-18","2009-07-19","2009-07-20","2009-07-22","2009-07-23","2009-07-24","2009-07-25","2009-07-26","2009-07-27","2009-07-28","2009-07-30","2009-08-01","2009-08-02","2009-08-03","2009-08-04","2009-08-05","2009-08-07","2009-08-08","2009-08-09","2009-08-10","2009-08-11","2009-08-14","2009-08-18","2009-08-19","2009-08-20","2009-08-22","2009-08-23","2009-08-24","2009-08-26","2009-08-27","2009-08-28","2009-08-29","2009-08-30","2009-08-31","2009-09-01","2009-09-02","2009-09-03","2009-09-04","2009-09-06","2009-09-07","2009-09-08","2009-09-11","2009-09-12","2009-09-14","2009-09-15","2009-09-16","2009-09-18","2009-09-19","2009-09-28","2009-09-29","2009-09-30","2009-10-01","2009-10-07","2009-10-08","2009-10-10","2009-10-13","2009-10-24","2009-10-25","2009-10-28","2009-10-30","2009-10-31","2009-11-01","2009-11-04","2009-11-05","2009-11-06","2009-11-14","2009-11-15","2009-11-19","2009-11-20","2009-11-26","2010-03-23","2010-03-29","2010-03-30","2010-03-31","2010-04-16","2010-04-17","2010-04-19","2010-04-27","2010-05-05","2010-05-06","2010-05-12","2010-05-27","2010-06-01","2010-06-02","2010-06-04","2010-06-05","2010-06-06","2010-06-07","2010-06-09","2010-06-10","2010-06-12","2010-06-13","2010-06-14","2010-06-17","2010-06-20","2010-06-23","2010-06-24","2010-06-25","2010-06-27","2010-06-28","2010-06-29","2010-07-14","2010-07-15","2010-07-18","2010-07-22","2010-07-24","2010-07-25","2010-08-06","2010-08-10","2010-08-16","2010-08-20","2010-08-23","2010-08-24","2010-08-25","2010-08-26","2010-09-08","2010-09-10","2010-09-17","2010-09-23","2010-09-28","2010-09-29","2010-09-30","2010-10-02","2010-10-05","2010-10-06","2010-10-07","2010-10-08","2010-10-15","2010-10-27","2010-10-28","2010-10-30","2010-11-04","2010-11-05","2010-11-06","2010-11-09","2010-11-17","2010-11-26","2010-11-27","2010-12-01","2010-12-02","2010-12-13"],"y":[12.2,40.6,8.9,2,0,0,4.6,9.9,0.5,0,4.6,0,0,0,0.5,16.3,16.5,0,0,11.4,0,0,9.1,3.6,0.3,4.6,32.8,24.6,0,3.6,0,0,0,0,0,2,0.3,0,0,2.8,3.8,42.2,4.1,3.6,0,0,0,23.4,4.6,0,0,0,0,0,0,0,0,0,7.6,0,0,0,0,0,9.7,1.5,1.3,0.8,4.6,6.4,2.8,4.8,14.7,29.5,16.3,16.3,0,6.1,0,0,1.5,9.9,18,0,31,1.3,35.6,4.3,2.3,19.1,1.5,4.8,4.6,7.1,6.6,1.3,3,2.8,0.5,3.8,1.8,3.3,12.4,29.5,1,10.2,2,30.2,0.5,6.6,9.7,8.4,0,3.8,1.5,0.3,1.8,20.6,0.5,14,1.3,21.1,8.9,8.1,6.6,1.5,2,18.8,1.5,1.8,0.5,3.8,1,5.8,2.3,8.1,2.8,0.5,11.4,6.9,6.6,39.1,3.8,19.8,27.2,0.3,1.8,0.8,28.4,2.3,15,17,10.4,0,10.9,36.3,27.7],"mode":"markers","type":"scatter","name":"US1NYAB0017","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_y":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"line":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9f35d5cf237829da66b3" style="width:576px;height:460.8px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9f35d5cf237829da66b3">{"x":{"visdat":{"65a71272e1a8":["function () ","plotlyVisDat"]},"cur_data":"65a71272e1a8","attrs":{"65a71272e1a8":{"x":{},"y":{},"mode":"markers","color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"date"},"yaxis":{"domain":[0,1],"automargin":true,"title":"prcp"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["2007-11-17","2007-11-18","2007-11-19","2007-11-20","2007-11-21","2007-11-22","2007-11-23","2007-11-24","2007-11-25","2007-11-26","2007-11-27","2007-11-28","2007-11-29","2007-11-30","2007-12-01","2007-12-02","2007-12-03","2007-12-04","2007-12-05","2007-12-06","2007-12-07","2007-12-08","2007-12-09","2007-12-10","2007-12-11","2007-12-12","2007-12-13","2007-12-14","2007-12-15","2007-12-16","2007-12-17","2007-12-18","2007-12-19","2007-12-20","2007-12-21","2007-12-22","2007-12-23","2007-12-24","2007-12-25","2007-12-26","2007-12-27","2007-12-28","2007-12-29","2007-12-30","2007-12-31","2008-01-01","2008-01-02","2008-01-03","2008-01-04","2008-01-05","2008-01-06","2008-01-07","2008-01-08","2008-01-09","2008-01-10","2008-01-11","2008-01-12","2008-01-13","2008-01-14","2008-01-15","2008-01-16","2008-01-17","2008-01-18","2008-01-19","2008-01-20","2008-01-21","2008-01-22","2008-01-23","2008-01-24","2008-01-25","2008-01-26","2008-01-27","2008-01-28","2008-01-29","2008-01-30","2008-01-31","2008-02-01","2008-02-02","2008-02-03","2008-02-04","2008-02-05","2008-02-06","2008-02-07","2008-02-08","2008-02-09","2008-02-10","2008-02-11","2008-02-12","2008-02-13","2008-02-14","2008-02-15","2008-02-16","2008-02-17","2008-02-18","2008-02-19","2008-02-20","2008-02-21","2008-02-22","2008-02-23","2008-02-24","2008-02-25","2008-02-26","2008-02-27","2008-02-28","2008-02-29","2008-03-01","2008-03-02","2008-03-03","2008-03-04","2008-03-05","2008-03-06","2008-03-07","2008-03-08","2008-03-09","2008-03-10","2008-03-11","2008-03-12","2008-03-13","2008-03-14","2008-03-15","2008-03-16","2008-03-17","2008-03-18","2008-03-19","2008-03-20","2008-03-21","2008-03-22","2008-03-23","2008-03-24","2008-03-25","2008-03-26","2008-03-27","2008-03-28","2008-03-29","2008-03-30","2008-03-31","2008-04-01","2008-04-02","2008-04-03","2008-04-04","2008-04-05","2008-04-06","2008-04-07","2008-04-08","2008-04-09","2008-04-10","2008-04-11","2008-04-12","2008-04-13","2008-04-14","2008-04-15","2008-04-16","2008-04-17","2008-04-18","2008-04-19","2008-04-20","2008-04-21","2008-04-22","2008-04-23","2008-04-24","2008-04-25","2008-04-26","2008-04-27","2008-04-28","2008-04-29","2008-04-30","2008-05-01","2008-05-02","2008-05-03","2008-05-04","2008-05-05","2008-05-06","2008-05-07","2008-05-08","2008-05-09","2008-05-10","2008-05-11","2008-05-12","2008-05-13","2008-05-14","2008-05-15","2008-05-16","2008-05-17","2008-05-18","2008-05-19","2008-05-20","2008-05-21","2008-05-22","2008-05-23","2008-05-24","2008-05-25","2008-05-26","2008-05-27","2008-05-28","2008-05-29","2008-05-30","2008-05-31","2008-06-01","2008-06-02","2008-06-03","2008-06-04","2008-06-05","2008-06-06","2008-06-07","2008-06-08","2008-06-09","2008-06-10","2008-06-11","2008-06-12","2008-06-13","2008-06-14","2008-06-15","2008-06-16","2008-06-17","2008-06-18","2008-06-19","2008-06-20","2008-06-21","2008-06-22","2008-06-23","2008-06-24","2008-06-25","2008-06-26","2008-06-27","2008-06-28","2008-06-29","2008-06-30","2008-07-01","2008-07-02","2008-07-03","2008-07-04","2008-07-05","2008-07-06","2008-07-07","2008-07-08","2008-07-09","2008-07-10","2008-07-11","2008-07-12","2008-07-13","2008-07-14","2008-07-15","2008-07-16","2008-07-17","2008-07-18","2008-07-19","2008-07-20","2008-07-21","2008-07-22","2008-07-23","2008-07-24","2008-07-25","2008-08-05","2008-08-06","2008-08-07","2008-08-08","2008-08-09","2008-08-10","2008-08-11","2008-08-12","2008-08-13","2008-08-14","2008-08-15","2008-08-16","2008-08-17","2008-08-18","2008-08-19","2008-08-20","2008-08-21","2008-08-22","2008-08-23","2008-08-24","2008-08-25","2008-08-26","2008-08-27","2008-08-28","2008-08-29","2008-08-30","2008-08-31","2008-09-01","2008-09-02","2008-09-03","2008-09-04","2008-09-05","2008-09-06","2008-09-07","2008-09-08","2008-09-09","2008-09-10","2008-09-11","2008-09-12","2008-09-13","2008-09-14","2008-09-15","2008-09-16","2008-09-17","2008-09-18","2008-09-19","2008-09-20","2008-09-21","2008-09-22","2008-09-23","2008-09-24","2008-09-25","2008-09-26","2008-09-27","2008-09-28","2008-09-29","2008-09-30","2008-10-01","2008-10-02","2008-10-03","2008-10-04","2008-10-05","2008-10-06","2008-10-07","2008-10-08","2008-10-09","2008-10-10","2008-10-11","2008-10-12","2008-10-13","2008-10-14","2008-10-15","2008-10-16","2008-10-17","2008-10-18","2008-10-19","2008-10-20","2008-10-21","2008-10-22","2008-10-23","2008-10-24","2008-10-25","2008-10-26","2008-10-27","2008-10-28","2008-10-29","2008-10-30","2008-10-31","2008-11-01","2008-11-02","2008-11-03","2008-11-04","2008-11-05","2008-11-06","2008-11-07","2008-11-08","2008-11-09","2008-11-10","2008-11-11","2008-11-12","2008-11-13","2008-11-14","2008-11-17","2008-11-18","2008-11-19","2008-11-20","2008-11-21","2008-11-22","2008-11-23","2008-11-24","2008-11-25","2008-11-26","2008-11-27","2008-11-28","2008-11-29","2008-11-30","2008-12-01","2008-12-02","2008-12-03","2008-12-04","2008-12-05","2008-12-06","2008-12-07","2008-12-08","2008-12-09","2008-12-10","2008-12-11","2008-12-14","2008-12-15","2008-12-16","2008-12-17","2008-12-18","2008-12-19","2008-12-20","2008-12-21","2008-12-22","2008-12-23","2008-12-26","2008-12-27","2008-12-28","2008-12-29","2008-12-30","2008-12-31","2009-01-01","2009-01-02","2009-01-03","2009-01-04","2009-01-05","2009-01-06","2009-01-09","2009-01-10","2009-01-11","2009-01-12","2009-01-13","2009-01-14","2009-01-15","2009-01-16","2009-01-17","2009-01-18","2009-01-19","2009-01-20","2009-01-21","2009-01-22","2009-01-23","2009-01-24","2009-01-25","2009-01-26","2009-01-27","2009-01-28","2009-01-29","2009-01-30","2009-01-31","2009-02-01","2009-02-02","2009-02-03","2009-02-04","2009-02-05","2009-02-06","2009-02-07","2009-02-08","2009-02-09","2009-02-10","2009-02-11","2009-02-12","2009-02-13","2009-02-14","2009-02-15","2009-02-16","2009-02-17","2009-02-18","2009-02-19","2009-02-20","2009-02-21","2009-02-22","2009-02-23","2009-02-24","2009-02-25","2009-02-26","2009-02-27","2009-02-28","2009-03-01","2009-03-02","2009-03-03","2009-03-04","2009-03-05","2009-03-06","2009-03-07","2009-03-08","2009-03-09","2009-03-10","2009-03-11","2009-03-12","2009-03-13","2009-03-14","2009-03-15","2009-03-16","2009-03-17","2009-03-18","2009-03-19","2009-03-20","2009-03-21","2009-03-22","2009-03-23","2009-03-24","2009-03-25","2009-03-26","2009-03-27","2009-03-28","2009-03-29","2009-03-30","2009-03-31","2009-04-01","2009-04-02","2009-04-03","2009-04-04","2009-04-05","2009-04-06","2009-04-07","2009-04-08","2009-04-09","2009-04-10","2009-04-11","2009-04-12","2009-04-13","2009-04-14","2009-04-15","2009-04-16","2009-04-17","2009-04-18","2009-04-19","2009-04-20","2009-04-21","2009-04-22","2009-04-23","2009-04-24","2009-04-25","2009-04-26","2009-04-27","2009-04-28","2009-04-29","2009-04-30","2009-05-01","2009-05-02","2009-05-03","2009-05-04","2009-05-05","2009-05-06","2009-05-07","2009-05-08","2009-05-09","2009-05-10","2009-05-11","2009-05-12","2009-05-13","2009-05-14","2009-05-15","2009-05-16","2009-05-17","2009-05-18","2009-05-19","2009-05-20","2009-05-21","2009-05-22","2009-05-23","2009-05-24","2009-05-25","2009-05-26","2009-05-27","2009-05-28","2009-05-29","2009-05-30","2009-06-01","2009-06-02","2009-06-03","2009-06-04","2009-06-05","2009-06-06","2009-06-07","2009-06-08","2009-06-09","2009-06-10","2009-06-11","2009-06-12","2009-06-13","2009-06-14","2009-06-15","2009-06-16","2009-06-17","2009-06-18","2009-06-19","2009-06-20","2009-06-21","2009-06-22","2009-06-23","2009-06-24","2009-06-25","2009-06-26","2009-06-27","2009-06-28","2009-06-29","2009-06-30","2009-07-01","2009-07-02","2009-07-03","2009-07-04","2009-07-05","2009-07-06","2009-07-07","2009-07-08","2009-07-09","2009-07-10","2009-07-11","2009-07-12","2009-07-13","2009-07-14","2009-07-15","2009-07-16","2009-07-17","2009-07-18","2009-07-19","2009-07-20","2009-07-21","2009-07-22","2009-07-23","2009-07-24","2009-07-25","2009-08-02","2009-08-03","2009-08-04","2009-08-05","2009-08-06","2009-08-07","2009-08-08","2009-08-09","2009-08-10","2009-08-11","2009-08-12","2009-08-13","2009-08-14","2009-08-15","2009-08-16","2009-08-17","2009-08-18","2009-08-19","2009-08-20","2009-08-21","2009-08-22","2009-08-23","2009-08-24","2009-08-25","2009-08-26","2009-08-27","2009-08-28","2009-08-29","2009-08-30","2009-08-31","2009-09-01","2009-09-02","2009-09-03","2009-09-04","2009-09-05","2009-09-06","2009-09-07","2009-09-08","2009-09-09","2009-09-10","2009-09-11","2009-09-12","2009-09-13","2009-09-14","2009-09-15","2009-09-16","2009-09-17","2009-09-18","2009-09-19","2009-09-20","2009-09-21","2009-09-22","2009-09-23","2009-09-24","2009-09-25","2009-09-26","2009-09-27","2009-09-28","2009-09-29","2009-09-30","2009-10-01","2009-10-02","2009-10-03","2009-10-04","2009-10-05","2009-10-06","2009-10-07","2009-10-08","2009-10-09","2009-10-10","2009-10-11","2009-10-12","2009-10-13","2009-10-14","2009-10-15","2009-10-16","2009-10-17","2009-10-18","2009-10-19","2009-10-20","2009-10-21","2009-10-22","2009-10-23","2009-10-24","2009-10-25","2009-10-26","2009-10-27","2009-10-28","2009-10-29","2009-10-30","2009-10-31","2009-11-01","2009-11-02","2009-11-03","2009-11-04","2009-11-05","2009-11-06","2009-11-07","2009-11-08","2009-11-09","2009-11-10","2009-11-11","2009-11-12","2009-11-13","2009-11-14","2009-11-15","2009-11-16","2009-11-17","2009-11-18","2009-11-19","2009-11-20","2009-11-21","2009-11-22","2009-11-23","2009-11-24","2009-11-25","2009-11-26","2009-11-27","2009-11-28","2009-11-29","2009-11-30","2009-12-01","2009-12-02","2009-12-03","2009-12-04","2009-12-05","2009-12-06","2009-12-07","2009-12-08","2009-12-09","2009-12-10","2009-12-11","2009-12-12","2009-12-13","2009-12-14","2009-12-15","2009-12-16","2009-12-17","2009-12-18","2009-12-19","2009-12-20","2009-12-21","2009-12-22","2009-12-23","2009-12-24","2009-12-28","2009-12-29","2009-12-30","2009-12-31","2010-01-01","2010-01-02","2010-01-03","2010-01-04","2010-01-05","2010-01-06","2010-01-07","2010-01-08","2010-01-09","2010-01-10","2010-01-11","2010-01-12","2010-01-13","2010-01-14","2010-01-15","2010-01-16","2010-01-17","2010-01-18","2010-01-19","2010-01-20","2010-01-21","2010-01-22","2010-01-23","2010-01-24","2010-01-25","2010-01-26","2010-01-27","2010-01-28","2010-01-29","2010-01-30","2010-01-31","2010-02-01","2010-02-02","2010-02-03","2010-02-04","2010-02-05","2010-02-06","2010-02-07","2010-02-08","2010-02-09","2010-02-10","2010-02-11","2010-02-12","2010-02-13","2010-02-14","2010-02-15","2010-02-16","2010-02-17","2010-02-18","2010-02-19","2010-02-20","2010-02-21","2010-02-22","2010-02-23","2010-02-24","2010-02-25","2010-02-26","2010-02-27","2010-02-28","2010-03-01","2010-03-02","2010-03-03","2010-03-04","2010-03-05","2010-03-06","2010-03-07","2010-03-08","2010-03-09","2010-03-10","2010-03-11","2010-03-12","2010-03-13","2010-03-14","2010-03-15","2010-03-16","2010-03-17","2010-03-18","2010-03-19","2010-03-20","2010-03-21","2010-03-22","2010-03-23","2010-03-24","2010-03-25","2010-03-26","2010-03-27","2010-03-28","2010-03-29","2010-03-30","2010-03-31","2010-04-01","2010-04-02","2010-04-03","2010-04-04","2010-04-05","2010-04-06","2010-04-07","2010-04-08","2010-04-09","2010-04-10","2010-04-11","2010-04-12","2010-04-13","2010-04-14","2010-04-15","2010-04-16","2010-04-17","2010-04-18","2010-04-19","2010-04-20","2010-04-21","2010-04-22","2010-04-23","2010-04-24","2010-04-25","2010-04-26","2010-04-27","2010-04-28","2010-04-29","2010-04-30","2010-05-01","2010-05-02","2010-05-03","2010-05-04","2010-05-05","2010-05-06","2010-05-07","2010-05-08","2010-05-09","2010-05-10","2010-05-11","2010-05-12","2010-05-13","2010-05-14","2010-05-15","2010-05-16","2010-05-17","2010-05-18","2010-05-19","2010-05-20","2010-05-21","2010-05-22","2010-05-23","2010-05-24","2010-05-25","2010-05-26","2010-05-27","2010-05-28","2010-05-29","2010-05-30","2010-05-31","2010-06-01","2010-06-02","2010-06-03","2010-06-04","2010-06-05","2010-06-06","2010-06-07","2010-06-08","2010-06-09","2010-06-10","2010-06-11","2010-06-12","2010-06-13","2010-06-14","2010-06-15","2010-06-16","2010-06-17","2010-06-18","2010-06-19","2010-06-20","2010-06-21","2010-06-22","2010-06-23","2010-06-24","2010-06-25","2010-06-26","2010-06-27","2010-06-28","2010-06-29","2010-06-30","2010-07-01","2010-07-02","2010-07-03","2010-07-04","2010-07-05","2010-07-06","2010-07-07","2010-07-08","2010-07-09","2010-07-10","2010-07-11","2010-07-12","2010-07-13","2010-07-14","2010-07-15","2010-07-16","2010-07-17","2010-07-18","2010-07-19","2010-07-20","2010-07-21","2010-07-22","2010-07-23","2010-07-24","2010-07-25","2010-07-26","2010-07-27","2010-07-28","2010-07-29","2010-07-30","2010-08-09","2010-08-10","2010-08-11","2010-08-12","2010-08-13","2010-08-14","2010-08-15","2010-08-16","2010-08-17","2010-08-18","2010-08-19","2010-08-20","2010-08-21","2010-08-22","2010-08-27","2010-08-28","2010-08-29","2010-08-30","2010-08-31","2010-09-01","2010-09-02","2010-09-03","2010-09-04","2010-09-05","2010-09-06","2010-09-07","2010-09-08","2010-09-09","2010-09-10","2010-09-11","2010-09-12","2010-09-13","2010-09-14","2010-09-15","2010-09-16","2010-09-17","2010-09-19","2010-09-20","2010-09-21","2010-09-22","2010-09-23","2010-09-24","2010-09-25","2010-09-26","2010-09-27","2010-09-28","2010-09-29","2010-09-30","2010-10-02","2010-10-03","2010-10-04","2010-10-05","2010-10-06","2010-10-07","2010-10-08","2010-10-09","2010-10-10","2010-10-11","2010-10-12","2010-10-13","2010-10-14","2010-10-15","2010-10-16","2010-10-17","2010-10-18","2010-10-19","2010-10-20","2010-10-21","2010-10-22","2010-10-23","2010-10-24","2010-10-25","2010-10-26","2010-10-27","2010-10-28","2010-10-29","2010-10-30","2010-10-31","2010-11-01","2010-11-02","2010-11-03","2010-11-04","2010-11-05","2010-11-06","2010-11-07","2010-11-08","2010-11-09","2010-11-10","2010-11-11","2010-11-12","2010-11-13","2010-11-14","2010-11-15","2010-11-16","2010-11-17","2010-11-18","2010-11-19","2010-11-20","2010-11-21","2010-11-22","2010-11-23","2010-11-24","2010-11-26","2010-11-27","2010-11-28","2010-11-29","2010-11-30","2010-12-01","2010-12-02","2010-12-03","2010-12-04","2010-12-05","2010-12-06","2010-12-07","2010-12-08","2010-12-09","2010-12-10","2010-12-11","2010-12-12","2010-12-13","2010-12-14","2010-12-15","2010-12-16","2010-12-17","2010-12-18","2010-12-19","2010-12-20","2010-12-21","2010-12-22","2010-12-23","2010-12-24","2010-12-25","2010-12-26","2010-12-27","2010-12-28","2010-12-29","2010-12-30","2010-12-31"],"y":[0.3,0,0,2.5,7.1,0.8,0.8,0.3,0,0.8,15,0.8,0,0,4.6,0,11.7,1.5,0.5,0.3,0,0,0,4.6,0,8.1,0,15,0,19.6,9.9,0,0,1.5,0,0,0,10.9,0,0,0,4.1,2.3,0,20.6,0,8.6,0,0,0,0,0,0,0,0,4.1,5.8,0,4.3,4.1,4.1,0,2.3,0,0,0,0,0.5,0,0.8,0,0.5,0,0,1.3,2,0,25.7,0,0,0.5,15.2,23.6,0.5,0.8,3,3.3,0,6.1,20.8,0,0,0,5.8,0,2.5,0.5,0.8,5.8,0.3,0,0,17.3,8.6,0,17.3,2.5,0,0,48.3,17.8,0,14.7,27.9,0,0,0,0.5,0,7.9,0.8,0.3,0,6.4,10.7,0.3,0,0,0,0,0,0,16.3,7.6,0,0,7.6,8.4,0,5.1,9.9,0,0,0,0,0,0,6.1,0,0.3,0,0,0,0,0,0,0,0,0,0,0,0,3.3,1.5,21.8,1.3,0,1.8,2,15.5,0.3,0,0,0,0,0,0,0,0,0,0,0.3,3.6,1.3,4.1,0,0,3.6,2,0.8,0,0,0,0,0,0,0,17.5,0,0,1.5,0.3,35.3,5.3,0,12.4,0,8.1,0,0,0,25.9,0.3,15.7,0,11.4,0,1,0,1.8,2,0,0,3.8,0,10.9,4.8,0,0,0,1,0,0,0,0,0,0,0,0,0,22.4,0,0,0,0,12.7,4.1,19.6,3,21.1,48,26.2,0,1.3,0,3.6,1.5,0,5.3,22.4,0,0.5,0,4.3,0,0,0.8,0,0,0,0,0,0.3,0,0,0,0,1.3,0,0,0,0,0,0,14.5,31.5,0,0,16.8,0,0,7.4,8.1,0,0,0,0,0,0,0,0,0,0,0,4.8,19.8,0.3,26.4,0.3,6.4,1.5,4.6,0.5,0,0,2.3,0,4.8,0,0,0,0,0,0,0,10.7,0,0,0,0,2.8,0.3,0,0,55.4,0,24.1,38.1,0,0,0,0,0,0,0,0,11.9,0.3,1.3,0,0,0,0,2,0,0,0,0,0,0,0,0,7.6,5.3,0,0,0,0,16.8,0,0,0,2.5,0,0,0.8,0,1.8,3.8,0,0,5.1,5.8,1,0,24.6,5.1,9.1,0,0,1,8.4,0,0.5,5.1,8.4,0,1.3,0,1.8,0,1.3,0,11.7,0,0,0,0,0,0,3.3,1.3,0,0,0,0,0,0,0,0,4.8,18.8,0.8,4.3,0,0,0,1.8,0,0,0,0,0,0,0,1,0.3,0,0,0,0,0,10.7,1.3,1,0,2,0,0,2,0,2.8,0,0,3.8,0,0,0,0,4.8,17.3,10.9,10.2,1.5,0,0,0,0,0,0,11.7,0.3,0,0,0,0,0,0,5.3,0,2.3,5.3,3.6,0,0.8,0,15.5,0,0,5.3,0.3,0.5,0,3,0,0,0,0,0,0,0,0.8,0,6.9,4.8,0.3,0,0,0,0.5,0,0.3,0,1.3,2.5,0,0,0,5.3,6.6,0,1,7.4,0,0,0,0,7.4,0,11.7,0,0,0,0,0,0,0,0,0,24.4,0.3,10.9,2.3,0,0,0,0,0,0,0,0,11.9,2.5,0,10.9,1,23.6,10.9,2.5,0,14.5,17,0.3,14.2,1.3,0,0,0,0,15.2,4.1,0.3,0,16.8,67.1,3.8,9.1,0,0,4.1,14.5,0.3,0,0,3.8,0,0,0,0.5,9.4,16.8,0,0,0,6.1,1.3,0,6.6,0,1,0,0,0,0,0,0,3,1,0,0,0,0,0,0,0,6.1,1.3,0,39.1,10.2,1.5,0,0,0.5,0,21.6,8.9,0,0,0,0,0,0,0,0,0,0,0,0,14.7,2,0,0,0,0,0,0,0,0,0,0,0.3,0,0,11.2,16,0.3,4.6,1.3,0.5,3,0.5,0,1,3.8,5.8,0,3.3,0,0,4.3,1,0,0,0,0,0,0,0,0,0,11.2,21.1,0,0,6.1,34.3,0.3,0,6.4,0,0,0,0,2,0,0,0,0,0,0,0,10.4,16.3,0,0,0,0,18.8,0,0,0,0,0,2,0,0.8,0,0,1,0,19.3,0.3,0,12.2,0,0,21.3,9.1,0,0,0,9.7,0,0,0.3,0,0,0,0,0,0,1.3,0,0.3,0,0,3.3,2.8,5.6,3.8,0,0,0,0,3.6,0,0,0,0,0,0,0,0,22.6,0,0.8,0.5,0,0,0,1.5,22.1,0,0,1.8,0,0,0,0,1.3,1.8,0,0,0,0,0,0,4.6,0,0,1.3,0.5,0,10.7,1.3,0,0,0,0,1.3,62.2,14.5,78.5,16,8.9,2.5,0,0.5,0,0,0,0,0,0,0,0,0,5.6,26.9,6.6,0,0,0,0,0,0,0,37.1,1,0,7.6,0,0,2.8,1,61.7,1.3,0,0,0,0,0,4.6,0,12.4,0,0,0,0,0,0,2,5.6,1.3,0,0,0,0,0,0,0.5,0.5,9.9,6.6,0,0,0,0,0.3,2.8,4.3,2.8,0.5,18.5,2.8,0,0,1.8,0.8,9.4,0,0,0,0,11.4,2.3,0,0,0,0,0,0,0,0,0,0,0,2,6.1,0,3,4.1,18.8,26.9,0,0,11.2,5.8,0,21.8,0,0,0,15.2,0,0,8.1,0,0,5.8,0,11.2,0,1.3,11.2,9.4,0,0,0,0,0,0,0,0,0,0,9.1,0.5,0,0,22.4,0.5,0,0.5,25.7,0,0,0,4.3,0,27.2,14,0.3,0,0,0,0,0,8.6,0,0,0.3,0,0,1.3,1.3,0,0,6.4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.3,0.3,0.8,0,0,0.8,5.1,0,0,4.1,0,0,0,0,2,0,0,0,0,12.2,3,0,13.5,0,0,6.9,7.1,51.3,3,0,0,0,0,0,0,25.1,14.5,0,0,0,0,0,2.5,0,1.3,0.5,15.7,17.8,0.3,0,2.3,0.5,0,0,0,0,31.2,1.5,0,0,11.2,0.3,0,0,0,0,0,0,20.8,4.3,0,0,0,0,1.3,1,6.6,0,0.3,0,0,8.6,42.7,0,0,0,0.5,2.3,1,0,0,0,21.8,5.3,1.8,0.3,4.1,0,0,0,0,0,0,1.3,0,0,5.1,8.4,0,0,0,0],"mode":"markers","type":"scatter","name":"US1NYAB0001","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2008-09-11","2008-09-12","2008-09-13","2008-09-14","2008-09-15","2008-09-16","2008-09-17","2008-09-18","2008-09-19","2008-09-20","2008-09-21","2008-09-22","2008-09-23","2008-09-24","2008-09-25","2008-09-26","2008-09-27","2008-09-28","2008-09-29","2008-09-30","2008-10-01","2008-10-02","2008-10-03","2008-10-04","2008-10-05","2008-10-06","2008-10-07","2008-10-08","2008-10-09","2008-10-10","2008-10-11","2008-10-12","2008-10-13","2008-10-14","2008-10-15","2008-10-16","2008-10-17","2008-10-18","2008-10-19","2008-10-20","2008-10-21","2008-10-22","2008-10-23","2008-10-24","2008-10-25","2008-10-26","2008-10-27","2008-10-28","2008-10-29","2008-10-30","2008-10-31","2008-11-01","2008-11-02","2008-11-03","2008-11-04","2008-11-05","2008-11-06","2008-11-07","2008-11-08","2008-11-09","2008-11-10","2008-11-11","2008-11-12","2008-11-13","2008-11-14","2008-11-15","2008-11-16","2008-11-17","2008-11-18","2008-11-19","2008-11-20","2008-11-21","2008-11-22","2008-11-23","2008-11-24","2008-11-25","2008-11-26","2008-11-27","2008-11-28","2008-11-29","2008-11-30","2008-12-01","2008-12-02","2008-12-03","2008-12-04","2008-12-05","2008-12-06","2008-12-07","2008-12-08","2008-12-09","2008-12-10","2008-12-11","2008-12-12","2008-12-13","2008-12-14","2008-12-15","2008-12-16","2008-12-17","2008-12-18","2008-12-19","2008-12-20","2008-12-21","2008-12-22","2008-12-23","2008-12-24","2008-12-25","2008-12-26","2008-12-27","2008-12-28","2008-12-29","2008-12-30","2008-12-31","2009-01-01","2009-01-02","2009-01-03","2009-01-04","2009-01-05","2009-01-06","2009-01-07","2009-01-08","2009-01-09","2009-01-10","2009-01-11","2009-01-12","2009-01-13","2009-01-14","2009-01-15","2009-01-16","2009-01-17","2009-01-18","2009-01-19","2009-01-20","2009-01-21","2009-01-22","2009-01-23","2009-01-24","2009-01-25","2009-01-26","2009-01-27","2009-01-28","2009-01-29","2009-01-30","2009-01-31","2009-02-01","2009-02-02","2009-02-03","2009-02-04","2009-02-05","2009-02-06","2009-02-07","2009-02-08","2009-02-09","2009-02-10","2009-02-11","2009-02-12","2009-02-13","2009-02-14","2009-02-15","2009-02-16","2009-02-17","2009-02-18","2009-02-19","2009-02-20","2009-02-21","2009-02-22","2009-02-23","2009-02-24","2009-02-25","2009-02-26","2009-02-27","2009-02-28","2009-03-01","2009-03-02","2009-03-03","2009-03-04","2009-03-05","2009-03-06","2009-03-07","2009-03-08","2009-03-09","2009-03-10","2009-03-11","2009-03-12","2009-03-13","2009-03-14","2009-03-15","2009-03-16","2009-03-17","2009-03-18","2009-03-19","2009-03-20","2009-03-21","2009-03-22","2009-03-23","2009-03-24","2009-03-26","2009-03-27","2009-03-28","2009-03-29","2009-03-30","2009-03-31","2009-04-01","2009-04-02","2009-04-03","2009-04-04","2009-04-05","2009-04-06","2009-04-07","2009-04-08","2009-04-09","2009-04-10","2009-04-11","2009-04-12","2009-04-13","2009-04-14","2009-04-15","2009-04-16","2009-04-17","2009-04-18","2009-04-19","2009-04-20","2009-04-21","2009-04-22","2009-04-23","2009-04-24","2009-04-25","2009-04-26","2009-04-27","2009-04-28","2009-04-29","2009-04-30","2009-05-01","2009-05-02","2009-05-03","2009-05-04","2009-05-05","2009-05-06","2009-05-07","2009-05-08","2009-05-09","2009-05-10","2009-05-11","2009-05-12","2009-05-13","2009-05-14","2009-05-15","2009-05-16","2009-05-17","2009-05-18","2009-05-19","2009-05-20","2009-05-21","2009-05-22","2009-05-23","2009-05-24","2009-05-25","2009-05-26","2009-05-27","2009-05-28","2009-05-29","2009-05-30","2009-05-31","2009-06-01","2009-06-02","2009-06-03","2009-06-04","2009-06-05","2009-06-06","2009-06-07","2009-06-08","2009-06-09","2009-06-10","2009-06-11","2009-06-12","2009-06-13","2009-06-14","2009-06-15","2009-06-16","2009-06-17","2009-06-18","2009-06-19","2009-06-20","2009-06-21","2009-06-22","2009-06-23","2009-06-24","2009-06-25","2009-06-26","2009-06-27","2009-06-28","2009-06-29","2009-06-30","2009-07-01","2009-07-02","2009-07-03","2009-07-04","2009-07-05","2009-07-06","2009-07-07","2009-07-08","2009-07-09","2009-07-10","2009-07-11","2009-07-12","2009-07-13","2009-07-14","2009-07-15","2009-07-16","2009-07-17","2009-07-18","2009-07-19","2009-07-20","2009-07-21","2009-07-22","2009-07-23","2009-07-24","2009-07-25","2009-07-26","2009-07-27","2009-07-28","2009-07-29","2009-07-30","2009-07-31","2009-08-01","2009-08-02","2009-08-03","2009-08-04","2009-08-05","2009-08-06","2009-08-07","2009-08-08","2009-08-09","2009-08-10","2009-08-11","2009-08-12","2009-08-13","2009-08-14","2009-08-15","2009-08-16","2009-08-17","2009-08-18","2009-08-19","2009-08-20","2009-08-21","2009-08-22","2009-08-23","2009-08-24","2009-08-25","2009-08-26","2009-08-27","2009-08-28","2009-08-29","2009-08-30","2009-08-31","2009-09-01","2009-09-02","2009-09-03","2009-09-04","2009-09-05","2009-09-06","2009-09-07","2009-09-08","2009-09-09","2009-09-10","2009-09-11","2009-09-12","2009-09-13","2009-09-14","2009-09-15","2009-09-16","2009-09-17","2009-09-18","2009-09-19","2009-09-20","2009-09-21","2009-09-22","2009-09-23","2009-09-24","2009-09-25","2009-09-26","2009-09-27","2009-09-28","2009-09-29","2009-09-30","2009-10-01","2009-10-02","2009-10-03","2009-10-04","2009-10-05","2009-10-06","2009-10-07","2009-10-08","2009-10-09","2009-10-10","2009-10-11","2009-10-12","2009-10-13","2009-10-14","2009-10-15","2009-10-16","2009-10-17","2009-10-18","2009-10-19","2009-10-20","2009-10-21","2009-10-22","2009-10-23","2009-10-24","2009-10-25","2009-10-26","2009-10-27","2009-10-28","2009-10-29","2009-10-30","2009-10-31","2009-11-01","2009-11-02","2009-11-03","2009-11-04","2009-11-05","2009-11-06","2009-11-07","2009-11-08","2009-11-09","2009-11-10","2009-11-11","2009-11-12","2009-11-13","2009-11-14","2009-11-15","2009-11-16","2009-11-17","2009-11-18","2009-11-19","2009-11-20","2009-11-21","2009-11-23","2009-11-24","2009-11-25","2009-11-26","2009-11-27","2009-11-28","2009-11-29","2009-11-30","2009-12-01","2009-12-02","2009-12-03","2009-12-04","2009-12-05","2009-12-06","2009-12-07","2009-12-08","2009-12-09","2009-12-10","2009-12-11","2009-12-12","2009-12-13","2009-12-14","2009-12-15","2009-12-16","2009-12-17","2009-12-18","2009-12-19","2009-12-20","2009-12-21","2009-12-22","2009-12-23","2009-12-24","2009-12-25","2009-12-26","2009-12-27","2009-12-28","2009-12-29","2009-12-30","2009-12-31","2010-01-01","2010-01-02","2010-01-03","2010-01-04","2010-01-05","2010-01-06","2010-01-07","2010-01-08","2010-01-09","2010-01-10","2010-01-11","2010-01-12","2010-01-13","2010-01-14","2010-01-15","2010-01-16","2010-01-17","2010-01-18","2010-01-19","2010-01-20","2010-01-21","2010-01-22","2010-01-23","2010-01-24","2010-01-25","2010-01-26","2010-01-27","2010-01-28","2010-01-29","2010-01-30","2010-01-31","2010-02-01","2010-02-02","2010-02-03","2010-02-04","2010-02-05","2010-02-06","2010-02-07","2010-02-08","2010-02-09","2010-02-10","2010-02-11","2010-02-12","2010-02-13","2010-02-14","2010-02-15","2010-02-16","2010-02-17","2010-02-18","2010-02-19","2010-02-20","2010-02-21","2010-02-22","2010-02-23","2010-02-24","2010-02-25","2010-02-26","2010-02-27","2010-02-28","2010-03-01","2010-03-02","2010-03-03","2010-03-04","2010-03-05","2010-03-07","2010-03-08","2010-03-09","2010-03-10","2010-03-11","2010-03-12","2010-03-13","2010-03-14","2010-03-15","2010-03-16","2010-03-17","2010-03-18","2010-03-19","2010-03-20","2010-03-21","2010-03-22","2010-03-23","2010-03-24","2010-03-25","2010-03-26","2010-03-27","2010-03-28","2010-03-29","2010-03-30","2010-03-31","2010-04-01","2010-04-02","2010-04-03","2010-04-04","2010-04-05","2010-04-06","2010-04-07","2010-04-08","2010-04-09","2010-04-10","2010-04-11","2010-04-12","2010-04-13","2010-04-14","2010-04-15","2010-04-16","2010-04-17","2010-04-18","2010-04-19","2010-04-20","2010-04-21","2010-04-22","2010-04-23","2010-04-24","2010-04-25","2010-04-26","2010-04-28","2010-05-04","2010-05-05","2010-05-06","2010-05-07","2010-05-08","2010-05-09","2010-05-10","2010-05-11","2010-05-12","2010-05-13","2010-05-14","2010-05-15","2010-05-16","2010-05-17","2010-05-18","2010-05-19","2010-05-20","2010-05-21","2010-05-22","2010-05-23","2010-05-24","2010-05-25","2010-05-26","2010-05-27","2010-05-28","2010-05-29","2010-05-30","2010-05-31","2010-06-01","2010-06-02","2010-06-03","2010-06-04","2010-06-05","2010-06-06","2010-06-07","2010-06-08","2010-06-09","2010-06-10","2010-06-11","2010-06-12","2010-06-13","2010-06-14","2010-06-15","2010-06-16","2010-06-17","2010-06-18","2010-06-19","2010-06-20","2010-06-21","2010-06-22","2010-06-23","2010-06-24","2010-06-25","2010-06-26","2010-06-27","2010-06-28","2010-06-29","2010-06-30","2010-07-01","2010-07-02","2010-07-03","2010-07-04","2010-07-05","2010-07-06","2010-07-07","2010-07-08","2010-07-09","2010-07-10","2010-07-11","2010-07-12","2010-07-13","2010-07-14","2010-07-15","2010-07-16","2010-07-17","2010-07-18","2010-07-19","2010-07-20","2010-07-21","2010-07-22","2010-07-23","2010-07-24","2010-07-25","2010-07-26","2010-07-27","2010-07-28","2010-07-29","2010-07-30","2010-07-31","2010-08-01","2010-08-02","2010-08-03","2010-08-04","2010-08-05","2010-08-06","2010-08-07","2010-08-08","2010-08-09","2010-08-10","2010-08-11","2010-08-12","2010-08-13","2010-08-14","2010-08-15","2010-08-16","2010-08-17","2010-08-18","2010-08-19","2010-08-20","2010-08-21","2010-08-22","2010-08-23","2010-08-24","2010-08-25","2010-08-26","2010-08-27","2010-08-28","2010-08-29","2010-08-30","2010-08-31","2010-09-01","2010-09-02","2010-09-03","2010-09-04","2010-09-05","2010-09-06","2010-09-07","2010-09-08","2010-09-09","2010-09-10","2010-09-11","2010-09-12","2010-09-13","2010-09-14","2010-09-15","2010-09-16","2010-09-17","2010-09-18","2010-09-19","2010-09-20","2010-09-21","2010-09-22","2010-09-23","2010-09-24","2010-09-25","2010-09-26","2010-09-27","2010-09-28","2010-09-29","2010-09-30","2010-10-02","2010-10-03","2010-10-04","2010-10-05","2010-10-06","2010-10-07","2010-10-08","2010-10-09","2010-10-10","2010-10-11","2010-10-12","2010-10-13","2010-10-14","2010-10-15","2010-10-16","2010-10-17","2010-10-18","2010-10-19","2010-10-20","2010-10-21","2010-10-22","2010-10-23","2010-10-24","2010-10-25","2010-10-26","2010-10-27","2010-10-28","2010-10-29","2010-10-30","2010-10-31","2010-11-01","2010-11-02","2010-11-03","2010-11-04","2010-11-05","2010-11-06","2010-11-07","2010-11-08","2010-11-09","2010-11-10","2010-11-11","2010-11-12","2010-11-13","2010-11-14","2010-11-15","2010-11-16","2010-11-17","2010-11-18","2010-11-19","2010-11-20","2010-11-21","2010-11-22","2010-11-23","2010-11-24","2010-11-25","2010-11-26","2010-11-27","2010-11-28","2010-11-29","2010-11-30","2010-12-01","2010-12-02","2010-12-03","2010-12-04","2010-12-05","2010-12-06","2010-12-07","2010-12-08","2010-12-09","2010-12-10","2010-12-11","2010-12-12","2010-12-13","2010-12-14","2010-12-15","2010-12-16","2010-12-17","2010-12-18","2010-12-19","2010-12-20","2010-12-21","2010-12-22","2010-12-23","2010-12-24","2010-12-25","2010-12-26","2010-12-27","2010-12-28","2010-12-29","2010-12-30","2010-12-31"],"y":[0,0,6.6,6.4,0.3,0,0,0,0,0,0,0,0,0,0,3.6,10.9,0.5,21.6,0.5,8.4,1.5,0.8,0.5,0,0,5.6,0.3,6.6,0.3,0,0,0,0,0,0,10.9,0,0,0,0,2.8,0,0,0,54.6,0.3,16.5,38.6,0,0,0,0,0,0,0,0,5.3,0,2.5,0.3,0,1,0.5,3.8,0.3,17.5,0,0,0,0,0,0,0,0,11.4,11.2,0,0,0,0,15.5,0,0,0,2.8,0,0,0,0,1.3,3.8,56.4,1.5,0,0,3.8,7.4,1.3,0,24.6,2.3,11.7,0,1.5,4.1,0,4.6,8.1,0,0.3,4.1,9.7,0,1.3,0,1.5,0,6.9,11.7,0.5,0,12.4,0.3,0,0,0,0,0,2.3,1.5,0,0,0,0,0,0,0,0,4.8,17.3,0,1.3,0,0,0,0,0,0,0,0,0,0,0,0.8,0,0,0,0,0,0,10.4,0,0,0,1.3,0,0,1,0,1.8,0,0.3,2.3,0,0,0,0,4.8,17.8,11.2,11.2,1.8,0,0,0,0,0,0,9.1,0.5,0,0,0,0,0,6.4,0,0.5,9.9,1.5,0,1,0.3,9.1,0.3,0.3,7.6,0.8,0,0,2.5,0,0,0,0,0,0,0,0.8,0,6.4,6.6,0.3,0,0,0,0,0,0.5,0,1.5,0.8,0,0,0,4.6,8.9,0.3,1.5,7.9,0.3,0,0,0,10.4,0,9.7,0,0,0,0,0,0,1,0,0,31,0.3,20.1,1.3,0.3,0.5,0,0,0,0,0,0,0,11.2,1.5,0.3,20.1,1.8,11.4,16.5,15.2,0,16,18.5,0.5,10.7,2.8,0.5,0,0,0,15,33,0.3,0,16.3,14.7,13.2,2.3,0.3,0,2.8,27.4,0.5,0,0,6.4,0,0,0,0.5,18.3,13.7,0,0,0,4.3,0,0,6.4,3.3,0,0,0,42.9,0.8,56.6,0,3.3,0,0,0,0,0,0,1.8,0.8,0,0,0,0,0,0,0,1.8,7.9,0,49,2.5,5.3,0,0,0,0,23.4,10.9,0,0,0,0,0,0,0,0,0,0,0,0,13.7,1.3,0,0,0,0,0,0,0,0,0,0,0,0,0,13.7,16.5,0.8,1.5,1,0.3,3.3,2.8,0.5,1.3,3.8,3.8,0,2.8,0,0,5.3,0.8,0,0,0,0,0,0,0,0,0,10.4,23.9,0,0,5.8,30.7,0,0,4.8,0,0,0.5,0,1.3,0,0,0,0,0,0,0,7.9,22.6,0,0,0,0,19.1,0,0,0,0,1.3,0,0,0,0,0,0,25.1,0,0,9.9,0,0,13,13.5,0,0,0,6.9,0,0.5,0,0,0,0,0,0,0,0.5,0,7.4,20.8,1.5,0,0,0,3.3,0.3,1.8,1,0,0,0,0.8,1.5,0,0,0,0,0,0,0,0,17.3,0.8,1.3,0,0,0,0,3,21.6,0.5,0,0.8,0,0,0,0,1.3,0.3,0,0,0,0,0,0,1.3,0,0,0.5,0,0,8.6,0.3,0,0,0,0,0,47,13,36.8,14.7,10.4,2.5,0,0,0,0,0,0,0,0,0,0,2.8,8.4,4.3,0,0,0,0,0,0,0,41.9,0.3,0,11.4,0,0,3,0.3,32,0.8,0,0,0,0,0,5.6,0,14.5,0.5,0,0,0,0,0,1,5.1,1,0,0,0,0.5,0,0,0,0,7.1,1.8,3.6,3.3,1,11.7,5.6,0,0,3.6,1.3,11.4,0,0,0,0,5.8,1.3,0,0,0,0,0,0,0,0,0,0,0,1.5,3,0,2,4.8,8.1,28.2,0,0,10.7,1.8,0,32,0.5,0.3,0,11.7,0,0,3.3,0,0,7.9,0,9.1,0.3,0.8,0,6.9,0,0,0,0,0,0,0,0,0,0,6.1,2.3,0,0,12.2,0.5,0,0,18.8,0,0.3,0,0.5,0,24.9,3.8,0,0,0,0,0,0,0,0,0,0,0.5,21.3,0,0,0,8.6,0,0,0,0,0,1.5,1,0,0,18.5,0,0,42.4,6.9,0.8,0.8,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0.8,0,0,0.5,0.3,0.3,0,4.3,2.3,0,0,0,0,1.5,0,0,0,0,14.2,3.6,0.3,13.2,0,0.3,5.6,6.4,34.8,2.8,0,0,0,0,0,0,20.6,6.4,0.5,0,0,0,0,0.5,0,0.8,0.8,13.5,17.3,0.5,0,0.8,0,0,0,0,0,27.4,1.8,0,0,15.5,0,0,0,0,0,0,0,22.1,2,0,0,0,0,0.5,0.5,0,8.6,0,0,0,0,13.2,44.5,0,0,0,0.5,0.3,0,0,0,0,0,28.4,1.5,0,0.3,0.3,0,0,0,0,0,0,0,0,0,14.2,1.3,0,0,0],"mode":"markers","type":"scatter","name":"US1NYAB0006","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_y":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"line":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2008-10-28","2008-10-30","2008-10-31","2008-11-01","2008-11-02","2008-11-03","2008-11-04","2008-11-08","2008-11-09","2008-11-10","2008-11-11","2008-11-12","2008-11-13","2008-11-14","2008-11-15","2008-11-16","2008-11-17","2008-11-18","2008-11-19","2008-11-20","2008-11-21","2008-11-22","2008-11-24","2008-11-25","2008-12-02","2008-12-03","2008-12-04","2008-12-05","2008-12-06","2008-12-08","2008-12-09","2008-12-10","2008-12-11","2008-12-12","2008-12-13","2008-12-14","2008-12-15","2008-12-16","2008-12-17","2008-12-18","2008-12-19","2008-12-20","2008-12-21","2008-12-22","2008-12-23","2008-12-24","2009-01-02","2009-01-03","2009-01-04","2009-01-05","2009-01-06","2009-01-07","2009-01-08","2009-01-09","2009-01-10","2009-01-11","2009-01-12","2009-01-13","2009-01-14","2009-01-15","2009-01-16","2009-01-17","2009-01-18","2009-01-19","2009-01-20","2009-01-21","2009-01-22","2009-01-23","2009-01-26","2009-01-27","2009-01-28","2009-01-29","2009-01-30","2009-01-31","2009-02-01","2009-02-02","2009-02-03","2009-02-04","2009-02-05","2009-02-06","2009-02-07","2009-02-09","2009-02-10","2009-02-11","2009-02-12","2009-02-13","2009-02-14","2009-02-15","2009-02-16","2009-02-17","2009-02-19","2009-02-20","2009-02-21","2009-02-22","2009-02-23","2009-02-24","2009-02-25","2009-02-26","2009-02-28","2009-03-01","2009-03-02","2009-03-03","2009-03-04","2009-03-05","2009-03-06","2009-03-07","2009-03-08","2009-03-09","2009-03-10","2009-03-11","2009-03-12","2009-03-13","2009-03-15","2009-03-16","2009-03-18","2009-03-19","2009-03-20","2009-03-21","2009-03-22","2009-03-23","2009-03-24","2009-03-25","2009-03-26","2009-03-27","2009-03-28","2009-03-29","2009-03-30","2009-03-31","2009-04-01","2009-04-02","2009-04-03","2009-04-04","2009-04-05","2009-04-06","2009-04-07","2009-04-08","2009-04-09","2009-04-10","2009-04-11","2009-04-12","2009-04-13","2009-04-14","2009-04-15","2009-04-16","2009-04-17","2009-04-18","2009-04-19","2009-04-20","2009-04-21","2009-04-28","2009-04-29","2009-04-30","2009-05-01","2009-05-02","2009-05-03","2009-05-04","2009-05-05","2009-05-06","2009-05-07","2009-05-08","2009-05-09","2009-05-10","2009-05-11","2009-05-12","2009-05-14","2009-05-15","2009-05-17","2009-05-18","2009-05-19","2009-05-21","2009-05-22","2009-05-23","2009-05-24","2009-05-25","2009-05-26","2009-05-27","2009-05-28","2009-05-29","2009-05-30","2009-05-31","2009-06-01","2009-06-02","2009-06-03","2009-06-04","2009-06-05","2009-06-06","2009-06-07","2009-06-08","2009-06-09","2009-06-10","2009-06-11","2009-06-12","2009-06-14","2009-06-15","2009-06-16","2009-06-17","2009-06-18","2009-06-19","2009-06-20","2009-06-21","2009-06-22","2009-06-23","2009-06-24","2009-06-25","2009-06-26","2009-06-28","2009-06-29","2009-06-30","2009-07-01","2009-07-02","2009-07-03","2009-07-04","2009-07-05","2009-07-06","2009-07-07","2009-07-08","2009-07-09","2009-07-10","2009-07-11","2009-07-12","2009-07-13","2009-07-14","2009-07-21","2009-07-22","2009-07-23","2009-08-04","2009-08-05","2009-08-07","2009-08-08","2009-08-09","2009-08-10","2009-08-11","2009-08-12","2009-08-13","2009-08-14","2009-08-15","2009-08-16","2009-08-17","2009-08-18","2009-08-19","2009-08-20","2009-08-25","2009-08-26","2009-08-27","2009-08-28","2009-08-29","2009-08-30","2009-09-01","2009-09-02","2009-09-03","2009-09-04","2009-09-05","2009-09-06","2009-09-07","2009-09-08","2009-09-09","2009-09-10","2009-09-11","2009-09-12","2009-09-13","2009-09-14","2009-09-16","2009-09-18","2009-09-19","2009-09-21","2009-09-22","2009-09-23","2009-09-24","2009-09-26","2009-09-27","2009-09-28","2009-09-29","2009-09-30","2009-10-02","2009-10-03","2009-10-04","2009-10-05","2009-10-08","2009-10-16","2009-10-18","2009-10-19","2009-10-20","2009-10-21","2009-10-22","2009-10-23","2009-10-24","2009-10-25","2009-10-26","2009-10-27","2009-10-28","2009-10-29","2009-10-30","2009-10-31","2009-11-02","2009-11-03","2009-11-04","2009-11-11","2009-11-12","2009-11-14","2009-11-15","2009-11-16","2009-11-17","2009-11-18","2009-11-19","2009-11-20","2009-11-21","2009-11-22","2009-11-24","2009-11-25","2009-11-26","2009-11-27","2009-11-29","2009-12-01","2009-12-02","2009-12-03","2009-12-04","2009-12-05","2009-12-06","2009-12-07","2009-12-08","2009-12-10","2009-12-12","2009-12-14","2009-12-15","2009-12-16","2009-12-17","2009-12-18","2009-12-19","2009-12-20","2009-12-21","2009-12-22","2009-12-24","2009-12-25","2009-12-26","2009-12-28","2009-12-29","2009-12-30","2010-01-01","2010-01-09","2010-01-10","2010-01-11","2010-01-12","2010-01-13","2010-01-14","2010-01-15","2010-01-16","2010-01-17","2010-01-18","2010-01-19","2010-01-20","2010-01-21","2010-01-22","2010-01-23","2010-01-24","2010-01-25","2010-01-26","2010-01-27","2010-01-28","2010-01-29","2010-01-31","2010-02-01","2010-02-02","2010-02-03","2010-02-04","2010-02-05","2010-02-07","2010-02-08","2010-02-09","2010-02-10","2010-02-11","2010-02-12","2010-02-13","2010-02-14","2010-02-15","2010-02-16","2010-02-17","2010-02-18","2010-02-19","2010-02-20","2010-02-21","2010-02-22","2010-02-23","2010-02-24","2010-02-26","2010-02-27","2010-02-28","2010-03-01","2010-03-03","2010-03-04","2010-03-05","2010-03-06","2010-03-07","2010-03-09","2010-03-10","2010-03-11","2010-03-13","2010-03-14","2010-03-15","2010-03-16","2010-03-17","2010-03-18","2010-03-19","2010-03-21","2010-03-22","2010-03-23","2010-03-24","2010-03-25","2010-03-26","2010-03-27","2010-03-29","2010-03-30","2010-03-31","2010-04-01","2010-04-06","2010-04-07","2010-04-08","2010-04-09","2010-04-11","2010-04-12","2010-04-13","2010-04-14","2010-04-15","2010-04-16","2010-04-17","2010-04-18","2010-04-19","2010-04-20","2010-04-22","2010-04-23","2010-04-24","2010-04-25","2010-04-26","2010-04-27","2010-04-28","2010-05-02","2010-05-03","2010-05-04","2010-05-05","2010-05-06","2010-05-08","2010-05-09","2010-05-11","2010-05-12","2010-05-13","2010-05-14","2010-05-15","2010-05-16","2010-05-17","2010-05-18","2010-05-19","2010-05-20","2010-05-22","2010-05-23","2010-05-24","2010-05-25","2010-05-27","2010-05-29","2010-05-30","2010-06-01","2010-06-03","2010-06-04","2010-06-05","2010-06-06","2010-06-07","2010-06-08","2010-06-09","2010-06-10","2010-06-11","2010-06-12","2010-06-13","2010-06-14","2010-06-15","2010-06-16","2010-06-17","2010-06-18","2010-06-19","2010-06-20","2010-06-23","2010-06-25","2010-06-29","2010-06-30","2010-07-01","2010-07-02","2010-07-04","2010-07-05","2010-07-06","2010-07-07","2010-07-08","2010-07-09","2010-07-10","2010-07-12","2010-07-13","2010-07-14","2010-07-15","2010-07-17","2010-07-18","2010-07-19","2010-07-22","2010-07-24","2010-07-25","2010-07-26","2010-07-29","2010-07-31","2010-08-01","2010-08-02","2010-08-03","2010-08-04","2010-08-05","2010-08-06","2010-08-13","2010-08-14","2010-08-15","2010-08-16","2010-08-17","2010-08-18","2010-08-19","2010-08-20","2010-08-23","2010-08-24","2010-08-25","2010-08-26","2010-08-27","2010-08-29","2010-08-30","2010-08-31","2010-09-01","2010-09-02","2010-09-03","2010-09-04","2010-09-05","2010-09-06","2010-09-07","2010-09-08","2010-09-09","2010-09-10","2010-09-11","2010-09-12","2010-09-13","2010-09-14","2010-09-15","2010-09-16","2010-09-17","2010-09-18","2010-09-20","2010-09-21","2010-09-22","2010-09-24","2010-09-25","2010-09-26","2010-09-27","2010-09-28","2010-09-29","2010-09-30","2010-10-02","2010-10-03","2010-10-04","2010-10-05","2010-10-06","2010-10-07","2010-10-08","2010-10-09","2010-10-10","2010-10-11","2010-10-12","2010-10-13","2010-10-15","2010-10-18","2010-10-19","2010-10-20","2010-10-22","2010-10-23","2010-10-24","2010-10-26","2010-10-27","2010-11-07","2010-11-08","2010-11-09","2010-11-10","2010-11-11","2010-11-12","2010-11-13","2010-11-14","2010-11-15","2010-11-16","2010-11-17","2010-11-18","2010-11-19","2010-11-20","2010-11-21","2010-11-22","2010-11-23","2010-11-24","2010-11-25","2010-11-26","2010-11-27","2010-11-28","2010-11-29","2010-11-30","2010-12-01","2010-12-02","2010-12-12"],"y":[22.6,0,0,0,0,0,0,0.5,2,0,0.3,0,0.3,3.3,0.3,12.2,0,0.3,0,0,0,0.3,0,5.1,0,0,0,3.3,0,5.1,0,2.3,5.3,50.8,0,0,0,2.8,6.1,0,0,26.4,3,8.6,0,0,0,0,0,1.3,0,4.1,9.9,3,0,13,0,0,0,0,0,0,3.3,0,0,0,0,0,0,0,5.3,10.4,0,4.6,0,0,0.3,1,0,0,0,0,0,0,2.3,0,0,0,0,0,8.4,1.5,1.5,0,3.8,0,0,1.8,2,0,0.5,2.5,0,0,0,0,7.1,15.5,10.2,7.9,1.5,0,0,0,0,7.1,0.3,0,0,0.5,0,0,0,3.6,0,2.3,8.4,2.8,0,1,0,17,0,0,7.1,0.5,0.3,0,4.6,0,0,0,0,0,0,0,0.5,0,7.9,0,0.3,0,0.5,2.8,0,0,0,8.1,6.4,0.5,1.3,7.6,0,0,0.3,5.8,16.8,0,0,0,0,0,0,0.5,0,26.2,0.3,16.8,1,0,0,0,0,0,0,0.3,0,0,5.8,0.8,0.3,8.6,34.3,15.2,7.9,0,20.8,11.2,0.3,26.7,2.5,0.3,0,0,2.3,1,0,0,15.5,27.4,15.2,0.5,0,0,4.1,6.1,1.5,0,0,20.8,0,0,0,7.1,0.3,0,0,0,0,0,2.8,1.5,0,0,0,0,0,0,0,11.7,0.3,0,0,2.5,0,18.8,10.7,0,0,0,0,0,0,0,0,0,0,0,26.9,0,0,0,0,0,0,0,0,1.8,0,10.9,41.7,2.8,2.3,2.8,4.1,4.1,0,0,0,0,0,0,0,0,0,13.5,30,0,0,6.9,29.5,0.5,0,0,0,0,0,0,13.5,13,0,0,0,0,18.8,0.3,0,0.3,0,1.8,0.3,0,1.8,0,19.1,0.3,0,8.1,0,0.3,0,0,9.9,0,0,0,0,0,0,0,0,1.3,0,10.4,0.5,0.3,0,2.3,1.8,0,0,0.3,0,0,0,0,0,20.1,0,1.8,0.3,0,0,0,1.8,22.9,0,0,3.3,0,0,0,1.8,0.5,0,0,0,0,0,2.3,0,0.5,0,0,0,8.6,1.3,0,0.3,0,0,1.8,38.9,50.5,20.6,9.9,3.3,1.3,0,0,0,0,0,0,0,4.1,63.2,5.6,0.5,0,0,0,0,0,35.8,1.3,0,5.8,0,3.8,0.8,46,0.8,0,7.6,0,14,0,0,0,0,0,0.8,7.9,1.3,0.5,0,0,0,0,0.8,1.5,13,2.8,0,0.8,0.8,7.6,1.3,15.2,3.3,0,0,0,13.7,0.3,0,0,0,11.7,3.6,0,0,0,0,0,1,0,2,0,4.1,5.3,16,25.7,0,0,12.4,10.2,0,16,0.5,1.3,0,10.2,0,0,0.5,3,10.9,1.5,0,0,0,0,0,0,0,0,0,11.9,0,0,18.8,1,0.8,23.1,0,0.8,27.7,1.5,1.5,0.5,0,0,0,0,0,2.8,11.7,1.5,0,0,1.5,15,0,0,4.1,64.3,10.9,3.6,2.8,0,0,0,0,0,0,0,0,0,0,0,4.3,1.5,1,0.3,0,1.3,0.8,0.5,0,3,0,0,0,0,0.3,0,0,0.3,14,4.1,0.3,9.1,0,0,17.3,9.4,33.8,8.6,0,0,0,0.5,0,18.5,0,0,0.3,2.8,0.3,2.5,8.9,18.5,0,0,8.4,0,0,0,0,0,0,0,21.8,7.1,0,0.3,0,0,0.3,1.3,0,8.6,0.5,0.5,0,0,9.1,38.9,1.5],"mode":"markers","type":"scatter","name":"US1NYAB0010","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2009-07-01","2009-07-02","2009-07-03","2009-07-04","2009-07-05","2009-07-06","2009-07-07","2009-07-08","2009-07-10","2009-07-11","2009-07-12","2009-07-13","2009-07-14","2009-07-15","2009-07-16","2009-07-17","2009-07-18","2009-07-19","2009-07-20","2009-07-22","2009-07-23","2009-07-24","2009-07-25","2009-07-26","2009-07-27","2009-07-28","2009-07-30","2009-08-01","2009-08-02","2009-08-03","2009-08-04","2009-08-05","2009-08-07","2009-08-08","2009-08-09","2009-08-10","2009-08-11","2009-08-14","2009-08-18","2009-08-19","2009-08-20","2009-08-22","2009-08-23","2009-08-24","2009-08-26","2009-08-27","2009-08-28","2009-08-29","2009-08-30","2009-08-31","2009-09-01","2009-09-02","2009-09-03","2009-09-04","2009-09-06","2009-09-07","2009-09-08","2009-09-11","2009-09-12","2009-09-14","2009-09-15","2009-09-16","2009-09-18","2009-09-19","2009-09-28","2009-09-29","2009-09-30","2009-10-01","2009-10-07","2009-10-08","2009-10-10","2009-10-13","2009-10-24","2009-10-25","2009-10-28","2009-10-30","2009-10-31","2009-11-01","2009-11-04","2009-11-05","2009-11-06","2009-11-14","2009-11-15","2009-11-19","2009-11-20","2009-11-26","2010-03-23","2010-03-29","2010-03-30","2010-03-31","2010-04-16","2010-04-17","2010-04-19","2010-04-27","2010-05-05","2010-05-06","2010-05-12","2010-05-27","2010-06-01","2010-06-02","2010-06-04","2010-06-05","2010-06-06","2010-06-07","2010-06-09","2010-06-10","2010-06-12","2010-06-13","2010-06-14","2010-06-17","2010-06-20","2010-06-23","2010-06-24","2010-06-25","2010-06-27","2010-06-28","2010-06-29","2010-07-14","2010-07-15","2010-07-18","2010-07-22","2010-07-24","2010-07-25","2010-08-06","2010-08-10","2010-08-16","2010-08-20","2010-08-23","2010-08-24","2010-08-25","2010-08-26","2010-09-08","2010-09-10","2010-09-17","2010-09-23","2010-09-28","2010-09-29","2010-09-30","2010-10-02","2010-10-05","2010-10-06","2010-10-07","2010-10-08","2010-10-15","2010-10-27","2010-10-28","2010-10-30","2010-11-04","2010-11-05","2010-11-06","2010-11-09","2010-11-17","2010-11-26","2010-11-27","2010-12-01","2010-12-02","2010-12-13"],"y":[12.2,40.6,8.9,2,0,0,4.6,9.9,0.5,0,4.6,0,0,0,0.5,16.3,16.5,0,0,11.4,0,0,9.1,3.6,0.3,4.6,32.8,24.6,0,3.6,0,0,0,0,0,2,0.3,0,0,2.8,3.8,42.2,4.1,3.6,0,0,0,23.4,4.6,0,0,0,0,0,0,0,0,0,7.6,0,0,0,0,0,9.7,1.5,1.3,0.8,4.6,6.4,2.8,4.8,14.7,29.5,16.3,16.3,0,6.1,0,0,1.5,9.9,18,0,31,1.3,35.6,4.3,2.3,19.1,1.5,4.8,4.6,7.1,6.6,1.3,3,2.8,0.5,3.8,1.8,3.3,12.4,29.5,1,10.2,2,30.2,0.5,6.6,9.7,8.4,0,3.8,1.5,0.3,1.8,20.6,0.5,14,1.3,21.1,8.9,8.1,6.6,1.5,2,18.8,1.5,1.8,0.5,3.8,1,5.8,2.3,8.1,2.8,0.5,11.4,6.9,6.6,39.1,3.8,19.8,27.2,0.3,1.8,0.8,28.4,2.3,15,17,10.4,0,10.9,36.3,27.7],"mode":"markers","type":"scatter","name":"US1NYAB0017","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_y":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"line":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="column-1" class="section level2" data-width="350">
@@ -2653,27 +1894,25 @@ window.FlexDashboardComponents.push({
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<div id="htmlwidget-59267e382752ebf609cc" style="width:576px;height:460.8px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-59267e382752ebf609cc">{"x":{"visdat":{"4d8423fd2f23":["function () ","plotlyVisDat"]},"cur_data":"4d8423fd2f23","attrs":{"4d8423fd2f23":{"y":{},"color":{},"colors":"Set2","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"prcp"},"xaxis":{"domain":[0,1],"automargin":true},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"fillcolor":"rgba(102,194,165,0.5)","y":[0.3,0,0,2.5,7.1,0.8,0.8,0.3,0,0.8,15,0.8,0,0,4.6,0,11.7,1.5,0.5,0.3,0,0,0,4.6,0,8.1,0,15,0,19.6,9.9,0,0,1.5,0,0,0,10.9,0,0,0,4.1,2.3,0,20.6,0,8.6,0,0,0,0,0,0,0,0,4.1,5.8,0,4.3,4.1,4.1,0,2.3,0,0,0,0,0.5,0,0.8,0,0.5,0,0,1.3,2,0,25.7,0,0,0.5,15.2,23.6,0.5,0.8,3,3.3,0,6.1,20.8,0,0,0,5.8,0,2.5,0.5,0.8,5.8,0.3,0,0,17.3,8.6,0,17.3,2.5,0,0,48.3,17.8,0,14.7,27.9,0,0,0,0.5,0,7.9,0.8,0.3,0,6.4,10.7,0.3,0,0,0,0,0,0,16.3,7.6,0,0,7.6,8.4,0,5.1,9.9,0,0,0,0,0,0,6.1,0,0.3,0,0,0,0,0,0,0,0,0,0,0,0,3.3,1.5,21.8,1.3,0,1.8,2,15.5,0.3,0,0,0,0,0,0,0,0,0,0,0.3,3.6,1.3,4.1,0,0,3.6,2,0.8,0,0,0,0,0,0,0,17.5,0,0,1.5,0.3,35.3,5.3,0,12.4,0,8.1,0,0,0,25.9,0.3,15.7,0,11.4,0,1,0,1.8,2,0,0,3.8,0,10.9,4.8,0,0,0,1,0,0,0,0,0,0,0,0,0,22.4,0,0,0,0,12.7,4.1,19.6,3,21.1,48,26.2,0,1.3,0,3.6,1.5,0,5.3,22.4,0,0.5,0,4.3,0,0,0.8,0,0,0,0,0,0.3,0,0,0,0,1.3,0,0,0,0,0,0,14.5,31.5,0,0,16.8,0,0,7.4,8.1,0,0,0,0,0,0,0,0,0,0,0,4.8,19.8,0.3,26.4,0.3,6.4,1.5,4.6,0.5,0,0,2.3,0,4.8,0,0,0,0,0,0,0,10.7,0,0,0,0,2.8,0.3,0,0,55.4,0,24.1,38.1,0,0,0,0,0,0,0,0,11.9,0.3,1.3,0,0,0,0,2,0,0,0,0,0,0,0,0,7.6,5.3,0,0,0,0,16.8,0,0,0,2.5,0,0,0.8,0,1.8,3.8,0,0,5.1,5.8,1,0,24.6,5.1,9.1,0,0,1,8.4,0,0.5,5.1,8.4,0,1.3,0,1.8,0,1.3,0,11.7,0,0,0,0,0,0,3.3,1.3,0,0,0,0,0,0,0,0,4.8,18.8,0.8,4.3,0,0,0,1.8,0,0,0,0,0,0,0,1,0.3,0,0,0,0,0,10.7,1.3,1,0,2,0,0,2,0,2.8,0,0,3.8,0,0,0,0,4.8,17.3,10.9,10.2,1.5,0,0,0,0,0,0,11.7,0.3,0,0,0,0,0,0,5.3,0,2.3,5.3,3.6,0,0.8,0,15.5,0,0,5.3,0.3,0.5,0,3,0,0,0,0,0,0,0,0.8,0,6.9,4.8,0.3,0,0,0,0.5,0,0.3,0,1.3,2.5,0,0,0,5.3,6.6,0,1,7.4,0,0,0,0,7.4,0,11.7,0,0,0,0,0,0,0,0,0,24.4,0.3,10.9,2.3,0,0,0,0,0,0,0,0,11.9,2.5,0,10.9,1,23.6,10.9,2.5,0,14.5,17,0.3,14.2,1.3,0,0,0,0,15.2,4.1,0.3,0,16.8,67.1,3.8,9.1,0,0,4.1,14.5,0.3,0,0,3.8,0,0,0,0.5,9.4,16.8,0,0,0,6.1,1.3,0,6.6,0,1,0,0,0,0,0,0,3,1,0,0,0,0,0,0,0,6.1,1.3,0,39.1,10.2,1.5,0,0,0.5,0,21.6,8.9,0,0,0,0,0,0,0,0,0,0,0,0,14.7,2,0,0,0,0,0,0,0,0,0,0,0.3,0,0,11.2,16,0.3,4.6,1.3,0.5,3,0.5,0,1,3.8,5.8,0,3.3,0,0,4.3,1,0,0,0,0,0,0,0,0,0,11.2,21.1,0,0,6.1,34.3,0.3,0,6.4,0,0,0,0,2,0,0,0,0,0,0,0,10.4,16.3,0,0,0,0,18.8,0,0,0,0,0,2,0,0.8,0,0,1,0,19.3,0.3,0,12.2,0,0,21.3,9.1,0,0,0,9.7,0,0,0.3,0,0,0,0,0,0,1.3,0,0.3,0,0,3.3,2.8,5.6,3.8,0,0,0,0,3.6,0,0,0,0,0,0,0,0,22.6,0,0.8,0.5,0,0,0,1.5,22.1,0,0,1.8,0,0,0,0,1.3,1.8,0,0,0,0,0,0,4.6,0,0,1.3,0.5,0,10.7,1.3,0,0,0,0,1.3,62.2,14.5,78.5,16,8.9,2.5,0,0.5,0,0,0,0,0,0,0,0,0,5.6,26.9,6.6,0,0,0,0,0,0,0,37.1,1,0,7.6,0,0,2.8,1,61.7,1.3,0,0,0,0,0,4.6,0,12.4,0,0,0,0,0,0,2,5.6,1.3,0,0,0,0,0,0,0.5,0.5,9.9,6.6,0,0,0,0,0.3,2.8,4.3,2.8,0.5,18.5,2.8,0,0,1.8,0.8,9.4,0,0,0,0,11.4,2.3,0,0,0,0,0,0,0,0,0,0,0,2,6.1,0,3,4.1,18.8,26.9,0,0,11.2,5.8,0,21.8,0,0,0,15.2,0,0,8.1,0,0,5.8,0,11.2,0,1.3,11.2,9.4,0,0,0,0,0,0,0,0,0,0,9.1,0.5,0,0,22.4,0.5,0,0.5,25.7,0,0,0,4.3,0,27.2,14,0.3,0,0,0,0,0,8.6,0,0,0.3,0,0,1.3,1.3,0,0,6.4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.3,0.3,0.8,0,0,0.8,5.1,0,0,4.1,0,0,0,0,2,0,0,0,0,12.2,3,0,13.5,0,0,6.9,7.1,51.3,3,0,0,0,0,0,0,25.1,14.5,0,0,0,0,0,2.5,0,1.3,0.5,15.7,17.8,0.3,0,2.3,0.5,0,0,0,0,31.2,1.5,0,0,11.2,0.3,0,0,0,0,0,0,20.8,4.3,0,0,0,0,1.3,1,6.6,0,0.3,0,0,8.6,42.7,0,0,0,0.5,2.3,1,0,0,0,21.8,5.3,1.8,0.3,4.1,0,0,0,0,0,0,1.3,0,0,5.1,8.4,0,0,0,0],"type":"box","name":"US1NYAB0001","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(252,141,98,0.5)","y":[0,0,6.6,6.4,0.3,0,0,0,0,0,0,0,0,0,0,3.6,10.9,0.5,21.6,0.5,8.4,1.5,0.8,0.5,0,0,5.6,0.3,6.6,0.3,0,0,0,0,0,0,10.9,0,0,0,0,2.8,0,0,0,54.6,0.3,16.5,38.6,0,0,0,0,0,0,0,0,5.3,0,2.5,0.3,0,1,0.5,3.8,0.3,17.5,0,0,0,0,0,0,0,0,11.4,11.2,0,0,0,0,15.5,0,0,0,2.8,0,0,0,0,1.3,3.8,56.4,1.5,0,0,3.8,7.4,1.3,0,24.6,2.3,11.7,0,1.5,4.1,0,4.6,8.1,0,0.3,4.1,9.7,0,1.3,0,1.5,0,6.9,11.7,0.5,0,12.4,0.3,0,0,0,0,0,2.3,1.5,0,0,0,0,0,0,0,0,4.8,17.3,0,1.3,0,0,0,0,0,0,0,0,0,0,0,0.8,0,0,0,0,0,0,10.4,0,0,0,1.3,0,0,1,0,1.8,0,0.3,2.3,0,0,0,0,4.8,17.8,11.2,11.2,1.8,0,0,0,0,0,0,9.1,0.5,0,0,0,0,0,6.4,0,0.5,9.9,1.5,0,1,0.3,9.1,0.3,0.3,7.6,0.8,0,0,2.5,0,0,0,0,0,0,0,0.8,0,6.4,6.6,0.3,0,0,0,0,0,0.5,0,1.5,0.8,0,0,0,4.6,8.9,0.3,1.5,7.9,0.3,0,0,0,10.4,0,9.7,0,0,0,0,0,0,1,0,0,31,0.3,20.1,1.3,0.3,0.5,0,0,0,0,0,0,0,11.2,1.5,0.3,20.1,1.8,11.4,16.5,15.2,0,16,18.5,0.5,10.7,2.8,0.5,0,0,0,15,33,0.3,0,16.3,14.7,13.2,2.3,0.3,0,2.8,27.4,0.5,0,0,6.4,0,0,0,0.5,18.3,13.7,0,0,0,4.3,0,0,6.4,3.3,0,0,0,42.9,0.8,56.6,0,3.3,0,0,0,0,0,0,1.8,0.8,0,0,0,0,0,0,0,1.8,7.9,0,49,2.5,5.3,0,0,0,0,23.4,10.9,0,0,0,0,0,0,0,0,0,0,0,0,13.7,1.3,0,0,0,0,0,0,0,0,0,0,0,0,0,13.7,16.5,0.8,1.5,1,0.3,3.3,2.8,0.5,1.3,3.8,3.8,0,2.8,0,0,5.3,0.8,0,0,0,0,0,0,0,0,0,10.4,23.9,0,0,5.8,30.7,0,0,4.8,0,0,0.5,0,1.3,0,0,0,0,0,0,0,7.9,22.6,0,0,0,0,19.1,0,0,0,0,1.3,0,0,0,0,0,0,25.1,0,0,9.9,0,0,13,13.5,0,0,0,6.9,0,0.5,0,0,0,0,0,0,0,0.5,0,7.4,20.8,1.5,0,0,0,3.3,0.3,1.8,1,0,0,0,0.8,1.5,0,0,0,0,0,0,0,0,17.3,0.8,1.3,0,0,0,0,3,21.6,0.5,0,0.8,0,0,0,0,1.3,0.3,0,0,0,0,0,0,1.3,0,0,0.5,0,0,8.6,0.3,0,0,0,0,0,47,13,36.8,14.7,10.4,2.5,0,0,0,0,0,0,0,0,0,0,2.8,8.4,4.3,0,0,0,0,0,0,0,41.9,0.3,0,11.4,0,0,3,0.3,32,0.8,0,0,0,0,0,5.6,0,14.5,0.5,0,0,0,0,0,1,5.1,1,0,0,0,0.5,0,0,0,0,7.1,1.8,3.6,3.3,1,11.7,5.6,0,0,3.6,1.3,11.4,0,0,0,0,5.8,1.3,0,0,0,0,0,0,0,0,0,0,0,1.5,3,0,2,4.8,8.1,28.2,0,0,10.7,1.8,0,32,0.5,0.3,0,11.7,0,0,3.3,0,0,7.9,0,9.1,0.3,0.8,0,6.9,0,0,0,0,0,0,0,0,0,0,6.1,2.3,0,0,12.2,0.5,0,0,18.8,0,0.3,0,0.5,0,24.9,3.8,0,0,0,0,0,0,0,0,0,0,0.5,21.3,0,0,0,8.6,0,0,0,0,0,1.5,1,0,0,18.5,0,0,42.4,6.9,0.8,0.8,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0.8,0,0,0.5,0.3,0.3,0,4.3,2.3,0,0,0,0,1.5,0,0,0,0,14.2,3.6,0.3,13.2,0,0.3,5.6,6.4,34.8,2.8,0,0,0,0,0,0,20.6,6.4,0.5,0,0,0,0,0.5,0,0.8,0.8,13.5,17.3,0.5,0,0.8,0,0,0,0,0,27.4,1.8,0,0,15.5,0,0,0,0,0,0,0,22.1,2,0,0,0,0,0.5,0.5,0,8.6,0,0,0,0,13.2,44.5,0,0,0,0.5,0.3,0,0,0,0,0,28.4,1.5,0,0.3,0.3,0,0,0,0,0,0,0,0,0,14.2,1.3,0,0,0],"type":"box","name":"US1NYAB0006","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"line":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(141,160,203,0.5)","y":[22.6,0,0,0,0,0,0,0.5,2,0,0.3,0,0.3,3.3,0.3,12.2,0,0.3,0,0,0,0.3,0,5.1,0,0,0,3.3,0,5.1,0,2.3,5.3,50.8,0,0,0,2.8,6.1,0,0,26.4,3,8.6,0,0,0,0,0,1.3,0,4.1,9.9,3,0,13,0,0,0,0,0,0,3.3,0,0,0,0,0,0,0,5.3,10.4,0,4.6,0,0,0.3,1,0,0,0,0,0,0,2.3,0,0,0,0,0,8.4,1.5,1.5,0,3.8,0,0,1.8,2,0,0.5,2.5,0,0,0,0,7.1,15.5,10.2,7.9,1.5,0,0,0,0,7.1,0.3,0,0,0.5,0,0,0,3.6,0,2.3,8.4,2.8,0,1,0,17,0,0,7.1,0.5,0.3,0,4.6,0,0,0,0,0,0,0,0.5,0,7.9,0,0.3,0,0.5,2.8,0,0,0,8.1,6.4,0.5,1.3,7.6,0,0,0.3,5.8,16.8,0,0,0,0,0,0,0.5,0,26.2,0.3,16.8,1,0,0,0,0,0,0,0.3,0,0,5.8,0.8,0.3,8.6,34.3,15.2,7.9,0,20.8,11.2,0.3,26.7,2.5,0.3,0,0,2.3,1,0,0,15.5,27.4,15.2,0.5,0,0,4.1,6.1,1.5,0,0,20.8,0,0,0,7.1,0.3,0,0,0,0,0,2.8,1.5,0,0,0,0,0,0,0,11.7,0.3,0,0,2.5,0,18.8,10.7,0,0,0,0,0,0,0,0,0,0,0,26.9,0,0,0,0,0,0,0,0,1.8,0,10.9,41.7,2.8,2.3,2.8,4.1,4.1,0,0,0,0,0,0,0,0,0,13.5,30,0,0,6.9,29.5,0.5,0,0,0,0,0,0,13.5,13,0,0,0,0,18.8,0.3,0,0.3,0,1.8,0.3,0,1.8,0,19.1,0.3,0,8.1,0,0.3,0,0,9.9,0,0,0,0,0,0,0,0,1.3,0,10.4,0.5,0.3,0,2.3,1.8,0,0,0.3,0,0,0,0,0,20.1,0,1.8,0.3,0,0,0,1.8,22.9,0,0,3.3,0,0,0,1.8,0.5,0,0,0,0,0,2.3,0,0.5,0,0,0,8.6,1.3,0,0.3,0,0,1.8,38.9,50.5,20.6,9.9,3.3,1.3,0,0,0,0,0,0,0,4.1,63.2,5.6,0.5,0,0,0,0,0,35.8,1.3,0,5.8,0,3.8,0.8,46,0.8,0,7.6,0,14,0,0,0,0,0,0.8,7.9,1.3,0.5,0,0,0,0,0.8,1.5,13,2.8,0,0.8,0.8,7.6,1.3,15.2,3.3,0,0,0,13.7,0.3,0,0,0,11.7,3.6,0,0,0,0,0,1,0,2,0,4.1,5.3,16,25.7,0,0,12.4,10.2,0,16,0.5,1.3,0,10.2,0,0,0.5,3,10.9,1.5,0,0,0,0,0,0,0,0,0,11.9,0,0,18.8,1,0.8,23.1,0,0.8,27.7,1.5,1.5,0.5,0,0,0,0,0,2.8,11.7,1.5,0,0,1.5,15,0,0,4.1,64.3,10.9,3.6,2.8,0,0,0,0,0,0,0,0,0,0,0,4.3,1.5,1,0.3,0,1.3,0.8,0.5,0,3,0,0,0,0,0.3,0,0,0.3,14,4.1,0.3,9.1,0,0,17.3,9.4,33.8,8.6,0,0,0,0.5,0,18.5,0,0,0.3,2.8,0.3,2.5,8.9,18.5,0,0,8.4,0,0,0,0,0,0,0,21.8,7.1,0,0.3,0,0,0.3,1.3,0,8.6,0.5,0.5,0,0,9.1,38.9,1.5],"type":"box","name":"US1NYAB0010","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(231,138,195,0.5)","y":[12.2,40.6,8.9,2,0,0,4.6,9.9,0.5,0,4.6,0,0,0,0.5,16.3,16.5,0,0,11.4,0,0,9.1,3.6,0.3,4.6,32.8,24.6,0,3.6,0,0,0,0,0,2,0.3,0,0,2.8,3.8,42.2,4.1,3.6,0,0,0,23.4,4.6,0,0,0,0,0,0,0,0,0,7.6,0,0,0,0,0,9.7,1.5,1.3,0.8,4.6,6.4,2.8,4.8,14.7,29.5,16.3,16.3,0,6.1,0,0,1.5,9.9,18,0,31,1.3,35.6,4.3,2.3,19.1,1.5,4.8,4.6,7.1,6.6,1.3,3,2.8,0.5,3.8,1.8,3.3,12.4,29.5,1,10.2,2,30.2,0.5,6.6,9.7,8.4,0,3.8,1.5,0.3,1.8,20.6,0.5,14,1.3,21.1,8.9,8.1,6.6,1.5,2,18.8,1.5,1.8,0.5,3.8,1,5.8,2.3,8.1,2.8,0.5,11.4,6.9,6.6,39.1,3.8,19.8,27.2,0.3,1.8,0.8,28.4,2.3,15,17,10.4,0,10.9,36.3,27.7],"type":"box","name":"US1NYAB0017","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"line":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-402f2a76838ac51ad33b" style="width:576px;height:460.8px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-402f2a76838ac51ad33b">{"x":{"visdat":{"65a7a23bbed":["function () ","plotlyVisDat"]},"cur_data":"65a7a23bbed","attrs":{"65a7a23bbed":{"y":{},"color":{},"colors":"Set2","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"prcp"},"xaxis":{"domain":[0,1],"automargin":true},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"fillcolor":"rgba(102,194,165,0.5)","y":[0.3,0,0,2.5,7.1,0.8,0.8,0.3,0,0.8,15,0.8,0,0,4.6,0,11.7,1.5,0.5,0.3,0,0,0,4.6,0,8.1,0,15,0,19.6,9.9,0,0,1.5,0,0,0,10.9,0,0,0,4.1,2.3,0,20.6,0,8.6,0,0,0,0,0,0,0,0,4.1,5.8,0,4.3,4.1,4.1,0,2.3,0,0,0,0,0.5,0,0.8,0,0.5,0,0,1.3,2,0,25.7,0,0,0.5,15.2,23.6,0.5,0.8,3,3.3,0,6.1,20.8,0,0,0,5.8,0,2.5,0.5,0.8,5.8,0.3,0,0,17.3,8.6,0,17.3,2.5,0,0,48.3,17.8,0,14.7,27.9,0,0,0,0.5,0,7.9,0.8,0.3,0,6.4,10.7,0.3,0,0,0,0,0,0,16.3,7.6,0,0,7.6,8.4,0,5.1,9.9,0,0,0,0,0,0,6.1,0,0.3,0,0,0,0,0,0,0,0,0,0,0,0,3.3,1.5,21.8,1.3,0,1.8,2,15.5,0.3,0,0,0,0,0,0,0,0,0,0,0.3,3.6,1.3,4.1,0,0,3.6,2,0.8,0,0,0,0,0,0,0,17.5,0,0,1.5,0.3,35.3,5.3,0,12.4,0,8.1,0,0,0,25.9,0.3,15.7,0,11.4,0,1,0,1.8,2,0,0,3.8,0,10.9,4.8,0,0,0,1,0,0,0,0,0,0,0,0,0,22.4,0,0,0,0,12.7,4.1,19.6,3,21.1,48,26.2,0,1.3,0,3.6,1.5,0,5.3,22.4,0,0.5,0,4.3,0,0,0.8,0,0,0,0,0,0.3,0,0,0,0,1.3,0,0,0,0,0,0,14.5,31.5,0,0,16.8,0,0,7.4,8.1,0,0,0,0,0,0,0,0,0,0,0,4.8,19.8,0.3,26.4,0.3,6.4,1.5,4.6,0.5,0,0,2.3,0,4.8,0,0,0,0,0,0,0,10.7,0,0,0,0,2.8,0.3,0,0,55.4,0,24.1,38.1,0,0,0,0,0,0,0,0,11.9,0.3,1.3,0,0,0,0,2,0,0,0,0,0,0,0,0,7.6,5.3,0,0,0,0,16.8,0,0,0,2.5,0,0,0.8,0,1.8,3.8,0,0,5.1,5.8,1,0,24.6,5.1,9.1,0,0,1,8.4,0,0.5,5.1,8.4,0,1.3,0,1.8,0,1.3,0,11.7,0,0,0,0,0,0,3.3,1.3,0,0,0,0,0,0,0,0,4.8,18.8,0.8,4.3,0,0,0,1.8,0,0,0,0,0,0,0,1,0.3,0,0,0,0,0,10.7,1.3,1,0,2,0,0,2,0,2.8,0,0,3.8,0,0,0,0,4.8,17.3,10.9,10.2,1.5,0,0,0,0,0,0,11.7,0.3,0,0,0,0,0,0,5.3,0,2.3,5.3,3.6,0,0.8,0,15.5,0,0,5.3,0.3,0.5,0,3,0,0,0,0,0,0,0,0.8,0,6.9,4.8,0.3,0,0,0,0.5,0,0.3,0,1.3,2.5,0,0,0,5.3,6.6,0,1,7.4,0,0,0,0,7.4,0,11.7,0,0,0,0,0,0,0,0,0,24.4,0.3,10.9,2.3,0,0,0,0,0,0,0,0,11.9,2.5,0,10.9,1,23.6,10.9,2.5,0,14.5,17,0.3,14.2,1.3,0,0,0,0,15.2,4.1,0.3,0,16.8,67.1,3.8,9.1,0,0,4.1,14.5,0.3,0,0,3.8,0,0,0,0.5,9.4,16.8,0,0,0,6.1,1.3,0,6.6,0,1,0,0,0,0,0,0,3,1,0,0,0,0,0,0,0,6.1,1.3,0,39.1,10.2,1.5,0,0,0.5,0,21.6,8.9,0,0,0,0,0,0,0,0,0,0,0,0,14.7,2,0,0,0,0,0,0,0,0,0,0,0.3,0,0,11.2,16,0.3,4.6,1.3,0.5,3,0.5,0,1,3.8,5.8,0,3.3,0,0,4.3,1,0,0,0,0,0,0,0,0,0,11.2,21.1,0,0,6.1,34.3,0.3,0,6.4,0,0,0,0,2,0,0,0,0,0,0,0,10.4,16.3,0,0,0,0,18.8,0,0,0,0,0,2,0,0.8,0,0,1,0,19.3,0.3,0,12.2,0,0,21.3,9.1,0,0,0,9.7,0,0,0.3,0,0,0,0,0,0,1.3,0,0.3,0,0,3.3,2.8,5.6,3.8,0,0,0,0,3.6,0,0,0,0,0,0,0,0,22.6,0,0.8,0.5,0,0,0,1.5,22.1,0,0,1.8,0,0,0,0,1.3,1.8,0,0,0,0,0,0,4.6,0,0,1.3,0.5,0,10.7,1.3,0,0,0,0,1.3,62.2,14.5,78.5,16,8.9,2.5,0,0.5,0,0,0,0,0,0,0,0,0,5.6,26.9,6.6,0,0,0,0,0,0,0,37.1,1,0,7.6,0,0,2.8,1,61.7,1.3,0,0,0,0,0,4.6,0,12.4,0,0,0,0,0,0,2,5.6,1.3,0,0,0,0,0,0,0.5,0.5,9.9,6.6,0,0,0,0,0.3,2.8,4.3,2.8,0.5,18.5,2.8,0,0,1.8,0.8,9.4,0,0,0,0,11.4,2.3,0,0,0,0,0,0,0,0,0,0,0,2,6.1,0,3,4.1,18.8,26.9,0,0,11.2,5.8,0,21.8,0,0,0,15.2,0,0,8.1,0,0,5.8,0,11.2,0,1.3,11.2,9.4,0,0,0,0,0,0,0,0,0,0,9.1,0.5,0,0,22.4,0.5,0,0.5,25.7,0,0,0,4.3,0,27.2,14,0.3,0,0,0,0,0,8.6,0,0,0.3,0,0,1.3,1.3,0,0,6.4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1.3,0.3,0.8,0,0,0.8,5.1,0,0,4.1,0,0,0,0,2,0,0,0,0,12.2,3,0,13.5,0,0,6.9,7.1,51.3,3,0,0,0,0,0,0,25.1,14.5,0,0,0,0,0,2.5,0,1.3,0.5,15.7,17.8,0.3,0,2.3,0.5,0,0,0,0,31.2,1.5,0,0,11.2,0.3,0,0,0,0,0,0,20.8,4.3,0,0,0,0,1.3,1,6.6,0,0.3,0,0,8.6,42.7,0,0,0,0.5,2.3,1,0,0,0,21.8,5.3,1.8,0.3,4.1,0,0,0,0,0,0,1.3,0,0,5.1,8.4,0,0,0,0],"type":"box","name":"US1NYAB0001","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(252,141,98,0.5)","y":[0,0,6.6,6.4,0.3,0,0,0,0,0,0,0,0,0,0,3.6,10.9,0.5,21.6,0.5,8.4,1.5,0.8,0.5,0,0,5.6,0.3,6.6,0.3,0,0,0,0,0,0,10.9,0,0,0,0,2.8,0,0,0,54.6,0.3,16.5,38.6,0,0,0,0,0,0,0,0,5.3,0,2.5,0.3,0,1,0.5,3.8,0.3,17.5,0,0,0,0,0,0,0,0,11.4,11.2,0,0,0,0,15.5,0,0,0,2.8,0,0,0,0,1.3,3.8,56.4,1.5,0,0,3.8,7.4,1.3,0,24.6,2.3,11.7,0,1.5,4.1,0,4.6,8.1,0,0.3,4.1,9.7,0,1.3,0,1.5,0,6.9,11.7,0.5,0,12.4,0.3,0,0,0,0,0,2.3,1.5,0,0,0,0,0,0,0,0,4.8,17.3,0,1.3,0,0,0,0,0,0,0,0,0,0,0,0.8,0,0,0,0,0,0,10.4,0,0,0,1.3,0,0,1,0,1.8,0,0.3,2.3,0,0,0,0,4.8,17.8,11.2,11.2,1.8,0,0,0,0,0,0,9.1,0.5,0,0,0,0,0,6.4,0,0.5,9.9,1.5,0,1,0.3,9.1,0.3,0.3,7.6,0.8,0,0,2.5,0,0,0,0,0,0,0,0.8,0,6.4,6.6,0.3,0,0,0,0,0,0.5,0,1.5,0.8,0,0,0,4.6,8.9,0.3,1.5,7.9,0.3,0,0,0,10.4,0,9.7,0,0,0,0,0,0,1,0,0,31,0.3,20.1,1.3,0.3,0.5,0,0,0,0,0,0,0,11.2,1.5,0.3,20.1,1.8,11.4,16.5,15.2,0,16,18.5,0.5,10.7,2.8,0.5,0,0,0,15,33,0.3,0,16.3,14.7,13.2,2.3,0.3,0,2.8,27.4,0.5,0,0,6.4,0,0,0,0.5,18.3,13.7,0,0,0,4.3,0,0,6.4,3.3,0,0,0,42.9,0.8,56.6,0,3.3,0,0,0,0,0,0,1.8,0.8,0,0,0,0,0,0,0,1.8,7.9,0,49,2.5,5.3,0,0,0,0,23.4,10.9,0,0,0,0,0,0,0,0,0,0,0,0,13.7,1.3,0,0,0,0,0,0,0,0,0,0,0,0,0,13.7,16.5,0.8,1.5,1,0.3,3.3,2.8,0.5,1.3,3.8,3.8,0,2.8,0,0,5.3,0.8,0,0,0,0,0,0,0,0,0,10.4,23.9,0,0,5.8,30.7,0,0,4.8,0,0,0.5,0,1.3,0,0,0,0,0,0,0,7.9,22.6,0,0,0,0,19.1,0,0,0,0,1.3,0,0,0,0,0,0,25.1,0,0,9.9,0,0,13,13.5,0,0,0,6.9,0,0.5,0,0,0,0,0,0,0,0.5,0,7.4,20.8,1.5,0,0,0,3.3,0.3,1.8,1,0,0,0,0.8,1.5,0,0,0,0,0,0,0,0,17.3,0.8,1.3,0,0,0,0,3,21.6,0.5,0,0.8,0,0,0,0,1.3,0.3,0,0,0,0,0,0,1.3,0,0,0.5,0,0,8.6,0.3,0,0,0,0,0,47,13,36.8,14.7,10.4,2.5,0,0,0,0,0,0,0,0,0,0,2.8,8.4,4.3,0,0,0,0,0,0,0,41.9,0.3,0,11.4,0,0,3,0.3,32,0.8,0,0,0,0,0,5.6,0,14.5,0.5,0,0,0,0,0,1,5.1,1,0,0,0,0.5,0,0,0,0,7.1,1.8,3.6,3.3,1,11.7,5.6,0,0,3.6,1.3,11.4,0,0,0,0,5.8,1.3,0,0,0,0,0,0,0,0,0,0,0,1.5,3,0,2,4.8,8.1,28.2,0,0,10.7,1.8,0,32,0.5,0.3,0,11.7,0,0,3.3,0,0,7.9,0,9.1,0.3,0.8,0,6.9,0,0,0,0,0,0,0,0,0,0,6.1,2.3,0,0,12.2,0.5,0,0,18.8,0,0.3,0,0.5,0,24.9,3.8,0,0,0,0,0,0,0,0,0,0,0.5,21.3,0,0,0,8.6,0,0,0,0,0,1.5,1,0,0,18.5,0,0,42.4,6.9,0.8,0.8,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0.8,0,0,0.5,0.3,0.3,0,4.3,2.3,0,0,0,0,1.5,0,0,0,0,14.2,3.6,0.3,13.2,0,0.3,5.6,6.4,34.8,2.8,0,0,0,0,0,0,20.6,6.4,0.5,0,0,0,0,0.5,0,0.8,0.8,13.5,17.3,0.5,0,0.8,0,0,0,0,0,27.4,1.8,0,0,15.5,0,0,0,0,0,0,0,22.1,2,0,0,0,0,0.5,0.5,0,8.6,0,0,0,0,13.2,44.5,0,0,0,0.5,0.3,0,0,0,0,0,28.4,1.5,0,0.3,0.3,0,0,0,0,0,0,0,0,0,14.2,1.3,0,0,0],"type":"box","name":"US1NYAB0006","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"line":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(141,160,203,0.5)","y":[22.6,0,0,0,0,0,0,0.5,2,0,0.3,0,0.3,3.3,0.3,12.2,0,0.3,0,0,0,0.3,0,5.1,0,0,0,3.3,0,5.1,0,2.3,5.3,50.8,0,0,0,2.8,6.1,0,0,26.4,3,8.6,0,0,0,0,0,1.3,0,4.1,9.9,3,0,13,0,0,0,0,0,0,3.3,0,0,0,0,0,0,0,5.3,10.4,0,4.6,0,0,0.3,1,0,0,0,0,0,0,2.3,0,0,0,0,0,8.4,1.5,1.5,0,3.8,0,0,1.8,2,0,0.5,2.5,0,0,0,0,7.1,15.5,10.2,7.9,1.5,0,0,0,0,7.1,0.3,0,0,0.5,0,0,0,3.6,0,2.3,8.4,2.8,0,1,0,17,0,0,7.1,0.5,0.3,0,4.6,0,0,0,0,0,0,0,0.5,0,7.9,0,0.3,0,0.5,2.8,0,0,0,8.1,6.4,0.5,1.3,7.6,0,0,0.3,5.8,16.8,0,0,0,0,0,0,0.5,0,26.2,0.3,16.8,1,0,0,0,0,0,0,0.3,0,0,5.8,0.8,0.3,8.6,34.3,15.2,7.9,0,20.8,11.2,0.3,26.7,2.5,0.3,0,0,2.3,1,0,0,15.5,27.4,15.2,0.5,0,0,4.1,6.1,1.5,0,0,20.8,0,0,0,7.1,0.3,0,0,0,0,0,2.8,1.5,0,0,0,0,0,0,0,11.7,0.3,0,0,2.5,0,18.8,10.7,0,0,0,0,0,0,0,0,0,0,0,26.9,0,0,0,0,0,0,0,0,1.8,0,10.9,41.7,2.8,2.3,2.8,4.1,4.1,0,0,0,0,0,0,0,0,0,13.5,30,0,0,6.9,29.5,0.5,0,0,0,0,0,0,13.5,13,0,0,0,0,18.8,0.3,0,0.3,0,1.8,0.3,0,1.8,0,19.1,0.3,0,8.1,0,0.3,0,0,9.9,0,0,0,0,0,0,0,0,1.3,0,10.4,0.5,0.3,0,2.3,1.8,0,0,0.3,0,0,0,0,0,20.1,0,1.8,0.3,0,0,0,1.8,22.9,0,0,3.3,0,0,0,1.8,0.5,0,0,0,0,0,2.3,0,0.5,0,0,0,8.6,1.3,0,0.3,0,0,1.8,38.9,50.5,20.6,9.9,3.3,1.3,0,0,0,0,0,0,0,4.1,63.2,5.6,0.5,0,0,0,0,0,35.8,1.3,0,5.8,0,3.8,0.8,46,0.8,0,7.6,0,14,0,0,0,0,0,0.8,7.9,1.3,0.5,0,0,0,0,0.8,1.5,13,2.8,0,0.8,0.8,7.6,1.3,15.2,3.3,0,0,0,13.7,0.3,0,0,0,11.7,3.6,0,0,0,0,0,1,0,2,0,4.1,5.3,16,25.7,0,0,12.4,10.2,0,16,0.5,1.3,0,10.2,0,0,0.5,3,10.9,1.5,0,0,0,0,0,0,0,0,0,11.9,0,0,18.8,1,0.8,23.1,0,0.8,27.7,1.5,1.5,0.5,0,0,0,0,0,2.8,11.7,1.5,0,0,1.5,15,0,0,4.1,64.3,10.9,3.6,2.8,0,0,0,0,0,0,0,0,0,0,0,4.3,1.5,1,0.3,0,1.3,0.8,0.5,0,3,0,0,0,0,0.3,0,0,0.3,14,4.1,0.3,9.1,0,0,17.3,9.4,33.8,8.6,0,0,0,0.5,0,18.5,0,0,0.3,2.8,0.3,2.5,8.9,18.5,0,0,8.4,0,0,0,0,0,0,0,21.8,7.1,0,0.3,0,0,0.3,1.3,0,8.6,0.5,0.5,0,0,9.1,38.9,1.5],"type":"box","name":"US1NYAB0010","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(231,138,195,0.5)","y":[12.2,40.6,8.9,2,0,0,4.6,9.9,0.5,0,4.6,0,0,0,0.5,16.3,16.5,0,0,11.4,0,0,9.1,3.6,0.3,4.6,32.8,24.6,0,3.6,0,0,0,0,0,2,0.3,0,0,2.8,3.8,42.2,4.1,3.6,0,0,0,23.4,4.6,0,0,0,0,0,0,0,0,0,7.6,0,0,0,0,0,9.7,1.5,1.3,0.8,4.6,6.4,2.8,4.8,14.7,29.5,16.3,16.3,0,6.1,0,0,1.5,9.9,18,0,31,1.3,35.6,4.3,2.3,19.1,1.5,4.8,4.6,7.1,6.6,1.3,3,2.8,0.5,3.8,1.8,3.3,12.4,29.5,1,10.2,2,30.2,0.5,6.6,9.7,8.4,0,3.8,1.5,0.3,1.8,20.6,0.5,14,1.3,21.1,8.9,8.1,6.6,1.5,2,18.8,1.5,1.8,0.5,3.8,1,5.8,2.3,8.1,2.8,0.5,11.4,6.9,6.6,39.1,3.8,19.8,27.2,0.3,1.8,0.8,28.4,2.3,15,17,10.4,0,10.9,36.3,27.7],"type":"box","name":"US1NYAB0017","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"line":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="chart-c" class="section level3">
 <h3>Chart C</h3>
 <div class="knitr-options" data-fig-width="576" data-fig-height="460">
 
 </div>
-<div id="htmlwidget-e432931fe7fbacce32c5" style="width:576px;height:460.8px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e432931fe7fbacce32c5">{"x":{"visdat":{"4d846eb1c84":["function () ","plotlyVisDat"]},"cur_data":"4d846eb1c84","attrs":{"4d846eb1c84":{"x":{},"y":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"prcp"},"yaxis":{"domain":[0,1],"automargin":true,"title":"n"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[0.3,1.3,0.5,0.8,1,2,4.1,1.5,1.8,2.5,2.3,3,5.3,2.8,3.8,4.3,5.8,4.6,4.8,5.1,6.1,10.9,11.2,3.3,3.6,6.6,14.5,6.4,7.6,8.1,8.4,8.6,9.1,10.7,11.7,16.8,5.6,7.4,9.4,9.9,15.2,17.3,18.8,21.8,22.4,6.9,7.1,8.9,10.2,11.4,11.9,12.2,12.4,14.7,15,15.5,15.7,16,16.3,17.8,19.6,20.8,21.1,23.6,25.7,26.9,7.9,9.7,10.4,12.7,13.5,14,14.2,17,17.5,18.5,19.3,19.8,20.6,21.3,21.6,22.1,22.6,24.1,24.4,24.6,25.1,25.9,26.2,26.4,27.2,27.9,31.2,31.5,34.3,35.3,37.1,38.1,39.1,42.7,48,48.3,51.3,55.4,61.7,62.2,67.1],"y":[39,29,28,19,17,13,11,10,9,9,8,8,8,7,7,7,7,6,6,6,6,6,6,5,5,5,5,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"type":"bar","name":"US1NYAB0001","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0.3,0.5,0.8,1.3,1.5,1,1.8,2.8,6.4,2.3,3.3,3.8,2.5,3.6,4.8,5.6,6.9,7.9,10.4,11.2,11.4,11.7,2,3,4.3,5.3,6.6,8.6,9.1,10.9,13.2,13.7,16.5,17.3,4.1,4.6,5.8,7.4,8.1,8.4,9.7,9.9,10.7,13,13.5,14.2,14.7,15.5,18.5,20.1,21.6,27.4,32,5.1,6.1,7.1,7.6,8.9,12.2,12.4,14.5,15,15.2,16,16.3,17.5,17.8,18.3,18.8,19.1,20.6,20.8,21.3,22.1,22.6,23.4,23.9,24.6,24.9,25.1,28.2,28.4,30.7,31,33,34.8,36.8,38.6,41.9,42.4,42.9,44.5,47,49,54.6,56.4,56.6],"y":[36,32,20,16,16,10,9,8,7,6,6,6,4,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"type":"bar","name":"US1NYAB0006","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_y":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0.3,0.5,1.5,1.3,0.8,2.8,1.8,4.1,1,2.3,3.3,7.1,8.6,2.5,3,7.9,2,3.6,5.3,5.8,7.6,8.4,9.9,10.2,10.9,11.7,13,15.2,18.8,3.8,4.6,5.1,6.1,8.1,9.1,10.4,13.5,14,15.5,16,16.8,18.5,20.8,38.9,4.3,5.6,6.4,6.9,8.9,9.4,10.7,11.2,11.9,12.2,12.4,13.7,15,17,17.3,19.1,20.1,20.6,21.8,22.6,22.9,23.1,25.7,26.2,26.4,26.7,26.9,27.4,27.7,29.5,30,33.8,34.3,35.8,41.7,46,50.5,50.8,63.2,64.3],"y":[35,22,13,11,10,10,9,8,7,7,6,5,5,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"type":"bar","name":"US1NYAB0010","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0.5,1.5,4.6,3.8,0.3,1.3,1.8,2,2.8,6.6,2.3,3.6,16.3,0.8,1,4.8,8.1,8.9,9.7,9.9,11.4,29.5,3,3.3,4.1,4.3,5.8,6.1,6.4,6.9,7.1,7.6,8.4,9.1,10.2,10.4,10.9,12.2,12.4,14,14.7,15,16.5,17,18,18.8,19.1,19.8,20.6,21.1,23.4,24.6,27.2,27.7,28.4,30.2,31,32.8,35.6,36.3,39.1,40.6,42.2],"y":[7,6,6,5,4,4,4,4,4,4,3,3,3,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"type":"bar","name":"US1NYAB0017","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_y":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-114f2aa50f3f2abb86a1" style="width:576px;height:460.8px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-114f2aa50f3f2abb86a1">{"x":{"visdat":{"65a7dab0c04":["function () ","plotlyVisDat"]},"cur_data":"65a7dab0c04","attrs":{"65a7dab0c04":{"x":{},"y":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"prcp"},"yaxis":{"domain":[0,1],"automargin":true,"title":"n"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[0.3,1.3,0.5,0.8,1,2,4.1,1.5,1.8,2.5,2.3,3,5.3,2.8,3.8,4.3,5.8,4.6,4.8,5.1,6.1,10.9,11.2,3.3,3.6,6.6,14.5,6.4,7.6,8.1,8.4,8.6,9.1,10.7,11.7,16.8,5.6,7.4,9.4,9.9,15.2,17.3,18.8,21.8,22.4,6.9,7.1,8.9,10.2,11.4,11.9,12.2,12.4,14.7,15,15.5,15.7,16,16.3,17.8,19.6,20.8,21.1,23.6,25.7,26.9,7.9,9.7,10.4,12.7,13.5,14,14.2,17,17.5,18.5,19.3,19.8,20.6,21.3,21.6,22.1,22.6,24.1,24.4,24.6,25.1,25.9,26.2,26.4,27.2,27.9,31.2,31.5,34.3,35.3,37.1,38.1,39.1,42.7,48,48.3,51.3,55.4,61.7,62.2,67.1],"y":[39,29,28,19,17,13,11,10,9,9,8,8,8,7,7,7,7,6,6,6,6,6,6,5,5,5,5,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"type":"bar","name":"US1NYAB0001","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0.3,0.5,0.8,1.3,1.5,1,1.8,2.8,6.4,2.3,3.3,3.8,2.5,3.6,4.8,5.6,6.9,7.9,10.4,11.2,11.4,11.7,2,3,4.3,5.3,6.6,8.6,9.1,10.9,13.2,13.7,16.5,17.3,4.1,4.6,5.8,7.4,8.1,8.4,9.7,9.9,10.7,13,13.5,14.2,14.7,15.5,18.5,20.1,21.6,27.4,32,5.1,6.1,7.1,7.6,8.9,12.2,12.4,14.5,15,15.2,16,16.3,17.5,17.8,18.3,18.8,19.1,20.6,20.8,21.3,22.1,22.6,23.4,23.9,24.6,24.9,25.1,28.2,28.4,30.7,31,33,34.8,36.8,38.6,41.9,42.4,42.9,44.5,47,49,54.6,56.4,56.6],"y":[36,32,20,16,16,10,9,8,7,6,6,6,4,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"type":"bar","name":"US1NYAB0006","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_y":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0.3,0.5,1.5,1.3,0.8,2.8,1.8,4.1,1,2.3,3.3,7.1,8.6,2.5,3,7.9,2,3.6,5.3,5.8,7.6,8.4,9.9,10.2,10.9,11.7,13,15.2,18.8,3.8,4.6,5.1,6.1,8.1,9.1,10.4,13.5,14,15.5,16,16.8,18.5,20.8,38.9,4.3,5.6,6.4,6.9,8.9,9.4,10.7,11.2,11.9,12.2,12.4,13.7,15,17,17.3,19.1,20.1,20.6,21.8,22.6,22.9,23.1,25.7,26.2,26.4,26.7,26.9,27.4,27.7,29.5,30,33.8,34.3,35.8,41.7,46,50.5,50.8,63.2,64.3],"y":[35,22,13,11,10,10,9,8,7,7,6,5,5,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"type":"bar","name":"US1NYAB0010","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0.5,1.5,4.6,3.8,0.3,1.3,1.8,2,2.8,6.6,2.3,3.6,16.3,0.8,1,4.8,8.1,8.9,9.7,9.9,11.4,29.5,3,3.3,4.1,4.3,5.8,6.1,6.4,6.9,7.1,7.6,8.4,9.1,10.2,10.4,10.9,12.2,12.4,14,14.7,15,16.5,17,18,18.8,19.1,19.8,20.6,21.1,23.4,24.6,27.2,27.7,28.4,30.2,31,32.8,35.6,36.3,39.1,40.6,42.2],"y":[7,6,6,5,4,4,4,4,4,4,3,3,3,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"type":"bar","name":"US1NYAB0017","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_y":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
 </div>
 
 <script>
-
-$(document).ready(function () {
-
+$(document).ready(function() {
   // add bootstrap table styles to pandoc tables
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed table-sm');
 
   // initialize mathjax
   var script = document.createElement("script");
@@ -2687,7 +1926,6 @@ $(document).ready(function () {
 <script type="text/javascript">
 $(document).ready(function () {
   FlexDashboard.init({
-    theme: "cosmo",
     fillPage: true,
     orientation: "columns",
     storyboard: false,
@@ -2696,6 +1934,21 @@ $(document).ready(function () {
     defaultFigWidthMobile: 360,
     defaultFigHeightMobile: 460,
     resize_reload: true
+  });
+  var navbar = $(".navbar").first();
+  var body = $("body").first();
+  var sidebar = $(".section.sidebar").first();
+  function addNavbarPadding() {
+    var navHeight = navbar.outerHeight();
+    body.css("padding-top", (navHeight + 8) + "px");
+    sidebar.css("top", navHeight + "px");
+    var resizeEvent = window.document.createEvent("UIEvents");
+    resizeEvent.initUIEvent("resize", true, false, window, 0);
+    window.dispatchEvent(resizeEvent);
+  }
+  if (!window.Shiny) setTimeout(addNavbarPadding, 100);
+  $(document).on("shiny:idle", function() {
+    setTimeout(addNavbarPadding, 50);
   });
 });
 </script>

@@ -14,7 +14,7 @@
 
 <title>Research</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -63,6 +63,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -83,6 +84,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -235,7 +239,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -293,18 +297,31 @@ $(document).ready(function () {
 <p><br></p>
 </div>
 </div>
-<div id="tutorial-materials-for-workshops" class="section level2">
-<h2>Tutorial Materials for Workshops</h2>
-<ol style="list-style-type: decimal">
-<li><p>Introduction to R(Chapter 5): <a href="https://holab-hku.github.io/R-workshop/">Link</a></p></li>
-<li><p>Fundamentals of scRNASeq Analysis: <a href="https://holab-hku.github.io//Fundamental-scRNA/">Link</a></p></li>
-</ol>
-<p><br></p>
-</div>
 <div id="talks" class="section level2">
 <h2>Talks</h2>
 <ol style="list-style-type: decimal">
-<li>Contributed Talks in BioC Asia 2021: <a href="https://biocasia2021.bioconductor.org/contributions/">Link</a> <a href="https://www.youtube.com/watch?v=_Fh3sp59ui0">Video</a> <a href="https://f1000research.com/slides/10-1119">Slides</a></li>
+<li>Contributed Talks in BioC Asia 2021: <a
+href="https://biocasia2021.bioconductor.org/contributions/">Link</a> <a
+href="https://www.youtube.com/watch?v=_Fh3sp59ui0">Video</a> <a
+href="https://f1000research.com/slides/10-1119">Slides</a></li>
+</ol>
+<p><br></p>
+</div>
+<div id="awards" class="section level2">
+<h2>Awards</h2>
+<ol style="list-style-type: decimal">
+<li><a href="./support_files/silver_award.pdf">Silver presentation
+award</a> in NSFC/RPG Workshop on Single-Cell Data Science.</li>
+</ol>
+<p><br></p>
+</div>
+<div id="tutorial-materials-for-workshops" class="section level2">
+<h2>Tutorial Materials for Workshops</h2>
+<ol style="list-style-type: decimal">
+<li><p>Introduction to R(Chapter 5): <a
+href="https://holab-hku.github.io/R-workshop/">Link</a></p></li>
+<li><p>Fundamentals of scRNASeq Analysis: <a
+href="https://holab-hku.github.io//Fundamental-scRNA/">Link</a></p></li>
 </ol>
 <p><br></p>
 </div>
@@ -313,25 +330,32 @@ $(document).ready(function () {
 <div id="group-project" class="section level3">
 <h3>Group Project</h3>
 <ol style="list-style-type: decimal">
-<li>Factors Associated with Mental Health in Tech Companies: <a href="https://runanon.github.io/final.github.io/">Link</a></li>
+<li>Factors Associated with Mental Health in Tech Companies: <a
+href="https://runanon.github.io/final.github.io/">Link</a></li>
 </ol>
 <ul>
 <li>My responsibility: Models Building</li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
-<li>Using Newton-Raphson and Logistic-LASSO for Predicting Breast Cancer Status: <a href="./Optimization_project.pdf">Report</a> <a href="https://github.com/thecbp/P8160_optimization_project">Code</a></li>
+<li>Using Newton-Raphson and Logistic-LASSO for Predicting Breast Cancer
+Status: <a href="./support_files/Optimization_project.pdf">Report</a> <a
+href="https://github.com/thecbp/P8160_optimization_project">Code</a></li>
 </ol>
 <ul>
 <li>My responsibility: Newton-Raphson Algorithm</li>
 </ul>
 <ol start="3" style="list-style-type: decimal">
-<li>Glasses’ Type Prediction: <a href="./Glass_type_prediction.pdf">Report</a> <a href="https://github.com/runanon/p8106_final">Code</a></li>
+<li>Glasses’ Type Prediction: <a
+href="./Glass_type_prediction.pdf">Report</a> <a
+href="https://github.com/runanon/p8106_final">Code</a></li>
 </ol>
 <ul>
 <li>My responsibility: Support Vector Machine</li>
 </ul>
 <ol start="4" style="list-style-type: decimal">
-<li>Houses’ Prices Prediction: <a href="./House_price_prediction.pdf">Report</a> <a href="https://github.com/runanon/P8106_MIDTERM_PROJECT">Code</a></li>
+<li>Houses’ Prices Prediction: <a
+href="./support_files/House_price_prediction.pdf">Report</a> <a
+href="https://github.com/runanon/P8106_MIDTERM_PROJECT">Code</a></li>
 </ol>
 <ul>
 <li>My responsibility: Data Preprocessing and Writing Report</li>
@@ -341,8 +365,12 @@ $(document).ready(function () {
 <div id="personal-project" class="section level3">
 <h3>Personal Project</h3>
 <ol style="list-style-type: decimal">
-<li><p>Hurricane Trajectory Prediction: <a href="./hurricane_questions.pdf">Questions</a> <a href="./hurricane_report.pdf">Report</a> <a href="https://github.com/linxy29/P8160_final_project">Code</a></p></li>
-<li><p>基于贝叶斯算法的等位基因特异的m6A鉴定算法开发: <a href="毕业论文.pdf">Bachelor Dissertation</a></p></li>
+<li><p>Hurricane Trajectory Prediction: <a
+href="./support_files/hurricane_questions.pdf">Questions</a> <a
+href="./support_files/hurricane_report.pdf">Report</a> <a
+href="https://github.com/linxy29/P8160_final_project">Code</a></p></li>
+<li><p>基于贝叶斯算法的等位基因特异的m6A鉴定算法开发: <a
+href="./support_files/毕业论文.pdf">Bachelor Dissertation</a></p></li>
 </ol>
 </div>
 </div>
