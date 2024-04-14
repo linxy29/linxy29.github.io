@@ -1,16 +1,18 @@
 ---
 title: "Research"
-author: "Xinyi Lin"
 output: html_document
 ---
 
 <br>
 
-## Publication
+## Publications
 
-### Working on it ...... (づ●─●)づ
+1.	Lin, X., Chau, C., Ma, K. et al. DCATS: differential composition analysis for flexible single-cell experimental designs. *Genome Biol* 24, 151 (2023). https://doi.org/10.1186/s13059-023-02980-3
+2.	Meng, Q., Wei, L., Ma, K., Shi, M., Lin, X., Ho, J. W., ... & Zhang, X. (2024). scDecouple: decoupling cellular response from infected proportion bias in scCRISPR-seq. *Briefings in Bioinformatics*, 25(2), bbae011.
+3.	Warin, J., Vedrenne, N., Tam, V., Zhu, M., Yin, D., Lin, X., ... & Camus, A. (2024). In vitro and in vivo models define a molecular signature reference for human embryonic notochordal cells. *Iscience*, 27(2).
+4.	Xue, Y., Su, Z., Lin, X., Ho, M. K., & Yu, K. H. (2024). Single-cell lineage tracing with endogenous markers. *Biophysical Reviews*, 1-15.
 
-<br>
+  <br>
  
 ## Talks
 
@@ -21,6 +23,8 @@ output: html_document
 ## Awards
 
 1. [Silver presentation award](./support_files/silver_award.pdf) in NSFC/RPG Workshop on Single-Cell Data Science.
+
+2. [Bau Tsu Zung Bau Kwan Yeu Hing Research and Clinical Fellowship](https://scholar.aas.hku.hk/?action=showonesscheme&ss_id=471&backb=1)
 
  <br>
  

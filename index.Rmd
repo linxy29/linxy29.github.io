@@ -18,6 +18,8 @@ output:
 
 * 2020-Now: PhD, Bioinformatics, [Ho Lab](https://holab-hku.github.io/), [The University of Hong Kong](https://www.hku.hk/)
 
+* 2022.08-2023.08, Visiting student, [XGlab](https://www.au.tsinghua.edu.cn/info/1110/1569.htm), [Tsinghua University](https://www.tsinghua.edu.cn/en/index.htm)
+
 * 2018-2020: MS, Biostatistics, [Columbia University Irving Medical Center](https://www.cuimc.columbia.edu)
 
 * 2014-2018 : BS, Biological Science, [Sun Yat-sen University](http://www.sysu.edu.cn/en/)
