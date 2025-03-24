@@ -7,10 +7,12 @@ output: html_document
 
 ## Publications
 
-1.	Lin, X., Chau, C., Ma, K. et al. DCATS: differential composition analysis for flexible single-cell experimental designs. *Genome Biol* 24, 151 (2023). https://doi.org/10.1186/s13059-023-02980-3
-2.	Meng, Q., Wei, L., Ma, K., Shi, M., Lin, X., Ho, J. W., ... & Zhang, X. (2024). scDecouple: decoupling cellular response from infected proportion bias in scCRISPR-seq. *Briefings in Bioinformatics*, 25(2), bbae011.
-3.	Warin, J., Vedrenne, N., Tam, V., Zhu, M., Yin, D., Lin, X., ... & Camus, A. (2024). In vitro and in vivo models define a molecular signature reference for human embryonic notochordal cells. *Iscience*, 27(2).
-4.	Xue, Y., Su, Z., Lin, X., Ho, M. K., & Yu, K. H. (2024). Single-cell lineage tracing with endogenous markers. *Biophysical Reviews*, 1-15.
+1.	**Lin, X.**, Chau, C., Ma, K. et al. DCATS: differential composition analysis for flexible single-cell experimental designs. *Genome Biol* 24, 151 (2023). https://doi.org/10.1186/s13059-023-02980-3
+2.	Miao, Z., **Lin, X.**, Li, J., Ho, J., Meng, Q., & Zhang, X. (2025). scRecover: Discriminating True and False Zeros in Single-Cell RNA-Seq Data for Imputation. Statistics in medicine, 44(5), e10334. (co-first author)
+3.	Meng, Q., Wei, L., Ma, K., Shi, M., Lin, X., Ho, J. W., ... & Zhang, X. (2024). scDecouple: decoupling cellular response from infected proportion bias in scCRISPR-seq. *Briefings in Bioinformatics*, 25(2), bbae011.
+4.	Warin, J., Vedrenne, N., Tam, V., Zhu, M., Yin, D., Lin, X., ... & Camus, A. (2024). In vitro and in vivo models define a molecular signature reference for human embryonic notochordal cells. *Iscience*, 27(2).
+5.	Xue, Y., Su, Z., Lin, X., Ho, M. K., & Yu, K. H. (2024). Single-cell lineage tracing with endogenous markers. *Biophysical Reviews*, 1-15.
+6.	**X. Lin**, G. Deng, Y. Li, J. Ge, J.W.K. Ho, Y. Liu, GeneRAG: Enhancing Large Language Models with Gene-Related Task by Retrieval-Augmented Generation, bioRxiv (2024). https://www.biorxiv.org/content/10.1101/2024.06.24.600176v1 
 
   <br>
  
